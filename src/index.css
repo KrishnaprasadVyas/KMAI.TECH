@@ -4,17 +4,20 @@
 
 @layer base {
   :root {
-    --brand-darkest: #05070B;
-    --brand-dark: #08111F;
-    --brand-surface: #0B1F3A;
-    --brand-blue: #006EFF;
-    --brand-blue-light: #1683FF;
+    --canvas-base: #08090C;
+    --canvas-elevated: #0E1015;
+    --canvas-surface: #12141A;
+    --text-primary: #F5F6F8;
+    --text-secondary: #8A92A0;
+    --text-muted: #5A6270;
+    --accent-cobalt: #0066FF;
+    --border-hairline: rgba(255, 255, 255, 0.08);
   }
 
   html {
-    background-color: #05070B;
-    color: #FFFFFF;
-    font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+    background-color: #08090C;
+    color: #F5F6F8;
+    font-family: 'Plus Jakarta Sans', Inter, -apple-system, sans-serif;
   }
 
   #root {
@@ -52,47 +55,43 @@
 
   /* Custom subtle scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
   ::-webkit-scrollbar-track {
-    background: #05070B;
+    background: #08090C;
   }
   ::-webkit-scrollbar-thumb {
-    background: #11294D;
-    border-radius: 3px;
+    background: #181B22;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #006EFF;
+    background: #0066FF;
   }
 }
 
 @layer utilities {
-  .text-glow {
-    text-shadow: 0 0 30px rgba(0, 110, 255, 0.45);
-  }
-
-  .box-glow {
-    box-shadow: 0 0 50px -10px rgba(0, 110, 255, 0.3);
-  }
-
-  .box-glow-lg {
-    box-shadow: 0 0 100px -20px rgba(0, 110, 255, 0.25);
-  }
-
-  .border-glass {
+  .border-hairline {
     border-color: rgba(255, 255, 255, 0.08);
   }
 
-  .bg-glass {
-    background: rgba(8, 17, 31, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+  .border-hairline-subtle {
+    border-color: rgba(255, 255, 255, 0.04);
   }
 
-  .bg-glass-card {
-    background: rgba(11, 31, 58, 0.35);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+  .accent-rule {
+    background-color: #0066FF;
+  }
+
+  /* Architectural Studio Surface Tokens */
+  .border-studio {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .border-studio-active {
+    border: 1px solid #0066FF;
+  }
+
+  .bg-studio-surface {
+    background: rgba(14, 16, 21, 0.95);
   }
 
   /* Clip path utilities for typography reveals */
@@ -103,18 +102,4 @@
   .clip-hidden {
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
   }
-}
-
-/* Subtle background noise texture */
-.noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  content: "";
-  opacity: 0.025;
-  pointer-events: none;
-  z-index: 9999;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }

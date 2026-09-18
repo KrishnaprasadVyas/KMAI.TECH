@@ -36,10 +36,7 @@ export function App() {
   );
 
   return (
-    <div className="relative min-h-screen bg-[#05070B] text-white selection:bg-[#006EFF] selection:text-white">
-      {/* Background Noise Texture */}
-      <div className="noise-overlay" />
-
+    <div className="relative min-h-screen bg-[#08090C] text-[#F5F6F8] selection:bg-[#0066FF] selection:text-white">
       {/* Cinematic Branded Preloader */}
       {!isLoaded && <Preloader onComplete={() => setIsLoaded(true)} />}
 
@@ -57,14 +54,14 @@ export function App() {
         {/* 02 // Intro Statement */}
         <IntroStatement />
 
-        {/* 03 // Services (What We Build) */}
-        <Services onCursorChange={handleCursorChange} />
-
-        {/* 04 // Selected Work (Dennis Snellenberg Hover Preview & Case Studies) */}
+        {/* 03 // Selected Work (Dennis Snellenberg Hover Preview & Case Studies) */}
         <SelectedWork onCursorChange={handleCursorChange} />
 
-        {/* 05 // Work Marquee Ticker */}
+        {/* 04 // Work Marquee Ticker */}
         <WorkMarquee />
+
+        {/* 05 // Capabilities (The 4 Core Architectural Pillars) */}
+        <Services onCursorChange={handleCursorChange} />
 
         {/* 06 // About Studio & Team */}
         <About onCursorChange={handleCursorChange} />
