@@ -85,7 +85,7 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
     <section
       ref={containerRef}
       id="hero"
-      className="relative min-h-[100svh] w-full flex flex-col justify-between pt-28 sm:pt-32 pb-10 px-6 md:px-12 lg:px-16 bg-[#08090C] border-b border-white/8 overflow-hidden"
+      className="relative min-h-[100svh] w-full flex flex-col justify-between pt-20 sm:pt-32 pb-6 sm:pb-10 px-5 sm:px-8 md:px-12 lg:px-16 bg-[#08090C] border-b border-white/8 overflow-hidden"
     >
       {/* Structural Architectural Watermark K (Subtle 3D Background Geometry) */}
       <div className="absolute right-4 md:right-16 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.035] w-[350px] sm:w-[500px] lg:w-[680px]">
@@ -95,7 +95,7 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
       {/* Top Architectural Telemetry Bar */}
       <div
         ref={telemetryRef}
-        className="max-w-7xl mx-auto w-full relative z-10 border-b border-white/8 pb-4 mb-8 sm:mb-12"
+        className="max-w-7xl mx-auto w-full relative z-10 border-b border-white/8 pb-3 sm:pb-4 mb-4 sm:mb-12"
       >
         <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#8A92A0]">
           <div className="flex items-center gap-2.5">
@@ -117,9 +117,9 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
       {/* Centerpiece: Monumental Display Typography */}
       <div
         ref={headlineRef}
-        className="max-w-7xl mx-auto w-full relative z-10 my-auto py-4 sm:py-8"
+        className="max-w-7xl mx-auto w-full relative z-10 my-2 sm:my-auto py-2 sm:py-8"
       >
-        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.25rem] font-extrabold text-[#F5F6F8] tracking-tighter leading-[0.92] max-w-6xl">
+        <h1 className="text-[2.05rem] xs:text-[2.25rem] sm:text-6xl md:text-8xl lg:text-[7.25rem] font-extrabold text-[#F5F6F8] tracking-tighter leading-[0.94] max-w-6xl">
           <div className="overflow-hidden">
             <span className="monumental-line block">WE ARCHITECT</span>
           </div>
@@ -133,15 +133,15 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
       </div>
 
       {/* Bottom Ledger: Asymmetric 12-Column Sub-Grid */}
-      <div className="max-w-7xl mx-auto w-full relative z-10 pt-8 sm:pt-12 border-t border-white/8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+      <div className="max-w-7xl mx-auto w-full relative z-10 pt-4 sm:pt-10 border-t border-white/8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-end">
           {/* Studio Manifesto Subtext */}
-          <div ref={subtextRef} className="lg:col-span-7 space-y-4">
-            <p className="text-base sm:text-xl text-[#F5F6F8] font-light leading-relaxed max-w-2xl">
+          <div ref={subtextRef} className="lg:col-span-7 space-y-3 sm:space-y-4">
+            <p className="text-sm sm:text-lg md:text-xl text-[#F5F6F8] font-light leading-relaxed max-w-2xl">
               A creative technology studio engineering bespoke software, high-performance web experiences, and operational automation.
             </p>
 
-            <div className="flex flex-wrap gap-2 text-[11px] font-mono text-[#8A92A0]">
+            <div className="flex flex-wrap gap-2 text-[10px] sm:text-[11px] font-mono text-[#8A92A0]">
               <span className="text-white">01</span> SOFTWARE
               <span className="text-[#5A6270]">•</span>
               <span className="text-white">02</span> WEB DESIGN
@@ -155,14 +155,14 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
           {/* Action Ledger */}
           <div
             ref={ctaRef}
-            className="lg:col-span-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-start lg:justify-end gap-3 sm:gap-4"
+            className="lg:col-span-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-start lg:justify-end gap-2.5 sm:gap-4"
           >
             <button
               type="button"
               onClick={scrollToWork}
               onMouseEnter={() => onCursorChange?.('button')}
               onMouseLeave={() => onCursorChange?.('default')}
-              className="px-6 py-4 rounded-xl border border-white/15 hover:border-white bg-[#0E1015] hover:bg-[#181B22] text-white font-mono text-xs tracking-wider uppercase flex items-center justify-between gap-4 transition-colors duration-200"
+              className="px-5 py-3 sm:px-6 sm:py-4 rounded-xl border border-white/15 hover:border-white bg-[#0E1015] hover:bg-[#181B22] text-white font-mono text-xs tracking-wider uppercase flex items-center justify-between gap-4 transition-colors duration-200"
             >
               <span>EXPLORE WORK</span>
               <ArrowDown size={14} className="text-[#0066FF]" />
@@ -173,7 +173,7 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
               onClick={scrollToContact}
               onMouseEnter={() => onCursorChange?.('button')}
               onMouseLeave={() => onCursorChange?.('default')}
-              className="px-6 py-4 rounded-xl bg-[#0066FF] hover:bg-[#0055DD] text-white font-mono text-xs tracking-wider uppercase flex items-center justify-between gap-4 transition-colors duration-200 shadow-none"
+              className="px-5 py-3 sm:px-6 sm:py-4 rounded-xl bg-[#0066FF] hover:bg-[#0055DD] text-white font-mono text-xs tracking-wider uppercase flex items-center justify-between gap-4 transition-colors duration-200 shadow-none"
             >
               <span>INITIATE COMMISSION</span>
               <ArrowUpRight size={14} />
