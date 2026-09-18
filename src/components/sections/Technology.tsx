@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { technologies } from '../../data/technologies';
 import { Terminal, Code, Database, Smartphone, Zap } from 'lucide-react';
+import { SectionLabel } from '../common/SectionLabel';
 
 interface TechnologyProps {
   onCursorChange?: (variant: 'default' | 'button' | 'project' | 'image' | 'footer', text?: string) => void;
 }
 
-export const Technology: React.FC<TechnologyProps> = ({ onCursorChange }) => {
+export const Technology: React.FC<TechnologyProps> = () => {
   const [activeTech, setActiveTech] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
 
@@ -36,9 +37,7 @@ export const Technology: React.FC<TechnologyProps> = ({ onCursorChange }) => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 border-b border-white/10 pb-8">
           <div>
-            <span className="font-mono text-xs tracking-widest text-[#006EFF] uppercase block mb-3">
-              // ENGINEERING STACK
-            </span>
+            <SectionLabel number="07" label="TECHNOLOGY" className="mb-4" />
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight">
               THE TOOLS BEHIND THE WORK
             </h2>
@@ -75,14 +74,12 @@ export const Technology: React.FC<TechnologyProps> = ({ onCursorChange }) => {
             return (
               <div
                 key={tech.name}
-                className="group relative p-6 sm:p-8 rounded-2xl bg-[#08111F]/50 hover:bg-[#08111F] border border-white/5 hover:border-[#006EFF]/50 transition-all duration-300 cursor-pointer overflow-hidden select-none"
+                className="group relative p-6 sm:p-8 rounded-2xl bg-[#08111F]/50 hover:bg-[#08111F] border border-white/5 hover:border-[#006EFF]/50 transition-all duration-300 overflow-hidden select-none"
                 onMouseEnter={() => {
                   setActiveTech(tech.name);
-                  onCursorChange?.('button');
                 }}
                 onMouseLeave={() => {
                   setActiveTech(null);
-                  onCursorChange?.('default');
                 }}
               >
                 {/* Background blue glow upon hover */}
@@ -117,13 +114,17 @@ export const Technology: React.FC<TechnologyProps> = ({ onCursorChange }) => {
         {/* Engineering Philosophy Note */}
         <div className="mt-16 p-8 rounded-2xl bg-[#08111F]/30 border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <span className="w-3 h-3 rounded-full bg-[#006EFF] shadow-[0_0_10px_#006EFF] animate-pulse" />
+            <span className="w-3 h-3 rounded-full bg-[#006EFF] shadow-[0_0_10px_#006EFF]" />
             <p className="text-sm md:text-base text-[#CBD5E1] font-light">
               <strong className="text-white font-medium">Zero Bloat Policy:</strong> We choose dependencies with strict performance budgets, prioritizing CSS transforms and GPU acceleration.
             </p>
           </div>
-          <div className="font-mono text-xs text-[#006EFF] tracking-wider shrink-0">
-            60FPS RUNTIME ASSURANCE
+          <div className="flex gap-4 font-mono text-xs text-[#758BAA] tracking-wider shrink-0">
+            <span>PERFORMANCE</span>
+            <span className="text-white/20">·</span>
+            <span>ACCESSIBILITY</span>
+            <span className="text-white/20">·</span>
+            <span>RESPONSIVE SYSTEMS</span>
           </div>
         </div>
       </div>

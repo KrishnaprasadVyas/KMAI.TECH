@@ -1,5 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface GeometricKProps {
   className?: string;
@@ -21,57 +24,85 @@ export const GeometricK: React.FC<GeometricKProps> = ({
   const glowRef = useRef<SVGCircleElement>(null);
 
   useEffect(() => {
-    if (!interactive || !containerRef.current) return;
+    if (!containerRef.current) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
 
     const container = containerRef.current;
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      const relX = (e.clientX - rect.left) / rect.width - 0.5;
-      const relY = (e.clientY - rect.top) / rect.height - 0.5;
+    const cleanups: (() => void)[] = [];
 
-      gsap.to(container, {
-        rotateY: relX * 25,
-        rotateX: -relY * 25,
-        duration: 0.8,
-        ease: 'power2.out',
-        transformPerspective: 800,
-      });
+    // Mouse interaction (3D tilt) — only if interactive
+    if (interactive) {
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = container.getBoundingClientRect();
+        const relX = (e.clientX - rect.left) / rect.width - 0.5;
+        const relY = (e.clientY - rect.top) / rect.height - 0.5;
 
-      if (glowRef.current) {
-        gsap.to(glowRef.current, {
-          cx: 100 + relX * 40,
-          cy: 100 + relY * 40,
-          duration: 1.2,
+        gsap.to(container, {
+          rotateY: relX * 25,
+          rotateX: -relY * 25,
+          duration: 0.8,
           ease: 'power2.out',
+          transformPerspective: 800,
         });
-      }
-    };
 
-    const handleMouseLeave = () => {
-      gsap.to(container, {
-        rotateY: 0,
-        rotateX: 0,
-        duration: 1.2,
-        ease: 'power3.out',
+        if (glowRef.current) {
+          gsap.to(glowRef.current, {
+            cx: 100 + relX * 40,
+            cy: 100 + relY * 40,
+            duration: 1.2,
+            ease: 'power2.out',
+          });
+        }
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(container, {
+          rotateY: 0,
+          rotateX: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+        });
+      };
+
+      container.addEventListener('mousemove', handleMouseMove);
+      container.addEventListener('mouseleave', handleMouseLeave);
+
+      cleanups.push(() => {
+        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener('mouseleave', handleMouseLeave);
       });
-    };
+    }
 
-    window.addEventListener('mousemove', handleMouseMove);
-    container.addEventListener('mouseleave', handleMouseLeave);
+    // Scroll-based subtle rotation (max 8°)
+    if (interactive) {
+      const st = ScrollTrigger.create({
+        trigger: container,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+        onUpdate: (self) => {
+          const rotation = self.progress * 8;
+          gsap.set(container, { rotate: rotation });
+        },
+      });
+
+      cleanups.push(() => st.kill());
+    }
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('mouseleave', handleMouseLeave);
+      cleanups.forEach((fn) => fn());
     };
   }, [interactive]);
 
   return (
     <div
       ref={containerRef}
-      className={`relative inline-block select-none ${className}`}
+      className={`relative inline-block select-none w-full max-w-full ${className}`}
       style={{
-        width: size,
-        height: size,
+        maxWidth: size,
+        aspectRatio: '1 / 1',
         transformStyle: 'preserve-3d',
       }}
     >
@@ -95,7 +126,7 @@ export const GeometricK: React.FC<GeometricKProps> = ({
           </filter>
         </defs>
 
-        {/* Ambient Radial Core */}
+        {/* Ambient Radial Core — subtle glow pulse */}
         {glow && (
           <circle
             ref={glowRef}
@@ -103,7 +134,7 @@ export const GeometricK: React.FC<GeometricKProps> = ({
             cy="100"
             r="60"
             fill="#006EFF"
-            opacity="0.2"
+            className="animate-glow-pulse"
             filter="url(#kAmbientGlow)"
           />
         )}

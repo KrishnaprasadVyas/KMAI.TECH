@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Terminal, Cpu, Compass, Users } from 'lucide-react';
+import { Terminal, Cpu, Compass } from 'lucide-react';
+import { SectionLabel } from '../common/SectionLabel';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,16 +42,19 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
       name: 'Krishnaprasad Vyas',
       role: 'Founder & CEO',
       initials: 'KV',
+      bio: 'Leading engineering and business operations at KMAI.tech.'
     },
     {
       name: 'Maithili Makkar',
       role: 'Co-Founder & COO',
       initials: 'MM',
+      bio: 'Directing user experience, design, and studio operations.'
     },
     {
       name: 'Ali Abu Nazahat',
       role: 'Co-Founder & CTO',
       initials: 'AN',
+      bio: 'Focusing on technical architecture and full-stack development.'
     },
   ];
 
@@ -62,12 +66,7 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Tag */}
-        <div className="flex items-center gap-3 mb-12">
-          <span className="w-2 h-2 rounded-full bg-[#006EFF]" />
-          <span className="font-mono text-xs tracking-widest text-[#006EFF] uppercase">
-            // LEADERSHIP &amp; STUDIO
-          </span>
-        </div>
+        <SectionLabel number="05" label="ABOUT" className="mb-12" />
 
         {/* Narrative Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-24">
@@ -107,7 +106,6 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
         {/* ========================================================================= */}
         <div className="mb-24">
           <div className="flex items-center gap-2 mb-8">
-            <Users size={16} className="text-[#006EFF]" />
             <h3 className="font-mono text-xs text-[#006EFF] tracking-widest uppercase">
               BUILT BY THREE // CO-FOUNDING TEAM
             </h3>
@@ -135,10 +133,13 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
                       {founder.name}
                     </h4>
 
-                    <div className="mt-3">
+                    <div className="mt-3 space-y-3">
                       <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#006EFF]/10 border border-[#006EFF]/30 text-xs font-mono text-[#006EFF] tracking-wider uppercase font-semibold">
                         {founder.role}
                       </span>
+                      <p className="text-xs text-[#A0A7B1] font-light leading-relaxed">
+                        {founder.bio}
+                      </p>
                     </div>
                   </div>
 
@@ -156,9 +157,9 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-12 border-t border-white/10">
           <div className="p-6 rounded-xl bg-[#08111F]/40 border border-white/5">
             <Terminal size={22} className="text-[#006EFF] mb-3" />
-            <h4 className="text-base font-bold text-white mb-2">Modern Engineering</h4>
+            <h4 className="text-base font-bold text-white mb-2">Design &amp; Engineering</h4>
             <p className="text-xs sm:text-sm text-[#A0A7B1] leading-relaxed">
-              Type-safe, maintainable software engineered with React, TypeScript, Node.js, and edge architecture.
+              We bring design and engineering together, executing end-to-end implementation without losing technical or visual quality.
             </p>
           </div>
 

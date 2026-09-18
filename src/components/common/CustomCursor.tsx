@@ -69,8 +69,8 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ cursorState }) => {
     switch (cursorState.variant) {
       case 'project':
         gsap.to(ring, {
-          width: 95,
-          height: 95,
+          width: 80,
+          height: 80,
           backgroundColor: '#006EFF',
           borderColor: '#1683FF',
           borderWidth: 1,
@@ -111,8 +111,8 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ cursorState }) => {
 
       case 'footer':
         gsap.to(ring, {
-          width: 100,
-          height: 100,
+          width: 80,
+          height: 80,
           backgroundColor: '#006EFF',
           borderColor: '#FFFFFF',
           borderWidth: 1.5,
@@ -165,7 +165,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ cursorState }) => {
           ref={labelRef}
           className="text-[10px] font-bold tracking-widest text-white text-center uppercase pointer-events-none opacity-0 select-none px-1 leading-tight"
         >
-          {cursorState.text || (cursorState.variant === 'project' ? 'VIEW' : '')}
+          {cursorState.text || (cursorState.variant === 'project' ? 'VIEW ↗' : '')}
         </span>
       </div>
     </div>

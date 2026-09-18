@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SectionLabel } from '../common/SectionLabel';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,7 +36,7 @@ export const Process: React.FC = () => {
       title: 'REFINE',
       tagline: 'Rigorous Verification & Optimization',
       description:
-        'Performance audits, security reviews, cross-device responsiveness, accessibility compliance, and 60fps motion fine-tuning ensure a flawless end-user experience.',
+        'Performance audits, security reviews, cross-device responsiveness, accessibility compliance, and performance optimization ensure a flawless end-user experience.',
     },
     {
       number: '05',
@@ -82,9 +83,7 @@ export const Process: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 border-b border-white/10 pb-8">
           <div>
-            <span className="font-mono text-xs tracking-widest text-[#006EFF] uppercase block mb-3">
-              // METHODOLOGY
-            </span>
+            <SectionLabel number="06" label="PROCESS" className="mb-4" />
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight">
               HOW WE BUILD
             </h2>
@@ -98,7 +97,15 @@ export const Process: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left: Sticky Active Indicator */}
           <div className="hidden lg:block lg:col-span-4 sticky top-36">
-            <div className="p-8 rounded-2xl bg-[#08111F] border border-white/10">
+            <div className="relative p-8 rounded-2xl bg-[#08111F] border border-white/10 overflow-hidden">
+              {/* Vertical blue progress line */}
+              <div className="absolute left-0 top-0 w-[2px] h-full bg-white/5">
+                <div
+                  className="w-full bg-[#006EFF] shadow-[0_0_8px_#006EFF] transition-all duration-500"
+                  style={{ height: `${((activeStep + 1) / steps.length) * 100}%` }}
+                />
+              </div>
+
               <span className="font-mono text-xs text-[#006EFF] tracking-widest uppercase block mb-4">
                 ACTIVE PHASE // {steps[activeStep].number}
               </span>

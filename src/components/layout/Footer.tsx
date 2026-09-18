@@ -21,6 +21,30 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
       {/* Ambient Blue Backlight */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#006EFF]/10 blur-[140px] pointer-events-none" />
 
+      {/* System Status — Brand Element */}
+      <div className="max-w-7xl mx-auto relative z-10 mb-16 pt-8 border-b border-white/5 pb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-[#006EFF] shadow-[0_0_8px_#006EFF]" />
+            <span className="font-mono text-xs tracking-widest text-[#758BAA] uppercase">
+              KMAI SYSTEM
+            </span>
+          </div>
+          <div className="flex items-center gap-4 font-mono text-xs tracking-wider text-[#758BAA]/60 uppercase">
+            <span>DESIGN</span>
+            <span className="text-white/10">·</span>
+            <span>ENGINEERING</span>
+            <span className="text-white/10">·</span>
+            <span>AUTOMATION</span>
+            <span className="text-white/10">·</span>
+            <span>AI</span>
+          </div>
+          <span className="font-mono text-xs tracking-widest text-[#758BAA]/40 uppercase">
+            PUNE / INDIA
+          </span>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Top Grid: Monumental Brand Signature & Quick Navigation */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">

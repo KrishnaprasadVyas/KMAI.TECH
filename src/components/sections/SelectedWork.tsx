@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight, Sparkles, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { projects } from '../../data/projects';
 import type { Project } from '../../types';
 import { ProjectItem } from '../projects/ProjectItem';
 import { ProjectPreview } from '../projects/ProjectPreview';
 import { CaseStudyModal } from '../projects/CaseStudyModal';
 import { MagneticButton } from '../common/MagneticButton';
+import { SectionLabel } from '../common/SectionLabel';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,11 +67,9 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onCursorChange }) =>
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-white/10 pb-8">
           <div>
-            <span className="font-mono text-xs tracking-widest text-[#006EFF] uppercase block mb-3">
-              // PORTFOLIO ARCHIVE
-            </span>
+            <SectionLabel number="02" label="SELECTED WORK" className="mb-4" />
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight">
-              THINGS WE'VE BUILT.
+              SELECTED WORK.
             </h2>
           </div>
           <div className="max-w-md">
@@ -85,7 +84,6 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onCursorChange }) =>
         {/* ========================================================================= */}
         <div className="mb-24">
           <div className="flex items-center gap-2 mb-4">
-            <Sparkles size={14} className="text-[#006EFF]" />
             <span className="font-mono text-xs text-[#006EFF] tracking-widest uppercase">
               FLAGSHIP SPOTLIGHT // 01
             </span>
@@ -99,7 +97,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onCursorChange }) =>
             onMouseLeave={() => onCursorChange?.('default')}
           >
             {/* Parallax Container */}
-            <div className="w-full h-[400px] sm:h-[520px] md:h-[620px] overflow-hidden relative">
+            <div className="w-full h-[450px] sm:h-[560px] md:h-[680px] overflow-hidden relative">
               <img
                 ref={featuredImgRef}
                 src={featuredProject.image}

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { usePrefersReducedMotion } from '../../hooks/useMediaQuery';
 
 interface PreloaderProps {
   onComplete: () => void;
@@ -13,10 +14,17 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const bottomPanelRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const words = ['IDEAS', 'SYSTEMS', 'IMPACT'];
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      sessionStorage.setItem('kmai_visited', 'true');
+      onComplete();
+      return;
+    }
+
     const hasVisited = sessionStorage.getItem('kmai_visited') === 'true';
     const duration = hasVisited ? 0.9 : 2.0;
 

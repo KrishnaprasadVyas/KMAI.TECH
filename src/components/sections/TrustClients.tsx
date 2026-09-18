@@ -1,24 +1,19 @@
 import React from 'react';
-import { ShieldCheck } from 'lucide-react';
+import { SectionLabel } from '../common/SectionLabel';
 
 export const TrustClients: React.FC = () => {
   const partners = [
-    { name: 'SHRI GURUDEV ASHRAM', type: 'Spiritual Community & Trust' },
-    { name: 'SHANTI ASHRAM TRUST', type: 'Public Humanitarian Trust' },
-    { name: 'MAVT EXPEDITIONS', type: 'Travel & Pilgrimage Venture' },
-    { name: 'VISHWARAJ POLYCHEM', type: 'Industrial Manufacturing Enterprise' },
-    { name: 'PRIYA SURANA RESEARCH', type: 'Academic & Professional Identity' },
+    { name: 'SHRI GURUDEV ASHRAM', type: 'Digital Platform' },
+    { name: 'SHANTI ASHRAM TRUST', type: 'Web Experience' },
+    { name: 'MAVT EXPEDITIONS', type: 'Pilgrimage Platform' },
+    { name: 'VISHWARAJ POLYCHEM', type: 'Industrial Web Presence' },
+    { name: 'PRIYA SURANA', type: 'Professional Identity Archive' },
   ];
 
   return (
     <section className="py-20 md:py-28 px-6 md:px-12 bg-[#05070B] border-b border-white/5">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center gap-2 mb-8">
-          <ShieldCheck size={16} className="text-[#006EFF]" />
-          <span className="font-mono text-xs tracking-widest text-[#006EFF] uppercase">
-            // TRUSTED BY REAL ENTITIES
-          </span>
-        </div>
+        <SectionLabel number="04" label="CLIENTS & PROJECTS" className="mb-8" />
 
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
           <h3 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
@@ -35,7 +30,7 @@ export const TrustClients: React.FC = () => {
           {partners.map((partner) => (
             <div
               key={partner.name}
-              className="p-6 rounded-2xl bg-[#08111F]/40 border border-white/5 hover:border-[#006EFF]/40 transition-colors duration-300 flex flex-col justify-between"
+              className="group p-6 rounded-2xl bg-[#08111F]/40 border border-white/5 hover:border-[#006EFF]/40 transition-all duration-300 flex flex-col justify-between"
             >
               <h4 className="font-bold text-sm tracking-wide text-white mb-2">
                 {partner.name}
