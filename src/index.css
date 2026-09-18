@@ -4,20 +4,20 @@
 
 @layer base {
   :root {
-    --canvas-base: #08090C;
-    --canvas-elevated: #0E1015;
-    --canvas-surface: #12141A;
-    --text-primary: #F5F6F8;
-    --text-secondary: #8A92A0;
-    --text-muted: #5A6270;
-    --accent-cobalt: #0066FF;
-    --border-hairline: rgba(255, 255, 255, 0.08);
+    --color-paper: #F2F0EA;
+    --color-ink: #0A0C0F;
+    --color-navy: #101827;
+    --color-electric: #216BFF;
+    --color-dark-blue: #0D43B8;
+    --color-muted: #73777F;
+    --color-light-line: #D6D2C9;
+    --color-dark-line: #2A303B;
   }
 
   html {
-    background-color: #08090C;
-    color: #F5F6F8;
-    font-family: 'Plus Jakarta Sans', Inter, -apple-system, sans-serif;
+    background-color: #F2F0EA;
+    color: #0A0C0F;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   #root {
@@ -55,43 +55,72 @@
 
   /* Custom subtle scrollbar */
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #08090C;
+    background: #F2F0EA;
   }
   ::-webkit-scrollbar-thumb {
-    background: #181B22;
+    background: #D6D2C9;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #0066FF;
+    background: #73777F;
   }
 }
 
 @layer utilities {
-  .border-hairline {
-    border-color: rgba(255, 255, 255, 0.08);
+  /* Exact Typographic Scale Classes */
+  .display-xl {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: clamp(58px, 9.45vw, 136px);
+    line-height: 0.86;
+    letter-spacing: -0.055em;
   }
 
-  .border-hairline-subtle {
-    border-color: rgba(255, 255, 255, 0.04);
+  .display-l {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: clamp(46px, 6.5vw, 96px);
+    line-height: 0.90;
+    letter-spacing: -0.045em;
   }
 
-  .accent-rule {
-    background-color: #0066FF;
+  .heading-h2 {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: clamp(38px, 5vw, 72px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
   }
 
-  /* Architectural Studio Surface Tokens */
-  .border-studio {
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .heading-h3 {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
   }
 
-  .border-studio-active {
-    border: 1px solid #0066FF;
+  .body-large {
+    font-family: 'Geist', sans-serif;
+    font-size: clamp(19px, 1.6vw, 22px);
+    line-height: 1.30;
   }
 
-  .bg-studio-surface {
-    background: rgba(14, 16, 21, 0.95);
+  .body-base {
+    font-family: 'Geist', sans-serif;
+    font-size: clamp(16px, 1.2vw, 17px);
+    line-height: 1.45;
+  }
+
+  .body-small {
+    font-family: 'Geist', sans-serif;
+    font-size: clamp(13px, 1vw, 14px);
+    line-height: 1.40;
+  }
+
+  .meta-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(10px, 0.85vw, 11px);
+    line-height: 1.20;
+    letter-spacing: 0.08em;
   }
 
   /* Clip path utilities for typography reveals */

@@ -4,10 +4,10 @@ import { Preloader } from './components/layout/Preloader';
 import { CustomCursor } from './components/common/CustomCursor';
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/sections/Hero';
-import { IntroStatement } from './components/sections/IntroStatement';
-import { Services } from './components/sections/Services';
 import { SelectedWork } from './components/sections/SelectedWork';
+import { IntroStatement } from './components/sections/IntroStatement';
 import { WorkMarquee } from './components/sections/WorkMarquee';
+import { Services } from './components/sections/Services';
 import { About } from './components/sections/About';
 import { Process } from './components/sections/Process';
 import { Technology } from './components/sections/Technology';
@@ -36,26 +36,26 @@ export function App() {
   );
 
   return (
-    <div className="relative min-h-screen bg-[#08090C] text-[#F5F6F8] selection:bg-[#0066FF] selection:text-white">
+    <div className="relative min-h-screen bg-[#F2F0EA] text-[#0A0C0F] selection:bg-[#216BFF] selection:text-white font-body">
       {/* Cinematic Branded Preloader */}
       {!isLoaded && <Preloader onComplete={() => setIsLoaded(true)} />}
 
       {/* Custom Mouse Follower Cursor (Desktop only) */}
       <CustomCursor cursorState={cursorState} />
 
-      {/* Minimal Fixed Navigation */}
+      {/* Minimal Fixed Editorial Navigation */}
       <Navbar onCursorChange={handleCursorChange} />
 
       {/* Main Experience Stream */}
       <main className="w-full relative z-10">
-        {/* 01 // Hero */}
+        {/* 01 // Hero (Paper Canvas) */}
         <Hero isLoaded={isLoaded} onCursorChange={handleCursorChange} />
 
-        {/* 02 // Intro Statement */}
-        <IntroStatement />
-
-        {/* 03 // Selected Work (Dennis Snellenberg Hover Preview & Case Studies) */}
+        {/* 02 // Selected Work (Intro on Paper + Project 01 Flagship on Navy) */}
         <SelectedWork onCursorChange={handleCursorChange} />
+
+        {/* 03 // Manifesto Statement */}
+        <IntroStatement />
 
         {/* 04 // Work Marquee Ticker */}
         <WorkMarquee />

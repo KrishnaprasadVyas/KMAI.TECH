@@ -8,24 +8,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          darkest: '#05070B',
-          dark: '#08111F',
-          surface: '#0B1F3A',
-          surfaceLight: '#11294D',
-          blue: '#006EFF',
-          blueLight: '#1683FF',
-          blueGlow: 'rgba(0, 110, 255, 0.25)',
-          white: '#FFFFFF',
-          offwhite: '#F3F5F7',
-          muted: '#A0A7B1',
-          border: 'rgba(255, 255, 255, 0.08)',
-          borderHover: 'rgba(0, 110, 255, 0.35)',
-        }
+        paper: '#F2F0EA',
+        ink: '#0A0C0F',
+        navy: '#101827',
+        electricBlue: '#216BFF',
+        darkBlue: '#0D43B8',
+        muted: '#73777F',
+        lightLine: '#D6D2C9',
+        darkLine: '#2A303B',
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        display: ['"Instrument Sans"', 'sans-serif'],
+        body: ['Geist', 'sans-serif'],
+        sans: ['Geist', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
       },
       letterSpacing: {
         tighter: '-0.04em',

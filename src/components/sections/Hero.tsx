@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
-import { GeometricK } from '../common/GeometricK';
+import { ArrowDown } from 'lucide-react';
 
 interface HeroProps {
   isLoaded: boolean;
@@ -10,9 +9,8 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLDivElement>(null);
-  const telemetryRef = useRef<HTMLDivElement>(null);
-  const subtextRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const thesisRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,44 +22,32 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-      gsap.set(telemetryRef.current, { opacity: 0, y: -15 });
-      gsap.set('.monumental-line', { yPercent: 100, opacity: 0 });
-      gsap.set(subtextRef.current, { opacity: 0, y: 20 });
-      gsap.set(ctaRef.current, { opacity: 0, y: 15 });
+      gsap.set('.hero-line-inner', { yPercent: 105, opacity: 0 });
+      gsap.set(thesisRef.current, { opacity: 0, y: 24 });
+      gsap.set(ctaRef.current, { opacity: 0, y: 16 });
 
-      tl.to(telemetryRef.current, {
+      tl.to('.hero-line-inner', {
+        yPercent: 0,
         opacity: 1,
-        y: 0,
-        duration: 0.8,
-        delay: 0.1,
+        duration: 1.1,
+        stagger: 0.12,
       })
         .to(
-          '.monumental-line',
-          {
-            yPercent: 0,
-            opacity: 1,
-            duration: 1.1,
-            stagger: 0.1,
-            ease: 'power4.out',
-          },
-          '-=0.4'
-        )
-        .to(
-          subtextRef.current,
+          thesisRef.current,
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.85,
             ease: 'power3.out',
           },
-          '-=0.6'
+          '-=0.5'
         )
         .to(
           ctaRef.current,
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.75,
             ease: 'power3.out',
           },
           '-=0.5'
@@ -73,110 +59,77 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
 
   const scrollToWork = () => {
     const el = document.getElementById('work');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToContact = () => {
-    const el = document.getElementById('contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
     <section
       ref={containerRef}
       id="hero"
-      className="relative min-h-[100svh] w-full flex flex-col justify-between pt-20 sm:pt-32 pb-6 sm:pb-10 px-5 sm:px-8 md:px-12 lg:px-16 bg-[#08090C] border-b border-white/8 overflow-hidden"
+      className="relative min-h-[calc(100svh-84px)] w-full flex flex-col justify-between pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-8 sm:pb-10 md:pb-12 px-5 sm:px-8 md:px-12 bg-[#F2F0EA] text-[#0A0C0F] border-b border-[#D6D2C9] overflow-hidden"
     >
-      {/* Structural Architectural Watermark K (Subtle 3D Background Geometry) */}
-      <div className="absolute right-4 md:right-16 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.035] w-[350px] sm:w-[500px] lg:w-[680px]">
-        <GeometricK size={680} glow={false} variant="badge" />
-      </div>
-
-      {/* Top Architectural Telemetry Bar */}
-      <div
-        ref={telemetryRef}
-        className="max-w-7xl mx-auto w-full relative z-10 border-b border-white/8 pb-3 sm:pb-4 mb-4 sm:mb-12"
-      >
-        <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#8A92A0]">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2 h-2 rounded-full bg-[#0066FF]" />
-            <span className="text-white font-medium">STUDIO STATUS: ACTIVE</span>
-            <span className="text-[#8A92A0]">// ACCEPTING COMMISSIONS [2026]</span>
-          </div>
-
-          <div className="hidden sm:flex items-center gap-4 text-[11px] text-[#5A6270]">
-            <span>18.5204° N, 73.8567° E</span>
-            <span>•</span>
-            <span>PUNE &amp; MUMBAI, IN</span>
-            <span>•</span>
-            <span>GMT +5:30</span>
-          </div>
+      {/* Top Editorial Headline Container */}
+      <div className="w-full max-w-[1540px] mx-auto">
+        <div className="mb-3 sm:mb-5">
+          <span className="font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.08em] text-[#73777F]">
+            [ 00 / INDEPENDENT DIGITAL TECHNOLOGY STUDIO ]
+          </span>
         </div>
-      </div>
 
-      {/* Centerpiece: Monumental Display Typography */}
-      <div
-        ref={headlineRef}
-        className="max-w-7xl mx-auto w-full relative z-10 my-2 sm:my-auto py-2 sm:py-8"
-      >
-        <h1 className="text-[2.05rem] xs:text-[2.25rem] sm:text-6xl md:text-8xl lg:text-[7.25rem] font-extrabold text-[#F5F6F8] tracking-tighter leading-[0.94] max-w-6xl">
+        <h1
+          ref={headlineRef}
+          className="font-display font-extrabold uppercase text-[#0A0C0F] leading-[0.88] tracking-[-0.05em] select-none text-[50px] xs:text-[58px] sm:text-[72px] md:text-[88px] lg:text-[108px] xl:text-[124px]"
+        >
           <div className="overflow-hidden">
-            <span className="monumental-line block">WE ARCHITECT</span>
+            <span className="hero-line-inner block">SOFTWARE</span>
           </div>
           <div className="overflow-hidden">
-            <span className="monumental-line block text-white">HIGH-VELOCITY</span>
+            <span className="hero-line-inner block">WITH A</span>
           </div>
-          <div className="overflow-hidden flex items-baseline gap-4 flex-wrap">
-            <span className="monumental-line block text-[#8A92A0]">DIGITAL SYSTEMS.</span>
+          <div className="overflow-hidden">
+            <span className="hero-line-inner block font-serif italic font-normal lowercase tracking-[-0.025em] text-[#0A0C0F]">
+              point of view.
+            </span>
           </div>
         </h1>
       </div>
 
-      {/* Bottom Ledger: Asymmetric 12-Column Sub-Grid */}
-      <div className="max-w-7xl mx-auto w-full relative z-10 pt-4 sm:pt-10 border-t border-white/8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-end">
-          {/* Studio Manifesto Subtext */}
-          <div ref={subtextRef} className="lg:col-span-7 space-y-3 sm:space-y-4">
-            <p className="text-sm sm:text-lg md:text-xl text-[#F5F6F8] font-light leading-relaxed max-w-2xl">
-              A creative technology studio engineering bespoke software, high-performance web experiences, and operational automation.
-            </p>
-
-            <div className="flex flex-wrap gap-2 text-[10px] sm:text-[11px] font-mono text-[#8A92A0]">
-              <span className="text-white">01</span> SOFTWARE
-              <span className="text-[#5A6270]">•</span>
-              <span className="text-white">02</span> WEB DESIGN
-              <span className="text-[#5A6270]">•</span>
-              <span className="text-white">03</span> AUTOMATION
-              <span className="text-[#5A6270]">•</span>
-              <span className="text-white">04</span> AI SOLUTIONS
-            </div>
+      {/* Asymmetric 12-Column Subgrid: Editorial Thesis & Navigation Action */}
+      <div className="w-full max-w-[1540px] mx-auto pt-8 sm:pt-10 md:pt-12 border-t border-[#D6D2C9] mt-8 sm:mt-12 md:mt-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-end">
+          {/* Left Metadata / Index */}
+          <div className="md:col-span-3 lg:col-span-3">
+            <span className="font-mono text-[11px] text-[#73777F] tracking-[0.08em] uppercase block mb-1">
+              EST. 2026 // MUMBAI &amp; PUNE
+            </span>
+            <span className="font-body text-[13px] text-[#0A0C0F] font-medium block">
+              Architecting bespoke software &amp; web experiences
+            </span>
           </div>
 
-          {/* Action Ledger */}
-          <div
-            ref={ctaRef}
-            className="lg:col-span-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-start lg:justify-end gap-2.5 sm:gap-4"
-          >
+          {/* Center Thesis Statement */}
+          <div className="md:col-span-6 lg:col-span-6">
+            <p
+              ref={thesisRef}
+              className="font-body text-[19px] sm:text-[21px] md:text-[22px] leading-[1.30] text-[#0A0C0F] font-normal"
+            >
+              An independent technology studio engineering custom software, bespoke web experiences, and operational automation for ambitious organizations.
+            </p>
+          </div>
+
+          {/* Right Direct Action */}
+          <div ref={ctaRef} className="md:col-span-3 lg:col-span-3 flex md:justify-end">
             <button
               type="button"
               onClick={scrollToWork}
               onMouseEnter={() => onCursorChange?.('button')}
               onMouseLeave={() => onCursorChange?.('default')}
-              className="px-5 py-3 sm:px-6 sm:py-4 rounded-xl border border-white/15 hover:border-white bg-[#0E1015] hover:bg-[#181B22] text-white font-mono text-xs tracking-wider uppercase flex items-center justify-between gap-4 transition-colors duration-200"
+              className="group inline-flex items-center gap-2 px-5 py-3 rounded-[2px] bg-[#0A0C0F] hover:bg-[#216BFF] text-white font-body text-[13px] font-medium tracking-wide transition-colors duration-200"
             >
-              <span>EXPLORE WORK</span>
-              <ArrowDown size={14} className="text-[#0066FF]" />
-            </button>
-
-            <button
-              type="button"
-              onClick={scrollToContact}
-              onMouseEnter={() => onCursorChange?.('button')}
-              onMouseLeave={() => onCursorChange?.('default')}
-              className="px-5 py-3 sm:px-6 sm:py-4 rounded-xl bg-[#0066FF] hover:bg-[#0055DD] text-white font-mono text-xs tracking-wider uppercase flex items-center justify-between gap-4 transition-colors duration-200 shadow-none"
-            >
-              <span>INITIATE COMMISSION</span>
-              <ArrowUpRight size={14} />
+              <span>EXPLORE SELECTED WORK</span>
+              <ArrowDown size={14} className="group-hover:translate-y-0.5 transition-transform duration-150" />
             </button>
           </div>
         </div>

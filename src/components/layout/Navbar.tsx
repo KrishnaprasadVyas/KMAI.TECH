@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { GeometricK } from '../common/GeometricK';
 
 interface NavbarProps {
@@ -12,7 +12,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -29,10 +29,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: '01 // WORK', href: '#work' },
-    { label: '02 // SERVICES', href: '#services' },
-    { label: '03 // ABOUT', href: '#about' },
-    { label: '04 // CONTACT', href: '#contact' },
+    { label: 'WORK', href: '#work' },
+    { label: 'SERVICES', href: '#services' },
+    { label: 'ABOUT', href: '#about' },
+    { label: 'CONTACT', href: '#contact' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -47,13 +47,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[9000] transition-all duration-300 ${
-          scrolled
-            ? 'bg-[#08090C]/90 backdrop-blur-md border-b border-white/8 py-3.5'
-            : 'bg-transparent border-b border-transparent py-6'
+        className={`fixed top-0 left-0 w-full z-[9000] transition-colors duration-200 h-[68px] md:h-[84px] flex items-center bg-[#F2F0EA] border-b ${
+          scrolled ? 'border-[#D6D2C9] shadow-sm' : 'border-[#D6D2C9]/60'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="w-full max-w-[1540px] mx-auto px-5 sm:px-8 md:px-12 flex items-center justify-between">
           {/* Logo / Brandmark */}
           <a
             href="#"
@@ -65,44 +63,36 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
             onMouseEnter={() => onCursorChange?.('button')}
             onMouseLeave={() => onCursorChange?.('default')}
           >
-            <div className="w-8 h-8 rounded-lg bg-[#0E1015] border border-white/10 flex items-center justify-center group-hover:border-[#0066FF] transition-colors duration-200">
-              <GeometricK size={18} glow={false} variant="badge" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-sm md:text-base tracking-tight text-white group-hover:text-[#F5F6F8] leading-none">
-                KMAI<span className="text-[#0066FF] font-mono text-xs ml-0.5">.tech</span>
-              </span>
-              <span className="font-mono text-[9px] text-[#8A92A0] tracking-widest uppercase mt-0.5">
-                STUDIO // PUNE &amp; MUMBAI
-              </span>
-            </div>
+            <GeometricK size={22} theme="light" />
+            <span className="font-display font-bold text-base md:text-lg tracking-tight text-[#0A0C0F] group-hover:text-[#216BFF] transition-colors">
+              KMAI<span className="font-mono text-xs text-[#73777F] ml-0.5">.tech</span>
+            </span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="font-mono text-xs tracking-wider text-[#8A92A0] hover:text-white transition-colors duration-200 py-1"
+                className="font-body text-[14px] font-medium tracking-[0.04em] text-[#0A0C0F] hover:text-[#216BFF] transition-colors duration-150 py-1"
                 onMouseEnter={() => onCursorChange?.('button')}
                 onMouseLeave={() => onCursorChange?.('default')}
               >
-                <span>{link.label}</span>
+                {link.label}
               </a>
             ))}
 
+            {/* Simple rectangular CTA button (2-4px radius, no pill) */}
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 hover:border-[#0066FF] bg-[#0E1015] hover:bg-[#0066FF] text-[11px] font-mono text-white tracking-wider transition-colors duration-200"
+              className="inline-flex items-center justify-center px-4 py-2 rounded-[2px] bg-[#0A0C0F] hover:bg-[#216BFF] text-white font-body text-[13px] font-medium tracking-wide transition-colors duration-200"
               onMouseEnter={() => onCursorChange?.('button')}
               onMouseLeave={() => onCursorChange?.('default')}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0066FF] group-hover:bg-white" />
-              <span>COMMISSION</span>
-              <ArrowUpRight size={12} className="text-[#8A92A0]" />
+              START A PROJECT →
             </a>
           </nav>
 
@@ -110,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden relative w-10 h-10 rounded-lg border border-white/10 bg-[#0E1015] flex items-center justify-center text-white"
+            className="md:hidden relative w-10 h-10 rounded-[2px] border border-[#D6D2C9] bg-transparent flex items-center justify-center text-[#0A0C0F]"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -120,24 +110,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
 
       {/* Fullscreen Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[8999] bg-[#08090C] flex flex-col justify-between p-8 sm:p-12 transition-all duration-400 md:hidden ${
+        className={`fixed inset-0 z-[8999] bg-[#F2F0EA] flex flex-col justify-between p-6 sm:p-10 transition-all duration-300 md:hidden ${
           mobileMenuOpen
             ? 'opacity-100 pointer-events-auto translate-y-0'
             : 'opacity-0 pointer-events-none -translate-y-4'
         }`}
       >
-        <div className="pt-24">
-          <p className="font-mono text-xs text-[#0066FF] tracking-widest uppercase mb-8">
-            // STUDIO DIRECTORY
-          </p>
+        <div className="pt-20">
+          <span className="font-mono text-[11px] text-[#73777F] tracking-widest uppercase block mb-8">
+            NAVIGATION
+          </span>
 
-          <nav className="flex flex-col gap-6">
+          <nav className="flex flex-col gap-5">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="flex items-baseline justify-between border-b border-white/10 pb-4 text-3xl font-extrabold text-[#F5F6F8] tracking-tight hover:text-[#0066FF] transition-colors"
+                className="flex items-baseline justify-between border-b border-[#D6D2C9] pb-3 text-2xl font-display font-bold text-[#0A0C0F] hover:text-[#216BFF] transition-colors"
               >
                 <span>{link.label}</span>
               </a>
@@ -145,19 +135,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
           </nav>
         </div>
 
-        {/* Mobile Menu Footer */}
-        <div className="pt-8 border-t border-white/10 font-mono text-xs text-[#8A92A0] space-y-2">
-          <div className="flex items-center gap-2 text-white">
-            <span className="w-2 h-2 rounded-full bg-[#0066FF]" />
-            <span>KMAI.tech // CREATIVE TECHNOLOGY STUDIO</span>
-          </div>
-          <p>Pune &amp; Mumbai, India • GMT +5:30</p>
+        {/* Mobile Menu Bottom CTA */}
+        <div className="pt-6 border-t border-[#D6D2C9] space-y-4">
           <a
-            href="mailto:krishnaprasadvyas@gmail.com"
-            className="text-[#F5F6F8] underline block pt-2"
+            href="#contact"
+            onClick={(e) => handleLinkClick(e, '#contact')}
+            className="w-full py-3.5 rounded-[2px] bg-[#0A0C0F] text-white font-body text-sm font-medium tracking-wide flex items-center justify-center transition-colors"
           >
-            krishnaprasadvyas@gmail.com
+            START A PROJECT →
           </a>
+          <p className="font-mono text-[11px] text-[#73777F]">
+            Pune &amp; Mumbai, India
+          </p>
         </div>
       </div>
     </>

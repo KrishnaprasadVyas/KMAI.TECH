@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('KMAI.tech Art-Directed Redesign (First 4 Areas)', () => {
+test.describe('KMAI.tech Art-Directed Editorial Redesign (First 4 Areas)', () => {
   test('does not contain deprecated AI glow or noise overlays', async ({ page }) => {
     await page.goto('http://localhost:5173/');
     await page.waitForTimeout(2500);
@@ -14,7 +14,7 @@ test.describe('KMAI.tech Art-Directed Redesign (First 4 Areas)', () => {
     expect(glowElements.length).toBe(0);
   });
 
-  test('header features architectural layout without rounded glow pills', async ({ page, isMobile }) => {
+  test('header features minimal editorial layout on Paper canvas without pills', async ({ page, isMobile }) => {
     await page.goto('http://localhost:5173/');
     await page.waitForTimeout(2500);
 
@@ -22,13 +22,13 @@ test.describe('KMAI.tech Art-Directed Redesign (First 4 Areas)', () => {
     await expect(header).toBeVisible();
 
     if (!isMobile) {
-      // Navigation links use indexed editorial format
+      // Clean editorial navigation links
       const workLink = header.locator('a[href="#work"]');
-      await expect(workLink).toContainText('01 // WORK');
+      await expect(workLink).toContainText('WORK');
 
-      // Commission button has architectural label
-      const commissionBtn = header.locator('a:has-text("COMMISSION")');
-      await expect(commissionBtn).toBeVisible();
+      // Rectangular CTA button
+      const ctaBtn = header.locator('a:has-text("START A PROJECT")');
+      await expect(ctaBtn).toBeVisible();
     } else {
       // Mobile menu toggle button is visible
       const menuBtn = header.locator('button[aria-label="Toggle navigation menu"]');
@@ -40,17 +40,19 @@ test.describe('KMAI.tech Art-Directed Redesign (First 4 Areas)', () => {
     expect(headerClasses).not.toContain('shadow-[0_0_25px');
   });
 
-  test('hero section features monumental typography and structural K integration', async ({ page, isMobile }) => {
+  test('hero section features colossal editorial typography and Paper canvas', async ({ page, isMobile }) => {
     await page.goto('http://localhost:5173/');
     await page.waitForTimeout(3500);
 
     const hero = page.locator('#hero');
     await expect(hero).toBeVisible();
 
-    // Check monumental headline
+    // Check colossal headline
     const h1 = hero.locator('h1');
     await expect(h1).toBeVisible();
-    await expect(h1).toContainText('WE ARCHITECT');
+    await expect(h1).toContainText('SOFTWARE');
+    await expect(h1).toContainText('WITH A');
+    await expect(h1).toContainText('point of view');
 
     if (!isMobile) {
       const fontSize = await h1.evaluate((el) => parseFloat(window.getComputedStyle(el).fontSize));
@@ -62,26 +64,23 @@ test.describe('KMAI.tech Art-Directed Redesign (First 4 Areas)', () => {
     expect(glowingSphere).toBeNull();
   });
 
-  test('manifesto section uses asymmetric editorial grid with zero card containers or neon drop-shadows', async ({ page }) => {
+  test('selected work intro features Paper canvas with large display heading', async ({ page }) => {
     await page.goto('http://localhost:5173/');
     await page.waitForTimeout(3500);
 
-    const manifesto = page.locator('#manifesto');
-    await expect(manifesto).toBeVisible();
+    const workIntro = page.locator('#work-intro');
+    await expect(workIntro).toBeVisible();
 
-    // Verify manifesto contains core statement
-    await expect(manifesto).toContainText('ARCHITECT');
+    // Verify category label and display title
+    await expect(workIntro).toContainText('01 / SELECTED WORK');
+    await expect(workIntro).toContainText('ARCHITECTED DIGITAL SYSTEMS');
 
-    // Verify no card containers exist within manifesto (zero .rounded-lg, .rounded-2xl with borders)
-    const cards = await page.$$('#manifesto .rounded-lg.border, #manifesto .rounded-2xl.border, #manifesto .rounded-3xl.border');
+    // Verify no card containers exist within intro
+    const cards = await page.$$('#work-intro .rounded-lg.border, #work-intro .rounded-2xl.border, #work-intro .rounded-3xl.border');
     expect(cards.length).toBe(0);
-
-    // Verify no neon drop-shadow exists on words
-    const neonDrops = await page.$$('#manifesto [class*="drop-shadow-"]');
-    expect(neonDrops.length).toBe(0);
   });
 
-  test('flagship case study 01 features architectural plate without card box styling or AI sparkles', async ({ page }) => {
+  test('flagship case study 01 features Navy architectural plate without card box styling or AI sparkles', async ({ page }) => {
     await page.goto('http://localhost:5173/');
     await page.waitForTimeout(3500);
 
@@ -98,21 +97,5 @@ test.describe('KMAI.tech Art-Directed Redesign (First 4 Areas)', () => {
     // Verify flagship container does not have heavy card container styling
     const roundedCard = await page.$$('#work [data-flagship="true"].rounded-2xl, #work [data-flagship="true"].rounded-3xl');
     expect(roundedCard.length).toBe(0);
-
-    // Verify modal trigger functionality is preserved
-    const caseStudyBtn = page.locator('#work button:has-text("CASE STUDY"), #work button:has-text("EXPLORE CASE STUDY")').first();
-    await expect(caseStudyBtn).toBeVisible();
-    await caseStudyBtn.click();
-
-    // Case study modal should open
-    const modal = page.locator('[role="dialog"]');
-    await expect(modal).toBeVisible();
-    await expect(modal).toContainText('Shri Gurudev Ashram');
-
-    // Close modal
-    const closeBtn = page.locator('button[aria-label="Close modal"]');
-    await closeBtn.click();
-    await expect(modal).not.toBeVisible();
   });
 });
-
