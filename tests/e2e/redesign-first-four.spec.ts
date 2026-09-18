@@ -39,4 +39,26 @@ test.describe('KMAI.tech Art-Directed Redesign (First 4 Areas)', () => {
     const headerClasses = await header.getAttribute('class');
     expect(headerClasses).not.toContain('shadow-[0_0_25px');
   });
+
+  test('hero section features monumental typography and structural K integration', async ({ page, isMobile }) => {
+    await page.goto('http://localhost:5173/');
+    await page.waitForTimeout(3500);
+
+    const hero = page.locator('#hero');
+    await expect(hero).toBeVisible();
+
+    // Check monumental headline
+    const h1 = hero.locator('h1');
+    await expect(h1).toBeVisible();
+    await expect(h1).toContainText('WE ARCHITECT');
+
+    if (!isMobile) {
+      const fontSize = await h1.evaluate((el) => parseFloat(window.getComputedStyle(el).fontSize));
+      expect(fontSize).toBeGreaterThanOrEqual(60);
+    }
+
+    // Verify zero glowing sphere blurred divs in hero
+    const glowingSphere = await page.$('#hero [class*="blur-[150px]"], #hero [class*="blur-[130px]"]');
+    expect(glowingSphere).toBeNull();
+  });
 });
