@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'TESTIMONIAL_PLACEHOLDER_01',
     quote:
-      'Krishnaprasad and the KMAI team took our complex organizational requirements and turned them into a seamless, high-speed digital experience. Their technical execution and attention to workflow automation transformed how our community interacts.',
+      'The KMAI team took our complex organizational requirements and turned them into a seamless, high-speed digital experience. Their technical execution and attention to workflow automation transformed how our community interacts.',
     author: 'Community Leadership',
     role: 'Managing Trustee',
     organization: 'Shri Gurudev Ashram',

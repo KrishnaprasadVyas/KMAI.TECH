@@ -82,22 +82,31 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
 
             <div>
               <span className="font-mono text-xs text-[#006EFF] tracking-widest uppercase block mb-4">
-                CO-FOUNDERS
+                LEADERSHIP
               </span>
-              <ul className="space-y-1.5 text-xs font-mono text-[#A0A7B1]">
-                <li className="text-white font-medium">Krishnaprasad Vyas</li>
-                <li className="text-white font-medium">Maithili Makkar</li>
-                <li className="text-white font-medium">Ali Abu Nazahat</li>
-                <li className="pt-3">
+              <ul className="space-y-3 text-xs font-mono">
+                <li>
+                  <span className="text-[#006EFF] block text-[10px] tracking-wider uppercase">Founder &amp; CEO</span>
+                  <span className="text-white font-medium">Krishnaprasad Vyas</span>
+                </li>
+                <li>
+                  <span className="text-[#006EFF] block text-[10px] tracking-wider uppercase">Co-Founder &amp; COO</span>
+                  <span className="text-white font-medium">Maithili Makkar</span>
+                </li>
+                <li>
+                  <span className="text-[#006EFF] block text-[10px] tracking-wider uppercase">Co-Founder &amp; CTO</span>
+                  <span className="text-white font-medium">Ali Abu Nazahat</span>
+                </li>
+                <li className="pt-2">
                   <a
                     href="mailto:krishnaprasadvyas@gmail.com"
-                    className="hover:text-[#38BDF8] transition-colors break-all"
+                    className="text-[#A0A7B1] hover:text-[#38BDF8] transition-colors break-all block"
                   >
                     krishnaprasadvyas@gmail.com
                   </a>
                 </li>
                 <li>
-                  <a href="tel:+919309920441" className="hover:text-[#38BDF8] transition-colors">
+                  <a href="tel:+919309920441" className="text-[#A0A7B1] hover:text-[#38BDF8] transition-colors block">
                     +91 9309920441
                   </a>
                 </li>

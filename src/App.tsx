@@ -66,7 +66,7 @@ export function App() {
         {/* 05 // Work Marquee Ticker */}
         <WorkMarquee />
 
-        {/* 06 // About Studio & Founder */}
+        {/* 06 // About Studio & Team */}
         <About onCursorChange={handleCursorChange} />
 
         {/* 07 // How We Build (Process) */}

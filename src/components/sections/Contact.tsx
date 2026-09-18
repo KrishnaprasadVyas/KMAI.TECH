@@ -61,7 +61,7 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
 
             <MagneticButton
               as="a"
-              href="https://wa.me/919309920441?text=Hello%20Krishnaprasad,%20I'm%20interested%20in%20building%20a%20project%20with%20KMAI.tech"
+              href="https://wa.me/919309920441?text=Hello%20KMAI%20Team,%20I'm%20interested%20in%20building%20a%20project%20with%20KMAI.tech"
               target="_blank"
               rel="noopener noreferrer"
               variant="secondary"

@@ -39,17 +39,17 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
   const founders = [
     {
       name: 'Krishnaprasad Vyas',
-      role: 'Co-Founder',
+      role: 'Founder & CEO',
       initials: 'KV',
     },
     {
       name: 'Maithili Makkar',
-      role: 'Co-Founder',
+      role: 'Co-Founder & COO',
       initials: 'MM',
     },
     {
       name: 'Ali Abu Nazahat',
-      role: 'Co-Founder',
+      role: 'Co-Founder & CTO',
       initials: 'AN',
     },
   ];
@@ -135,14 +135,16 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
                       {founder.name}
                     </h4>
 
-                    <p className="font-mono text-xs text-[#006EFF] tracking-wider uppercase">
-                      {founder.role}
-                    </p>
+                    <div className="mt-3">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#006EFF]/10 border border-[#006EFF]/30 text-xs font-mono text-[#006EFF] tracking-wider uppercase font-semibold">
+                        {founder.role}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[#758BAA]">
                     <span>KMAI.tech</span>
-                    <span className="group-hover:text-white transition-colors">Co-Founder</span>
+                    <span className="group-hover:text-white transition-colors">Founding Team</span>
                   </div>
                 </div>
               </div>
