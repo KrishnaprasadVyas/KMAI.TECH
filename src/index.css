@@ -4,20 +4,23 @@
 
 @layer base {
   :root {
-    --color-paper: #F2F0EA;
-    --color-ink: #0A0C0F;
-    --color-navy: #101827;
-    --color-electric: #216BFF;
-    --color-dark-blue: #0D43B8;
-    --color-muted: #73777F;
-    --color-light-line: #D6D2C9;
-    --color-dark-line: #2A303B;
+    --color-paper: #F3EFE7;
+    --color-ink: #15130F;
+    --color-redline: #FF3B1F;
+    --mask-x: -500px;
+    --mask-y: -500px;
+    --mask-radius: 90px;
   }
 
   html {
-    background-color: #07090E;
-    color: #F5F5F7;
-    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #F3EFE7;
+    color: #15130F;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    background-color: #F3EFE7;
+    color: #15130F;
   }
 
   #root {
@@ -30,9 +33,10 @@
     min-height: 100vh;
     display: block !important;
     position: relative;
+    background-color: #F3EFE7;
   }
 
-  /* Lenis smooth scroll recommended CSS */
+  /* Lenis smooth scroll */
   html.lenis, html.lenis body {
     height: auto;
   }
@@ -49,86 +53,68 @@
     overflow: hidden;
   }
 
-  .lenis.lenis-scrolling iframe {
-    pointer-events: none;
-  }
-
-  /* Custom subtle scrollbar */
+  /* Print-shop subtle scrollbar */
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #07090E;
+    background: #F3EFE7;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1E2532;
+    background: rgba(21, 19, 15, 0.25);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #2E3748;
+    background: #15130F;
   }
 }
 
 @layer utilities {
-  /* Exact Typographic Scale Classes */
-  .display-xl {
-    font-family: 'Instrument Sans', sans-serif;
-    font-size: clamp(58px, 9.45vw, 136px);
-    line-height: 0.86;
-    letter-spacing: -0.055em;
+  /* Drafting Grid Patterns */
+  .bg-drafting-grid {
+    background-color: #F3EFE7;
+    background-image: 
+      linear-gradient(to right, rgba(21, 19, 15, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(21, 19, 15, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
-  .display-l {
-    font-family: 'Instrument Sans', sans-serif;
-    font-size: clamp(46px, 6.5vw, 96px);
-    line-height: 0.90;
-    letter-spacing: -0.045em;
+  .bg-drafting-grid-dense {
+    background-color: #F3EFE7;
+    background-image: 
+      linear-gradient(to right, rgba(21, 19, 15, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(21, 19, 15, 0.04) 1px, transparent 1px);
+    background-size: 16px 16px;
   }
 
-  .heading-h2 {
-    font-family: 'Instrument Sans', sans-serif;
-    font-size: clamp(38px, 5vw, 72px);
-    line-height: 0.92;
-    letter-spacing: -0.04em;
+  /* Dynamic Mask Reveal Layer */
+  .mask-reveal-layer {
+    mask-image: radial-gradient(
+      circle var(--mask-radius, 90px) at var(--mask-x, -500px) var(--mask-y, -500px),
+      black 100%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      circle var(--mask-radius, 90px) at var(--mask-x, -500px) var(--mask-y, -500px),
+      black 100%,
+      transparent 100%
+    );
   }
 
-  .heading-h3 {
-    font-family: 'Instrument Sans', sans-serif;
-    font-size: clamp(28px, 3vw, 42px);
-    line-height: 0.95;
-    letter-spacing: -0.025em;
-  }
-
-  .body-large {
-    font-family: 'Geist', sans-serif;
-    font-size: clamp(19px, 1.6vw, 22px);
-    line-height: 1.30;
-  }
-
-  .body-base {
-    font-family: 'Geist', sans-serif;
-    font-size: clamp(16px, 1.2vw, 17px);
-    line-height: 1.45;
-  }
-
-  .body-small {
-    font-family: 'Geist', sans-serif;
-    font-size: clamp(13px, 1vw, 14px);
-    line-height: 1.40;
-  }
-
-  .meta-text {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: clamp(10px, 0.85vw, 11px);
-    line-height: 1.20;
-    letter-spacing: 0.08em;
-  }
-
-  /* Clip path utilities for typography reveals */
-  .clip-bottom {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  }
-
-  .clip-hidden {
+  /* Clip-path reveal utilities */
+  .clip-closed {
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  .clip-open {
+    clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  /* Stamp rotation utility */
+  .stamp-mark {
+    transform: rotate(-3deg);
+    border: 2px solid #FF3B1F;
+    color: #FF3B1F;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 }

@@ -1,78 +1,178 @@
-import React, { useState } from 'react';
-import { services } from '../../data/services';
+import React from 'react';
 
-interface ServicesProps {
-  onCursorChange?: (variant: 'default' | 'button' | 'project' | 'image' | 'footer', text?: string) => void;
+interface Capability {
+  title: string;
+  italicWord?: string;
+  scope: string;
+  specCode: string;
+  colSpan: string;
+  colStart?: string;
+  deliverables: string[];
+  techTags: string[];
 }
 
-export const Services: React.FC<ServicesProps> = ({ onCursorChange }) => {
-  const [activeService, setActiveService] = useState<number | null>(0);
+export const Services: React.FC = () => {
+  const capabilities: Capability[] = [
+    {
+      title: 'Product & Web',
+      italicWord: 'Architecture',
+      scope:
+        'Bespoke digital platforms built for sub-second edge performance, zero runtime bloat, and strict accessibility standards. We eliminate off-the-shelf templates and engineer every interaction from first principles.',
+      specCode: 'DISCIPLINE // 01-PROD',
+      colSpan: 'lg:col-span-8',
+      deliverables: [
+        'High-concurrency web platforms with zero-drift state machines',
+        'Custom design engineering systems with mathematical spacing tokens',
+        'Sub-second edge CDN architectures via Cloudflare & Vercel',
+        'Lighthouse 100/100 performance budgets enforced via CI/CD',
+      ],
+      techTags: ['React 19', 'TypeScript', 'Tailwind', 'Next.js', 'Vite'],
+    },
+    {
+      title: 'Operational Automation &',
+      italicWord: 'Middleware',
+      scope:
+        'Eliminating manual data transfer, human transcription errors, and disconnected SaaS silos. We engineer event-driven pipelines that connect payment gateways, ERPs, CRM databases, and messaging channels.',
+      specCode: 'DISCIPLINE // 02-AUTO',
+      colSpan: 'lg:col-span-9',
+      colStart: 'lg:col-start-4',
+      deliverables: [
+        'Automated 80G tax exemption & donor receipt invoicing engines',
+        'Real-time webhook reconciliation with idempotent retry buffers',
+        'Multi-channel transaction synchronization across banking APIs',
+        'Custom internal back-office operational command dashboards',
+      ],
+      techTags: ['Node.js', 'PostgreSQL', 'Supabase', 'Redis', 'Webhooks'],
+    },
+    {
+      title: 'Applied AI & Machine',
+      italicWord: 'Intelligence',
+      scope:
+        'Pragmatic machine intelligence integrated directly into core business operations. No generic chat wrappers. We architect deterministic document classification, semantic retrieval systems, and autonomous verification engines.',
+      specCode: 'DISCIPLINE // 03-INTELLIGENCE',
+      colSpan: 'lg:col-span-8',
+      colStart: 'lg:col-start-1',
+      deliverables: [
+        'Deterministic unstructured document parsing & metadata extraction',
+        'High-recall semantic vector search & retrieval-augmented engines',
+        'Autonomous validation workflows with human-in-the-loop review gates',
+        'Custom local and on-premise model deployment protocols',
+      ],
+      techTags: ['Python', 'Vector DBs', 'FastAPI', 'PyTorch', 'Model Evals'],
+    },
+  ];
 
   return (
-    <section id="services" className="relative scroll-mt-24 w-full py-28 sm:py-36 md:py-48 px-6 sm:px-10 md:px-16">
+    <section
+      id="capabilities"
+      className="relative scroll-mt-20 w-full py-24 sm:py-32 px-6 sm:px-10 md:px-16 border-b border-[#15130F]/15 bg-drafting-grid"
+    >
       <div className="w-full max-w-[1540px] mx-auto">
-        {/* Section Header */}
-        <div className="mb-20 sm:mb-28">
-          <h2 className="font-display font-extrabold uppercase text-white tracking-[-0.04em] leading-[0.92] text-[48px] xs:text-[60px] sm:text-[76px] md:text-[96px] lg:text-[112px]">
-            CAPABILITIES
-          </h2>
-          <p className="mt-6 font-body text-lg sm:text-xl text-[#8E939E] max-w-xl font-normal">
-            Four disciplines engineered to architect high-performance digital platforms and operational systems.
-          </p>
+        {/* Section Spec Header */}
+        <div className="flex flex-wrap items-end justify-between gap-4 pb-8 mb-16 border-b border-[#15130F]/15 font-mono text-xs text-[#636059]">
+          <div>
+            <div className="text-[#FF3B1F] uppercase tracking-widest text-[11px] mb-1">
+              + SPECIFICATION REGISTER
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#15130F] font-normal tracking-tight">
+              Engineering Disciplines
+            </h2>
+          </div>
+          <div className="text-right text-[11px]">
+            <div>DEPLOYMENT ARCHITECTURE</div>
+            <div className="text-[#15130F] font-semibold">
+              UNEVEN-WIDTH DRAFTING ROWS
+            </div>
+          </div>
         </div>
 
-        {/* Editorial Services List (No Cards, Pure Typography & Fluid Interaction) */}
-        <div className="divide-y divide-white/[0.08]">
-          {services.map((service, index) => {
-            const isActive = activeService === index;
-
-            return (
+        {/* Asymmetric Uneven-Width Rows Grid */}
+        <div className="space-y-16 lg:space-y-20">
+          {capabilities.map((cap, idx) => (
+            <div
+              key={idx}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+            >
               <div
-                key={service.number}
-                className="py-12 sm:py-16 md:py-20 group cursor-pointer transition-colors"
-                onMouseEnter={() => {
-                  setActiveService(index);
-                  onCursorChange?.('button');
-                }}
-                onMouseLeave={() => onCursorChange?.('default')}
-                onClick={() => setActiveService(isActive ? null : index)}
+                className={`${cap.colSpan} ${cap.colStart || ''} border border-[#15130F] bg-[#F3EFE7] p-6 sm:p-8 md:p-10 relative`}
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                  {/* Service Index & Title */}
-                  <div className="lg:col-span-7">
-                    <div className="flex items-baseline gap-6 sm:gap-10">
-                      <span className="font-display text-sm sm:text-base text-[#8E939E] font-medium">
-                        0{index + 1}
-                      </span>
-                      <h3 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white group-hover:text-[#216BFF] transition-colors">
-                        {service.title}
-                      </h3>
-                    </div>
+                {/* Corner Registration Crosshairs */}
+                <span className="absolute top-1.5 left-2 font-mono text-[9px] text-[#15130F]/40 select-none">
+                  +
+                </span>
+                <span className="absolute top-1.5 right-2 font-mono text-[9px] text-[#15130F]/40 select-none">
+                  +
+                </span>
+                <span className="absolute bottom-1.5 left-2 font-mono text-[9px] text-[#15130F]/40 select-none">
+                  +
+                </span>
+                <span className="absolute bottom-1.5 right-2 font-mono text-[9px] text-[#15130F]/40 select-none">
+                  +
+                </span>
+
+                {/* Capability Header */}
+                <div className="flex flex-wrap justify-between items-baseline gap-2 pb-4 mb-6 border-b border-[#15130F]/15 font-mono text-xs">
+                  <span className="text-[#FF3B1F] font-bold">
+                    {cap.specCode}
+                  </span>
+                  <span className="text-[#636059]">
+                    TOLERANCE: STRICT
+                  </span>
+                </div>
+
+                {/* Title & Scope */}
+                <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#15130F] font-normal tracking-tight mb-4">
+                  {cap.title}{' '}
+                  {cap.italicWord && (
+                    <span className="italic font-normal font-serif text-[#15130F] underline decoration-[#FF3B1F] decoration-1 underline-offset-6">
+                      {cap.italicWord}
+                    </span>
+                  )}
+                </h3>
+
+                <p className="font-sans text-base sm:text-lg text-[#15130F]/85 leading-relaxed mb-8 max-w-3xl">
+                  {cap.scope}
+                </p>
+
+                {/* Real Architectural Deliverables */}
+                <div className="border-t border-[#15130F]/15 pt-6">
+                  <div className="font-mono text-[10px] text-[#636059] uppercase tracking-widest mb-3">
+                    PRODUCTION DELIVERABLES:
                   </div>
-
-                  {/* Summary & Deliverables Reveal */}
-                  <div className="lg:col-span-5 space-y-6">
-                    <p className="font-body text-base sm:text-lg text-[#8E939E] leading-relaxed">
-                      {service.description}
-                    </p>
-
-                    {/* Deliverables List */}
-                    <div className="space-y-3 pt-4">
-                      {service.deliverables.map((deliverable, dIdx) => (
-                        <div
-                          key={dIdx}
-                          className="flex items-center gap-3 text-sm text-white/80 font-body"
-                        >
-                          <span className="w-1 h-1 rounded-full bg-[#216BFF]" />
-                          <span>{deliverable}</span>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {cap.deliverables.map((item, dIdx) => (
+                      <div
+                        key={dIdx}
+                        className="flex items-start gap-2.5 font-sans text-sm text-[#15130F]"
+                      >
+                        <span className="text-[#FF3B1F] font-mono text-xs select-none">
+                          &ndash;&gt;
+                        </span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
+
+                {/* Tech Stack Indicator */}
+                <div className="mt-8 pt-4 border-t border-[#15130F]/10 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-[#636059]">
+                  <div className="flex flex-wrap gap-2">
+                    {cap.techTags.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 border border-[#15130F]/20 text-[10px] bg-transparent text-[#15130F]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="text-[10px] text-[#FF3B1F]">
+                    [VERIFIED IN PRODUCTION]
+                  </span>
+                </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>

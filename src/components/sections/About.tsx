@@ -1,81 +1,116 @@
 import React from 'react';
 
-interface AboutProps {
-  onCursorChange?: (variant: 'default' | 'button' | 'project' | 'image' | 'footer', text?: string) => void;
-}
-
-export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
-  const founders = [
+export const About: React.FC = () => {
+  const personnel = [
     {
+      id: 'KM-ENG-01',
       name: 'Krishnaprasad Vyas',
-      role: 'Founder & CEO',
-      focus: 'Systems Strategy & Architecture',
-      bio: 'Directs overall studio vision, enterprise system architecture, and client partnerships. Bridges commercial strategy with scalable digital foundations.',
-      initials: 'KV',
+      role: 'Founder // Systems Strategy & Architecture',
+      focus: 'Enterprise system architecture, commercial strategy, high-concurrency design.',
+      commitment:
+        'Directs technical vision, database modeling, and institutional partnerships. Ensures every codebase is architected for long-term operational resilience without technical compromises.',
     },
     {
+      id: 'KM-ENG-02',
       name: 'Maithili Makkar',
-      role: 'Co-Founder & COO',
-      focus: 'Operations & Delivery',
-      bio: 'Orchestrates project delivery pipelines, operational workflows, and stakeholder alignment. Ensures every build adheres to uncompromising craft.',
-      initials: 'MM',
+      role: 'Co-Founder // Operations & Delivery Systems',
+      focus: 'Project execution pipelines, stakeholder synchronization, operational rigor.',
+      commitment:
+        'Oversees operational workflows and build milestones. Maintains two-week working build cadence and ensures strict alignment between engineering delivery and organizational objectives.',
     },
     {
+      id: 'KM-ENG-03',
       name: 'Ali Abu Nazahat',
-      role: 'Co-Founder & CTO',
-      focus: 'Full-Stack & Automation',
-      bio: 'Architects technical infrastructure, edge APIs, database systems, and automated pipelines. Builds resilient platforms without technical debt.',
-      initials: 'AN',
+      role: 'Co-Founder // Full-Stack & Automation Architecture',
+      focus: 'Edge APIs, event-driven webhooks, payment engines, machine intelligence.',
+      commitment:
+        'Architects backend infrastructure, distributed state protocols, and automated middleware pipelines. Eliminates manual operational debt through self-healing software.',
     },
   ];
 
   return (
-    <section id="about" className="relative scroll-mt-24 w-full py-28 sm:py-36 md:py-48 px-6 sm:px-10 md:px-16">
+    <section
+      id="personnel"
+      className="relative scroll-mt-20 w-full py-24 sm:py-32 px-6 sm:px-10 md:px-16 border-b border-[#15130F]/15 bg-[#F3EFE7]"
+    >
       <div className="w-full max-w-[1540px] mx-auto">
         {/* Section Header */}
-        <div className="mb-20 sm:mb-28">
-          <h2 className="font-display font-extrabold uppercase text-white tracking-[-0.04em] leading-[0.92] text-[48px] xs:text-[60px] sm:text-[76px] md:text-[96px] lg:text-[112px]">
-            THE STUDIO
-          </h2>
-          <p className="mt-6 font-body text-lg sm:text-xl text-[#8E939E] max-w-xl font-normal">
-            Direct collaboration with senior engineers and architects. Zero account managers, zero intermediaries.
-          </p>
+        <div className="flex flex-wrap items-end justify-between gap-4 pb-8 mb-16 border-b border-[#15130F]/15 font-mono text-xs text-[#636059]">
+          <div>
+            <div className="text-[#FF3B1F] uppercase tracking-widest text-[11px] mb-1">
+              + PERSONNEL SPECIFICATION
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#15130F] font-normal tracking-tight">
+              Engineering Personnel Register
+            </h2>
+          </div>
+          <div className="text-right text-[11px] max-w-sm">
+            <div>DIRECT ARCHITECT COLLABORATION</div>
+            <div className="text-[#15130F] font-medium">
+              Zero account managers. Zero intermediaries.
+            </div>
+          </div>
         </div>
 
-        {/* Founders Editorial Showcase (Human, Pure Typography & Whitespace, Zero Boxed Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16 lg:gap-24">
-          {founders.map((founder) => (
-            <div
-              key={founder.name}
-              className="space-y-6 group"
-              onMouseEnter={() => onCursorChange?.('button')}
-              onMouseLeave={() => onCursorChange?.('default')}
+        {/* Spec Sheet Personnel Ledger Table / Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {personnel.map((person) => (
+            <article
+              key={person.id}
+              className="border border-[#15130F] bg-[#F3EFE7] p-6 sm:p-8 flex flex-col justify-between relative"
             >
-              {/* Initials / Architectural Monogram */}
-              <div className="w-16 h-16 rounded-[2px] bg-white/[0.04] group-hover:bg-[#216BFF] flex items-center justify-center text-white/90 group-hover:text-white transition-colors duration-300">
-                <span className="font-display font-bold text-xl tracking-tight">
-                  {founder.initials}
-                </span>
-              </div>
+              {/* Corner Registration Marks */}
+              <span className="absolute top-1.5 left-2 font-mono text-[9px] text-[#15130F]/40 select-none">
+                +
+              </span>
+              <span className="absolute top-1.5 right-2 font-mono text-[9px] text-[#15130F]/40 select-none">
+                +
+              </span>
+              <span className="absolute bottom-1.5 left-2 font-mono text-[9px] text-[#15130F]/40 select-none">
+                +
+              </span>
+              <span className="absolute bottom-1.5 right-2 font-mono text-[9px] text-[#15130F]/40 select-none">
+                +
+              </span>
 
-              {/* Identity & Role */}
-              <div className="space-y-1">
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                  {founder.name}
+              <div>
+                {/* Personnel ID & Title */}
+                <div className="flex justify-between items-baseline pb-3 mb-5 border-b border-[#15130F]/15 font-mono text-xs">
+                  <span className="text-[#FF3B1F] font-bold">
+                    {person.id}
+                  </span>
+                  <span className="text-[#636059]">
+                    STATUS: ACTIVE
+                  </span>
+                </div>
+
+                <h3 className="font-serif text-2xl sm:text-3xl text-[#15130F] font-normal tracking-tight mb-2">
+                  {person.name}
                 </h3>
-                <p className="font-body text-sm font-medium text-[#216BFF]">
-                  {founder.role}
-                </p>
-                <p className="font-body text-xs text-[#8E939E]">
-                  {founder.focus}
-                </p>
+
+                <div className="font-mono text-xs text-[#FF3B1F] mb-4">
+                  {person.role}
+                </div>
+
+                <div className="border-t border-[#15130F]/10 pt-4 mb-4">
+                  <div className="font-mono text-[10px] text-[#636059] uppercase tracking-wider mb-1">
+                    PRIMARY ARCHITECTURE DOMAIN:
+                  </div>
+                  <p className="font-sans text-sm text-[#15130F] font-medium leading-normal">
+                    {person.focus}
+                  </p>
+                </div>
               </div>
 
-              {/* Bio */}
-              <p className="font-body text-base text-[#8E939E] font-light leading-relaxed">
-                {founder.bio}
-              </p>
-            </div>
+              <div className="border-t border-[#15130F]/10 pt-4 mt-6">
+                <div className="font-mono text-[10px] text-[#636059] uppercase tracking-wider mb-1">
+                  DISCIPLINE COMMITMENT:
+                </div>
+                <p className="font-sans text-xs text-[#15130F]/80 leading-relaxed">
+                  {person.commitment}
+                </p>
+              </div>
+            </article>
           ))}
         </div>
       </div>

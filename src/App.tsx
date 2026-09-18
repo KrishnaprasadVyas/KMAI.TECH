@@ -1,77 +1,65 @@
 import { useState, useCallback } from 'react';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
-import { Preloader } from './components/layout/Preloader';
-import { CustomCursor } from './components/common/CustomCursor';
+import { RedlineCursor } from './components/common/RedlineCursor';
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/sections/Hero';
-import { IntroStatement } from './components/sections/IntroStatement';
 import { SelectedWork } from './components/sections/SelectedWork';
 import { Services } from './components/sections/Services';
 import { About } from './components/sections/About';
-import { Process } from './components/sections/Process';
-import { Testimonials } from './components/sections/Testimonials';
 import { Contact } from './components/sections/Contact';
 import { Footer } from './components/layout/Footer';
 
 export function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [cursorState, setCursorState] = useState<{
-    variant: 'default' | 'project' | 'button' | 'image' | 'footer';
-    text?: string;
-  }>({
-    variant: 'default',
+  const [holdState, setHoldState] = useState({
+    isHolding: false,
+    progress: 0,
+    frame: 0,
+    total: 3,
   });
 
-  // Enable Lenis smooth scrolling once preloader finishes
-  useSmoothScroll(isLoaded);
+  // Enable Lenis smooth scrolling
+  useSmoothScroll(true);
 
-  const handleCursorChange = useCallback(
-    (variant: 'default' | 'project' | 'button' | 'image' | 'footer', text?: string) => {
-      setCursorState({ variant, text });
+  const handleHoldStateChange = useCallback(
+    (isHolding: boolean, progress: number, frame: number, total: number) => {
+      setHoldState({ isHolding, progress, frame, total });
     },
     []
   );
 
   return (
-    <div className="relative min-h-screen bg-[#07090E] text-[#F5F5F7] selection:bg-[#216BFF] selection:text-white font-body">
-      {/* Cinematic Branded Preloader */}
-      {!isLoaded && <Preloader onComplete={() => setIsLoaded(true)} />}
+    <div className="relative min-h-screen bg-[#F3EFE7] text-[#15130F] selection:bg-[#FF3B1F] selection:text-[#F3EFE7] font-sans antialiased">
+      {/* Precision Drafting Loupe & Mask Cursor */}
+      <RedlineCursor
+        isHolding={holdState.isHolding}
+        holdProgress={holdState.progress}
+        holdFrameIndex={holdState.frame}
+        totalFrames={holdState.total}
+      />
 
-      {/* Custom Mouse Follower Cursor (Desktop only) */}
-      <CustomCursor cursorState={cursorState} />
-
-      {/* Minimal Floating Navigation */}
-      <Navbar onCursorChange={handleCursorChange} />
+      {/* Print-Shop Spec Navbar */}
+      <Navbar />
 
       {/* Main Experience Stream */}
       <main className="w-full relative z-10">
-        {/* 01 — Hero */}
-        <Hero isLoaded={isLoaded} onCursorChange={handleCursorChange} />
+        {/* 01 — Orchestrated Plotter Hero */}
+        <Hero />
 
-        {/* 02 — Manifesto */}
-        <IntroStatement />
+        {/* 02 — Continuous Horizontal Work Reel with Mask Reveal & Hold-to-View */}
+        <SelectedWork onHoldStateChange={handleHoldStateChange} />
 
-        {/* 03 — Selected Work (The Hero of the Website) */}
-        <SelectedWork onCursorChange={handleCursorChange} />
+        {/* 03 — Uneven-Width Capabilities Rows (Unnumbered) */}
+        <Services />
 
-        {/* 04 — Services (The 4 Core Pillars) */}
-        <Services onCursorChange={handleCursorChange} />
+        {/* 04 — Engineering Personnel Register */}
+        <About />
 
-        {/* 05 — Studio / Founders */}
-        <About onCursorChange={handleCursorChange} />
-
-        {/* 06 — Process (Continuous Motion Sequence) */}
-        <Process />
-
-        {/* 07 — Client Voices (Editorial Quotes) */}
-        <Testimonials onCursorChange={handleCursorChange} />
-
-        {/* 08 — Climax Contact */}
-        <Contact onCursorChange={handleCursorChange} />
+        {/* 05 — Chatbot-Style Conversational Intake & Stamped Approval */}
+        <Contact />
       </main>
 
-      {/* 09 — Minimal Footer */}
-      <Footer onCursorChange={handleCursorChange} />
+      {/* Colophon Footer */}
+      <Footer />
     </div>
   );
 }

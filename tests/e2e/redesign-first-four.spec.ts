@@ -1,104 +1,114 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('KMAI.tech Art-Directed Editorial Studio Redesign', () => {
-  test('eliminates all AI tropes, glow overlays, and unwanted faux-metadata', async ({ page }) => {
-    await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(2500);
+test.describe('KMAI.tech Redline Spec-Sheet Design Directive Verification', () => {
+  test('strictly enforces the hard bans', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForTimeout(1500);
 
-    // Verify noise overlay is gone
-    const noise = await page.$('.noise-overlay');
-    expect(noise).toBeNull();
-
-    // Verify no glow utility classes exist
-    const glowElements = await page.$$('.text-glow, .box-glow, .box-glow-lg');
-    expect(glowElements.length).toBe(0);
-
-    // Verify unwanted metadata strings are completely removed
     const bodyText = await page.innerText('body');
-    expect(bodyText).not.toContain('EST. 2026');
-    expect(bodyText).not.toContain('MUMBAI & PUNE');
-    expect(bodyText).not.toContain('[ 00 / INDEPENDENT DIGITAL TECHNOLOGY STUDIO ]');
-    expect(bodyText).not.toContain('INDEPENDENT DIGITAL TECHNOLOGY STUDIO');
+
+    // 1. Hard ban: Generic agency fluff copy
+    expect(bodyText).not.toContain('We partner with ambitious brands');
+    expect(bodyText).not.toContain('full-service digital agency');
+    expect(bodyText).not.toContain('transform your business');
+
+    // 2. Authentic editorial voice present
+    expect(bodyText).toContain("We don't run a discovery phase. We show up with a working build by week two, then argue about the details.");
+
+    // 3. Hard ban: No dark navy/near-black + electric blue SaaS color palette
+    const hasElectricBlueBg = await page.evaluate(() => {
+      const elements = Array.from(document.querySelectorAll('*'));
+      return elements.some((el) => {
+        const bg = window.getComputedStyle(el).backgroundColor;
+        return bg === 'rgb(0, 102, 255)' || bg === 'rgb(33, 107, 255)';
+      });
+    });
+    expect(hasElectricBlueBg).toBe(false);
+
+    // 4. Hard ban: No rounded-xl cards or soft drop shadows
+    const hasRoundedXlCards = await page.evaluate(() => {
+      const cards = Array.from(document.querySelectorAll('.rounded-xl, .rounded-2xl, .rounded-3xl'));
+      return cards.length > 0;
+    });
+    expect(hasRoundedXlCards).toBe(false);
+
+    // 5. Hard ban: No arrows appended to links ("Learn more →")
+    expect(bodyText).not.toContain('Learn more →');
+    expect(bodyText).not.toContain('Learn more');
   });
 
-  test('header features minimal editorial navigation without pills or glowing borders', async ({ page, isMobile }) => {
-    await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(2500);
-
-    const header = page.locator('header');
-    await expect(header).toBeVisible();
-
-    if (!isMobile) {
-      const nav = header.locator('nav');
-      await expect(nav.locator('a:has-text("Work")')).toBeVisible();
-      await expect(nav.locator('a:has-text("Services")')).toBeVisible();
-      await expect(nav.locator('a:has-text("Studio")')).toBeVisible();
-      await expect(nav.locator('a:has-text("Contact")')).toBeVisible();
-      await expect(nav.locator('a:has-text("Start a project")')).toBeVisible();
-    } else {
-      const menuBtn = header.locator('button[aria-label="Toggle navigation menu"]');
-      await expect(menuBtn).toBeVisible();
-    }
-  });
-
-  test('hero section features monumental typography WE BUILD DIGITAL EXPERIENCES.', async ({ page, isMobile }) => {
-    await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(3000);
+  test('hero section features Fraunces display typography and plotter guide lines', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForTimeout(1500);
 
     const hero = page.locator('#hero');
     await expect(hero).toBeVisible();
 
     const h1 = hero.locator('h1');
     await expect(h1).toBeVisible();
-    await expect(h1).toContainText('WE BUILD');
-    await expect(h1).toContainText('DIGITAL');
-    await expect(h1).toContainText('EXPERIENCES');
+    await expect(h1).toContainText('We engineer software');
+    await expect(h1).toContainText('structural rigor');
+    await expect(h1).toContainText('zero decorative fat');
 
-    if (!isMobile) {
-      const fontSize = await h1.evaluate((el) => parseFloat(window.getComputedStyle(el).fontSize));
-      expect(fontSize).toBeGreaterThanOrEqual(80);
-    }
+    // Check Fraunces serif font family applied
+    const fontFamily = await h1.evaluate((el) => window.getComputedStyle(el).fontFamily);
+    expect(fontFamily.toLowerCase()).toContain('fraunces');
+
+    // Check plotter guide line SVGs are in DOM
+    const guideLines = hero.locator('.plotter-line');
+    const count = await guideLines.count();
+    expect(count).toBeGreaterThanOrEqual(3);
   });
 
-  test('manifesto section presents clean monumental typography without cards', async ({ page }) => {
-    await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(2500);
-
-    const manifesto = page.locator('#manifesto');
-    await expect(manifesto).toBeVisible();
-    await expect(manifesto.locator('h2')).toContainText(/COMPLEX/);
-    await expect(manifesto.locator('h2')).toContainText(/EXPERIENCES/);
-  });
-
-  test('selected work showcases authentic projects with editorial imagery and zero card boxes', async ({ page }) => {
-    await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(2500);
+  test('selected work reel showcases real client projects with spec sheets', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForTimeout(1500);
 
     const workSection = page.locator('#work');
     await expect(workSection).toBeVisible();
-    await expect(workSection).toContainText('MAVT');
-    await expect(workSection).toContainText('Shri Gurudev');
+
+    // Verify key authentic client projects are in DOM
+    await expect(workSection).toContainText('Shri Gurudev Ashram');
+    await expect(workSection).toContainText('MAVT Pilgrimage Platform');
+    await expect(workSection).toContainText('Gurudev Mobile Ecosystem');
+    await expect(workSection).toContainText('Shanti Ashram Trust');
+    await expect(workSection).toContainText('Vishwaraj Polychem');
+    await expect(workSection).toContainText('Priya Surana Archive');
+
+    // Verify spec numbers and technical dimensions are rendered
+    await expect(workSection).toContainText('KM-SPEC-GURUDEV');
+    await expect(workSection).toContainText('HOLD TO SCRUB REEL');
   });
 
-  test('the studio section presents human founders without fake terminal badges', async ({ page }) => {
-    await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(2500);
+  test('capabilities section is unnumbered with uneven-width rows', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForTimeout(1500);
 
-    const aboutSection = page.locator('#about');
-    await expect(aboutSection).toBeVisible();
-    await expect(aboutSection).toContainText('Krishnaprasad Vyas');
-    await expect(aboutSection).toContainText('Maithili Makkar');
-    await expect(aboutSection).toContainText('Ali Abu Nazahat');
+    const capabilities = page.locator('#capabilities');
+    await expect(capabilities).toBeVisible();
+
+    // Verify the 3 disciplines
+    await expect(capabilities).toContainText('Product & Web Architecture');
+    await expect(capabilities).toContainText('Operational Automation & Middleware');
+    await expect(capabilities).toContainText('Applied AI & Machine Intelligence');
+
+    // Verify hard tolerances are stated
+    await expect(capabilities).toContainText('TOLERANCE: STRICT');
+    await expect(capabilities).toContainText('UNEVEN-WIDTH DRAFTING ROWS');
   });
 
-  test('contact section features climax statement and direct email channel', async ({ page }) => {
-    await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(2500);
+  test('engineering personnel register displays real founders without fake badges', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForTimeout(1500);
 
-    const contactSection = page.locator('#contact');
-    await expect(contactSection).toBeVisible();
-    await expect(contactSection).toContainText("LET'S BUILD");
-    await expect(contactSection).toContainText('IMPOSSIBLE');
-    await expect(contactSection).toContainText('contact@kmai.tech');
+    const personnel = page.locator('#personnel');
+    await expect(personnel).toBeVisible();
+
+    await expect(personnel).toContainText('Krishnaprasad Vyas');
+    await expect(personnel).toContainText('Maithili Makkar');
+    await expect(personnel).toContainText('Ali Abu Nazahat');
+
+    // Direct architect collaboration statement
+    await expect(personnel).toContainText('Zero account managers. Zero intermediaries.');
   });
 });

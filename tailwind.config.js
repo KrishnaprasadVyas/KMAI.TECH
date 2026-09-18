@@ -8,21 +8,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: '#F2F0EA',
-        ink: '#0A0C0F',
-        navy: '#101827',
-        electricBlue: '#216BFF',
-        darkBlue: '#0D43B8',
-        muted: '#73777F',
-        lightLine: '#D6D2C9',
-        darkLine: '#2A303B',
+        paper: '#F3EFE7',
+        ink: '#15130F',
+        redline: '#FF3B1F',
+        hairline: 'rgba(21, 19, 15, 0.15)',
+        hairlineDark: 'rgba(21, 19, 15, 0.45)',
+        draftingGrid: 'rgba(21, 19, 15, 0.04)',
+        muted: '#636059',
       },
       fontFamily: {
-        display: ['"Instrument Sans"', 'sans-serif'],
-        body: ['Geist', 'sans-serif'],
-        sans: ['Geist', 'sans-serif'],
-        serif: ['"Instrument Serif"', 'serif'],
-        mono: ['"IBM Plex Mono"', 'monospace'],
+        display: ['Fraunces', 'serif'],
+        serif: ['Fraunces', 'serif'],
+        sans: ['"Space Grotesk"', 'sans-serif'],
+        body: ['"Space Grotesk"', 'sans-serif'],
+        mono: ['"Space Mono"', 'monospace'],
       },
       letterSpacing: {
         tighter: '-0.04em',

@@ -21,6 +21,11 @@ export interface Project {
   featured?: boolean;
   deliverables?: string[];
   highlight?: string;
+  specNo?: string;
+  latency?: string;
+  frames?: string[];
+  redlineNotes?: string[];
+  dimensions?: string;
 }
 
 export interface Service {
