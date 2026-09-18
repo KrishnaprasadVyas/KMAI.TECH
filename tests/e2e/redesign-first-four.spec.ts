@@ -80,4 +80,39 @@ test.describe('KMAI.tech Art-Directed Redesign (First 4 Areas)', () => {
     const neonDrops = await page.$$('#manifesto [class*="drop-shadow-"]');
     expect(neonDrops.length).toBe(0);
   });
+
+  test('flagship case study 01 features architectural plate without card box styling or AI sparkles', async ({ page }) => {
+    await page.goto('http://localhost:5173/');
+    await page.waitForTimeout(3500);
+
+    const workSection = page.locator('#work');
+    await expect(workSection).toBeVisible();
+
+    // Verify flagship project title exists
+    await expect(workSection).toContainText('Shri Gurudev Ashram');
+
+    // Verify no AI sparkles icons or round card borders
+    const sparkles = await page.$$('#work svg.lucide-sparkles');
+    expect(sparkles.length).toBe(0);
+
+    // Verify flagship container does not have heavy card container styling
+    const roundedCard = await page.$$('#work [data-flagship="true"].rounded-2xl, #work [data-flagship="true"].rounded-3xl');
+    expect(roundedCard.length).toBe(0);
+
+    // Verify modal trigger functionality is preserved
+    const caseStudyBtn = page.locator('#work button:has-text("CASE STUDY"), #work button:has-text("EXPLORE CASE STUDY")').first();
+    await expect(caseStudyBtn).toBeVisible();
+    await caseStudyBtn.click();
+
+    // Case study modal should open
+    const modal = page.locator('[role="dialog"]');
+    await expect(modal).toBeVisible();
+    await expect(modal).toContainText('Shri Gurudev Ashram');
+
+    // Close modal
+    const closeBtn = page.locator('button[aria-label="Close modal"]');
+    await closeBtn.click();
+    await expect(modal).not.toBeVisible();
+  });
 });
+

@@ -90,13 +90,13 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
 
   const variantStyles = {
     primary:
-      'bg-[#006EFF] hover:bg-[#1683FF] text-white border border-[#006EFF] shadow-[0_0_30px_rgba(0,110,255,0.35)] hover:shadow-[0_0_45px_rgba(0,110,255,0.6)]',
+      'bg-[#0066FF] hover:bg-[#0052CC] text-white border border-[#0066FF] active:scale-[0.98]',
     secondary:
-      'bg-[#0B1F3A] hover:bg-[#11294D] text-white border border-[#162B4C] hover:border-[#006EFF]/50',
+      'bg-[#121620] hover:bg-[#1A2030] text-white border border-white/10 hover:border-white/20 active:scale-[0.98]',
     outline:
-      'bg-transparent hover:bg-white/5 text-white border border-white/20 hover:border-[#006EFF]',
+      'bg-transparent hover:bg-white/5 text-white border border-white/20 hover:border-white/40 active:scale-[0.98]',
     ghost:
-      'bg-transparent hover:bg-white/5 text-white/80 hover:text-white border border-transparent',
+      'bg-transparent hover:bg-white/5 text-white/80 hover:text-white border border-transparent active:scale-[0.98]',
   };
 
   const baseClasses = `relative inline-flex items-center justify-center font-medium rounded-full transition-colors duration-300 select-none cursor-pointer ${variantStyles[variant]} ${className}`;
