@@ -13,7 +13,14 @@ export const projects: Project[] = [
     description:
       'A complete digital platform for Shri Gurudev Ashram combining spiritual content, online donations, donor management, events, activities, and automated fundraising workflows.',
     url: 'https://shrigurudevashram.org/',
-    image: '/projects/gurudev-ashram.svg',
+    images: {
+      hero: '/projects/gurudev-ashram/hero.webp',
+      secondary: [
+        '/projects/gurudev-ashram/screenshot-01.webp',
+        '/projects/gurudev-ashram/screenshot-02.webp',
+      ],
+    },
+    image: '/projects/gurudev-ashram/hero.webp',
     technologies: [
       'React',
       'Tailwind CSS',
@@ -23,16 +30,16 @@ export const projects: Project[] = [
       'Razorpay',
       'Firebase',
       'Vercel',
-      'OVHCloud'
+      'OVHCloud',
     ],
     featured: true,
     deliverables: [
-      'Online Donation Engine with Razorpay Gateway',
-      'Automated 80G Tax Exemption Receipts & Donor Portal',
-      'Dynamic Event & Satsang Activity Schedules',
-      'Cloud Architecture on Vercel & OVHCloud'
+      'Online Donation Engine with Razorpay Gateway Integration',
+      'Automated 80G Tax Exemption Receipts & Donor Records',
+      'Dynamic Event, Satsang & Activity Schedules',
+      'Cloud Architecture on Vercel & OVHCloud Infrastructure',
     ],
-    highlight: 'Flagship Community & Fundraising Engine'
+    highlight: 'Flagship Community & Fundraising Engine',
   },
   {
     id: 2,
@@ -46,15 +53,19 @@ export const projects: Project[] = [
     description:
       "A modern digital presence built for Shanti Ashram Trust, designed to communicate the organization's mission and humanitarian activities through a clean and accessible web experience.",
     url: 'https://shantiashramtrust.org/',
-    image: '/projects/shanti-ashram.svg',
+    images: {
+      hero: '/projects/shanti-ashram/hero.webp',
+      secondary: ['/projects/shanti-ashram/screenshot-01.webp'],
+    },
+    image: '/projects/shanti-ashram/hero.webp',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Cloudflare'],
     featured: false,
     deliverables: [
-      'Editorial Storytelling & Initiatives Showcase',
-      'High-Accessibility Accessible Web Layout',
-      'Lightning-Fast Global CDN Edge Delivery'
+      'Editorial Storytelling & Humanitarian Initiatives Showcase',
+      'High-Accessibility Clean Web Layout for Devotees & Donors',
+      'Lightning-Fast Global CDN Edge Delivery via Cloudflare',
     ],
-    highlight: 'Humanitarian Mission Showcase'
+    highlight: 'Humanitarian Mission Showcase',
   },
   {
     id: 3,
@@ -68,15 +79,19 @@ export const projects: Project[] = [
     description:
       'A digital travel platform designed around pilgrimage and travel experiences, with a focus on structured journeys, booking flows and a modern user experience.',
     url: 'https://mavt.in/',
-    image: '/projects/mavt.svg',
+    images: {
+      hero: '/projects/mavt/hero.webp',
+      secondary: ['/projects/mavt/screenshot-01.webp'],
+    },
+    image: '/projects/mavt/hero.webp',
     technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Supabase'],
     featured: false,
     deliverables: [
       'Multi-Leg Pilgrimage Itinerary Planner',
       'Interactive Seat & Departure Booking Flow',
-      'Real-Time Passenger Management Dashboard'
+      'Passenger Management & Operations Interface',
     ],
-    highlight: 'Experiential Journey Commerce'
+    highlight: 'Experiential Journey Commerce',
   },
   {
     id: 4,
@@ -89,8 +104,11 @@ export const projects: Project[] = [
     shortDescription: 'Mobile ecosystem featuring yatra booking, donations, and collector workflows.',
     description:
       'A mobile application ecosystem for the Shri Gurudev Ashram community featuring yatra booking, donations, profiles, notifications and collector workflows.',
-    // Note: No public URL currently exists as specified in brief
-    image: '/projects/gurudev-app.svg',
+    images: {
+      hero: '/projects/gurudev-app/hero.webp',
+      secondary: ['/projects/gurudev-app/screenshot-01.webp'],
+    },
+    image: '/projects/gurudev-app/hero.webp',
     technologies: [
       'React Native',
       'Expo',
@@ -98,15 +116,15 @@ export const projects: Project[] = [
       'TypeScript',
       'Supabase',
       'Zustand',
-      'React Query'
+      'React Query',
     ],
     featured: false,
     deliverables: [
       'Cross-Platform iOS & Android Native Build',
-      'Offline-First Collector & Donation Sync',
-      'Push Notifications & Spiritual Community Feed'
+      'Field Collector & Offline Donation Sync Protocols',
+      'Push Notifications & Spiritual Community Feed',
     ],
-    highlight: 'Native Mobile Ecosystem'
+    highlight: 'Native Mobile Ecosystem',
   },
   {
     id: 5,
@@ -120,15 +138,19 @@ export const projects: Project[] = [
     description:
       'A professional personal website designed to present research, academic work, expertise and professional identity through a clean digital experience.',
     url: 'https://www.priyasurana.in/',
-    image: '/projects/priya-surana.svg',
+    images: {
+      hero: '/projects/priya-surana/hero.webp',
+      secondary: ['/projects/priya-surana/screenshot-01.webp'],
+    },
+    image: '/projects/priya-surana/hero.webp',
     technologies: ['React', 'Tailwind CSS', 'TypeScript', 'GSAP', 'Vercel'],
     featured: false,
     deliverables: [
       'Curated Academic Paper & Publication Directory',
-      'Editorial Typography & Minimalist Aesthetics',
-      'Instant Search & Paper Filtering'
+      'Editorial Typography & Minimalist Aesthetic Structure',
+      'Responsive Scholarly Portfolio Presentation',
     ],
-    highlight: 'Academic Identity Archive'
+    highlight: 'Academic Identity Archive',
   },
   {
     id: 6,
@@ -142,14 +164,18 @@ export const projects: Project[] = [
     description:
       'A premium industrial manufacturing website for Vishwaraj Polychem, presenting products, industries, engineering capabilities, clients and manufacturing expertise.',
     url: 'https://www.vishwarajpolychem.com/',
-    image: '/projects/vishwaraj.svg',
+    images: {
+      hero: '/projects/vishwaraj/hero.webp',
+      secondary: ['/projects/vishwaraj/screenshot-01.webp'],
+    },
+    image: '/projects/vishwaraj/hero.webp',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'GSAP', 'Vite'],
     featured: false,
     deliverables: [
       'Technical Chemical Specification Catalog',
-      'B2B RFQ (Request for Quote) Inquiry Funnel',
-      'Global Export & Logistics Overview'
+      'B2B Request for Quote (RFQ) Inquiry Architecture',
+      'Global Export Capabilities & Infrastructure Overview',
     ],
-    highlight: 'Enterprise Industrial Showcase'
-  }
+    highlight: 'Enterprise Industrial Showcase',
+  },
 ];

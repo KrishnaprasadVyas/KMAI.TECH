@@ -173,6 +173,33 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
               </div>
             </div>
           </div>
+
+          {/* Additional Real Project Screenshots Gallery */}
+          {project.images?.secondary && project.images.secondary.length > 0 && (
+            <div className="pt-8 border-t border-white/10 space-y-6">
+              <div className="flex items-center justify-between">
+                <h4 className="font-mono text-xs text-[#006EFF] tracking-widest uppercase">
+                  // ADDITIONAL PRODUCTION SCREENS ({project.images.secondary.length})
+                </h4>
+                <span className="font-mono text-[11px] text-[#A0A7B1]">AUTHENTIC VIEWPORT CAPTURES</span>
+              </div>
+              <div className="space-y-6">
+                {project.images.secondary.map((imgSrc, idx) => (
+                  <div
+                    key={idx}
+                    className="w-full rounded-2xl overflow-hidden border border-white/10 bg-[#05070B] shadow-lg"
+                  >
+                    <img
+                      src={imgSrc}
+                      alt={`${project.title} detailed screen ${idx + 1}`}
+                      className="w-full h-auto object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

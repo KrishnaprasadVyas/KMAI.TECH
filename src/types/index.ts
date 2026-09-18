@@ -1,3 +1,9 @@
+export interface ProjectImages {
+  hero: string;
+  secondary?: string[];
+  mobile?: string[];
+}
+
 export interface Project {
   id: number;
   slug: string;
@@ -9,7 +15,8 @@ export interface Project {
   shortDescription: string;
   description: string;
   url?: string;
-  image: string;
+  images: ProjectImages;
+  image: string; // alias pointing to images.hero for compatibility
   technologies: string[];
   featured?: boolean;
   deliverables?: string[];

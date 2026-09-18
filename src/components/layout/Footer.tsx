@@ -82,12 +82,13 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
 
             <div>
               <span className="font-mono text-xs text-[#006EFF] tracking-widest uppercase block mb-4">
-                FOUNDER
+                CO-FOUNDERS
               </span>
-              <ul className="space-y-2 text-xs font-mono text-[#A0A7B1]">
+              <ul className="space-y-1.5 text-xs font-mono text-[#A0A7B1]">
                 <li className="text-white font-medium">Krishnaprasad Vyas</li>
-                <li>Principal Architect</li>
-                <li className="pt-2">
+                <li className="text-white font-medium">Maithili Makkar</li>
+                <li className="text-white font-medium">Ali Abu Nazahat</li>
+                <li className="pt-3">
                   <a
                     href="mailto:krishnaprasadvyas@gmail.com"
                     className="hover:text-[#38BDF8] transition-colors break-all"
@@ -136,7 +137,7 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
           </div>
 
           <div className="flex items-center gap-2">
-            <span>Designed &amp; Engineered by Krishnaprasad Vyas</span>
+            <span>Built by Krishnaprasad Vyas, Maithili Makkar &amp; Ali Abu Nazahat</span>
           </div>
         </div>
       </div>

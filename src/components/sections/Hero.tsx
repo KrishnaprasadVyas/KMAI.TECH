@@ -116,7 +116,7 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
           <span>CREATIVE TECHNOLOGY STUDIO</span>
         </div>
         <div className="hidden sm:flex items-center gap-6">
-          <span>FOUNDER: KRISHNAPRASAD VYAS</span>
+          <span>BUILT BY KRISHNAPRASAD VYAS, MAITHILI MAKKAR &amp; ALI ABU NAZAHAT</span>
           <span>// 2026</span>
         </div>
       </div>
