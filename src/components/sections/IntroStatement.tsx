@@ -68,7 +68,7 @@ export const IntroStatement: React.FC = () => {
     <section
       ref={containerRef}
       id="manifesto"
-      className="relative w-full py-28 sm:py-36 md:py-44 px-6 sm:px-10 md:px-16 overflow-hidden"
+      className="relative w-full bg-[#07090E] text-[#F5F5F7] py-28 sm:py-36 md:py-44 px-6 sm:px-10 md:px-16 overflow-hidden"
     >
       <div className="w-full max-w-[1540px] mx-auto">
         {/* Colossal Manifesto Statement */}

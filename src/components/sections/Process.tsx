@@ -37,10 +37,10 @@ export const Process: React.FC = () => {
       <div className="w-full max-w-[1540px] mx-auto">
         {/* Section Header */}
         <div className="mb-20 sm:mb-28">
-          <h2 className="font-display font-extrabold uppercase text-white tracking-[-0.04em] leading-[0.92] text-[48px] xs:text-[60px] sm:text-[76px] md:text-[96px] lg:text-[112px]">
+          <h2 className="font-display font-extrabold uppercase text-[#0A0C0F] tracking-[-0.04em] leading-[0.92] text-[48px] xs:text-[60px] sm:text-[76px] md:text-[96px] lg:text-[112px]">
             PROCESS
           </h2>
-          <p className="mt-6 font-body text-lg sm:text-xl text-[#8E939E] max-w-xl font-normal">
+          <p className="mt-6 font-body text-lg sm:text-xl text-[#595D65] max-w-xl font-normal">
             A disciplined, four-stage engineering sequence from diagnosis to global edge deployment.
           </p>
         </div>
@@ -55,10 +55,10 @@ export const Process: React.FC = () => {
               {/* Massive Phase Typography */}
               <div className="lg:col-span-6">
                 <div className="flex items-baseline gap-6 sm:gap-8">
-                  <span className="font-display text-sm sm:text-base text-[#216BFF] font-medium">
+                  <span className="font-mono text-sm sm:text-base text-[#216BFF] font-medium">
                     {step.index}
                   </span>
-                  <h3 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white">
+                  <h3 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#0A0C0F]">
                     {step.phase}
                   </h3>
                 </div>
@@ -66,10 +66,10 @@ export const Process: React.FC = () => {
 
               {/* Phase Narrative */}
               <div className="lg:col-span-6 space-y-4">
-                <p className="font-body text-lg sm:text-xl text-white/90 font-medium">
+                <p className="font-body text-lg sm:text-xl text-[#0A0C0F] font-medium">
                   {step.tagline}
                 </p>
-                <p className="font-body text-base sm:text-lg text-[#8E939E] font-normal leading-relaxed max-w-xl">
+                <p className="font-body text-base sm:text-lg text-[#595D65] font-normal leading-relaxed max-w-xl">
                   {step.description}
                 </p>
               </div>

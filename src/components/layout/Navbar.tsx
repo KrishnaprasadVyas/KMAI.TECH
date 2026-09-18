@@ -2,16 +2,41 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { GeometricK } from '../common/GeometricK';
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  onCursorChange?: (variant: 'default' | 'button' | 'project' | 'image' | 'footer', text?: string) => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isOverDarkSection, setIsOverDarkSection] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 30);
+
+      const darkSelectors = ['#manifesto', '#contact', 'footer'];
+      const headerHeight = 80;
+      const scrollPos = window.scrollY + headerHeight / 2;
+
+      let overDark = false;
+      for (const sel of darkSelectors) {
+        const el = document.querySelector(sel);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const top = rect.top + window.scrollY;
+          const bottom = top + rect.height;
+          if (scrollPos >= top && scrollPos <= bottom) {
+            overDark = true;
+            break;
+          }
+        }
+      }
+      setIsOverDarkSection(overDark);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -25,9 +50,9 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { label: 'Work', href: '#work' },
-    { label: 'Capabilities', href: '#capabilities' },
-    { label: 'Personnel', href: '#personnel' },
-    { label: 'Intake', href: '#contact' },
+    { label: 'Services', href: '#services' },
+    { label: 'Studio', href: '#about' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -42,56 +67,67 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[9000] transition-colors duration-200 h-16 md:h-20 flex items-center border-b ${
+        className={`fixed top-0 left-0 w-full z-[9000] transition-all duration-300 h-20 md:h-24 flex items-center ${
           scrolled
-            ? 'bg-[#F3EFE7]/95 backdrop-blur-sm border-[#15130F]/20'
-            : 'bg-[#F3EFE7] border-[#15130F]/15'
+            ? isOverDarkSection
+              ? 'bg-[#07090E]/85 backdrop-blur-md border-b border-white/[0.08]'
+              : 'bg-[#F2F0EA]/85 backdrop-blur-md border-b border-black/[0.06]'
+            : 'bg-transparent'
         }`}
       >
         <div className="w-full max-w-[1540px] mx-auto px-6 sm:px-10 md:px-16 flex items-center justify-between">
-          {/* Brand Spec Header */}
+          {/* Brandmark */}
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex items-center gap-3 select-none group"
+            className="group flex items-center gap-3 select-none"
+            onMouseEnter={() => onCursorChange?.('button')}
+            onMouseLeave={() => onCursorChange?.('default')}
           >
-            <GeometricK size={20} theme="light" />
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif font-semibold text-lg md:text-xl tracking-tight text-[#15130F]">
-                KMAI
-              </span>
-              <span className="font-mono text-[10px] text-[#636059] uppercase tracking-wider hidden sm:inline">
-                SPEC // STUDIO
-              </span>
-            </div>
+            <GeometricK size={22} theme={isOverDarkSection ? 'dark' : 'light'} />
+            <span
+              className={`font-display font-bold text-lg md:text-xl tracking-tight transition-colors ${
+                isOverDarkSection ? 'text-white' : 'text-[#0A0C0F]'
+              } group-hover:text-[#216BFF]`}
+            >
+              KMAI
+            </span>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <div className="flex items-center gap-7">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className="font-sans text-sm text-[#15130F]/80 hover:text-[#15130F] hover:underline underline-offset-4 decoration-[#FF3B1F] decoration-1 transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-10">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
+                className={`font-body text-[15px] font-normal transition-colors duration-200 ${
+                  isOverDarkSection
+                    ? 'text-[#8E939E] hover:text-white'
+                    : 'text-[#595D65] hover:text-[#0A0C0F]'
+                }`}
+                onMouseEnter={() => onCursorChange?.('button')}
+                onMouseLeave={() => onCursorChange?.('default')}
+              >
+                {link.label}
+              </a>
+            ))}
 
-            {/* Redline Spec Inquiry Action */}
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="relative inline-flex items-center gap-2 px-4 py-1.5 border border-[#15130F] bg-transparent hover:bg-[#15130F] text-[#15130F] hover:text-[#F3EFE7] font-mono text-xs tracking-wider uppercase transition-all duration-150"
+              className={`inline-flex items-center justify-center px-5 py-2.5 rounded-[2px] font-body text-[14px] font-medium tracking-normal transition-all duration-200 ${
+                isOverDarkSection
+                  ? 'bg-white hover:bg-[#216BFF] text-[#07090E] hover:text-white'
+                  : 'bg-[#0A0C0F] hover:bg-[#216BFF] text-[#F2F0EA] hover:text-white'
+              }`}
+              onMouseEnter={() => onCursorChange?.('button')}
+              onMouseLeave={() => onCursorChange?.('default')}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B1F]" />
-              <span>Start Project</span>
+              Start a project
             </a>
           </nav>
 
@@ -99,43 +135,45 @@ export const Navbar: React.FC = () => {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden w-9 h-9 border border-[#15130F]/30 flex items-center justify-center text-[#15130F] focus:outline-none"
+            className={`md:hidden w-10 h-10 rounded-[2px] flex items-center justify-center focus:outline-none ${
+              isOverDarkSection ? 'text-white' : 'text-[#0A0C0F]'
+            }`}
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Fullscreen Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[8999] bg-[#F3EFE7] flex flex-col justify-between p-8 sm:p-12 transition-all duration-300 md:hidden border-b border-[#15130F] ${
+        className={`fixed inset-0 z-[8999] bg-[#07090E] flex flex-col justify-between p-8 sm:p-12 transition-all duration-300 md:hidden ${
           mobileMenuOpen
             ? 'opacity-100 pointer-events-auto translate-y-0'
             : 'opacity-0 pointer-events-none -translate-y-4'
         }`}
       >
-        <div className="pt-20 space-y-6">
-          <div className="font-mono text-xs text-[#636059] tracking-widest uppercase border-b border-[#15130F]/15 pb-2">
-            INDEX DIRECTORY
-          </div>
-          <div className="space-y-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
-                className="block font-serif text-3xl text-[#15130F] hover:text-[#FF3B1F] transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
+        <div className="pt-24 space-y-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={(e) => handleLinkClick(e, link.href)}
+              className="block font-display text-4xl font-bold text-white hover:text-[#216BFF] transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
 
-        <div className="border-t border-[#15130F]/15 pt-6 flex justify-between items-end font-mono text-xs text-[#636059]">
-          <span>KMAI STUDIO // MUMBAI & PUNE</span>
-          <span className="text-[#FF3B1F]">REV 2026.04</span>
+        <div className="pt-8 border-t border-white/[0.08]">
+          <a
+            href="#contact"
+            onClick={(e) => handleLinkClick(e, '#contact')}
+            className="block text-center py-4 rounded-[2px] bg-white text-[#07090E] font-medium text-base hover:bg-[#216BFF] hover:text-white transition-colors"
+          >
+            Start a project
+          </a>
         </div>
       </div>
     </>

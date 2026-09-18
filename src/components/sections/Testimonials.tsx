@@ -24,24 +24,24 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ onCursorChange }) =>
       <div className="w-full max-w-[1540px] mx-auto">
         {/* Section Header */}
         <div className="mb-16 sm:mb-24">
-          <h2 className="font-display font-extrabold uppercase text-white tracking-[-0.04em] leading-[0.92] text-[48px] xs:text-[60px] sm:text-[76px] md:text-[96px] lg:text-[112px]">
+          <h2 className="font-display font-extrabold uppercase text-[#0A0C0F] tracking-[-0.04em] leading-[0.92] text-[48px] xs:text-[60px] sm:text-[76px] md:text-[96px] lg:text-[112px]">
             CLIENT VOICES
           </h2>
         </div>
 
         {/* Large Editorial Quotation (Occupies Viewport Space, Zero Cards) */}
         <div className="max-w-5xl">
-          <blockquote className="font-serif italic text-2xl sm:text-3xl md:text-4xl lg:text-[44px] text-white/95 leading-[1.3] tracking-normal mb-12 sm:mb-16">
+          <blockquote className="font-serif italic text-2xl sm:text-3xl md:text-4xl lg:text-[44px] text-[#0A0C0F] leading-[1.25] tracking-normal mb-12 sm:mb-16">
             "{current.quote}"
           </blockquote>
 
           {/* Attribution & Minimal Controls */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-8 pt-8 border-t border-white/[0.08]">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-8 pt-8 border-t border-black/[0.08]">
             <div className="space-y-1">
-              <cite className="font-display font-bold text-lg sm:text-xl text-white not-italic block">
+              <cite className="font-display font-bold text-lg sm:text-xl text-[#0A0C0F] not-italic block">
                 {current.organization}
               </cite>
-              <p className="font-body text-sm text-[#8E939E]">
+              <p className="font-body text-sm text-[#595D65]">
                 {current.role} • {current.author}
               </p>
             </div>
@@ -54,12 +54,12 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ onCursorChange }) =>
                 aria-label="Previous quotation"
                 onMouseEnter={() => onCursorChange?.('button')}
                 onMouseLeave={() => onCursorChange?.('default')}
-                className="w-12 h-12 rounded-full border border-white/20 hover:border-white hover:bg-white hover:text-[#07090E] flex items-center justify-center text-white transition-all duration-200"
+                className="w-12 h-12 rounded-full border border-black/20 hover:border-[#0A0C0F] hover:bg-[#0A0C0F] hover:text-[#F2F0EA] flex items-center justify-center text-[#0A0C0F] transition-all duration-200"
               >
                 <ArrowLeft size={16} />
               </button>
 
-              <span className="font-body text-sm text-[#8E939E] px-2">
+              <span className="font-mono text-sm text-[#73777F] px-2">
                 0{currentIndex + 1} / 0{testimonials.length}
               </span>
 
@@ -69,7 +69,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ onCursorChange }) =>
                 aria-label="Next quotation"
                 onMouseEnter={() => onCursorChange?.('button')}
                 onMouseLeave={() => onCursorChange?.('default')}
-                className="w-12 h-12 rounded-full border border-white/20 hover:border-white hover:bg-white hover:text-[#07090E] flex items-center justify-center text-white transition-all duration-200"
+                className="w-12 h-12 rounded-full border border-black/20 hover:border-[#0A0C0F] hover:bg-[#0A0C0F] hover:text-[#F2F0EA] flex items-center justify-center text-[#0A0C0F] transition-all duration-200"
               >
                 <ArrowRight size={16} />
               </button>
