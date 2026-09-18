@@ -12,14 +12,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 30);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is active
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -29,10 +28,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: 'WORK', href: '#work' },
-    { label: 'SERVICES', href: '#services' },
-    { label: 'ABOUT', href: '#about' },
-    { label: 'CONTACT', href: '#contact' },
+    { label: 'Work', href: '#work' },
+    { label: 'Services', href: '#services' },
+    { label: 'Studio', href: '#about' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -47,12 +46,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[9000] transition-colors duration-200 h-[68px] md:h-[84px] flex items-center bg-[#F2F0EA] border-b ${
-          scrolled ? 'border-[#D6D2C9] shadow-sm' : 'border-[#D6D2C9]/60'
+        className={`fixed top-0 left-0 w-full z-[9000] transition-all duration-300 h-20 md:h-24 flex items-center ${
+          scrolled
+            ? 'bg-[#07090E]/85 backdrop-blur-md border-b border-white/[0.05]'
+            : 'bg-transparent'
         }`}
       >
-        <div className="w-full max-w-[1540px] mx-auto px-5 sm:px-8 md:px-12 flex items-center justify-between">
-          {/* Logo / Brandmark */}
+        <div className="w-full max-w-[1540px] mx-auto px-6 sm:px-10 md:px-16 flex items-center justify-between">
+          {/* Brandmark */}
           <a
             href="#"
             onClick={(e) => {
@@ -63,20 +64,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
             onMouseEnter={() => onCursorChange?.('button')}
             onMouseLeave={() => onCursorChange?.('default')}
           >
-            <GeometricK size={22} theme="light" />
-            <span className="font-display font-bold text-base md:text-lg tracking-tight text-[#0A0C0F] group-hover:text-[#216BFF] transition-colors">
-              KMAI<span className="font-mono text-xs text-[#73777F] ml-0.5">.tech</span>
+            <GeometricK size={22} theme="dark" />
+            <span className="font-display font-bold text-lg md:text-xl tracking-tight text-white group-hover:text-[#216BFF] transition-colors">
+              KMAI
             </span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+          <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="font-body text-[14px] font-medium tracking-[0.04em] text-[#0A0C0F] hover:text-[#216BFF] transition-colors duration-150 py-1"
+                className="font-body text-[15px] font-normal text-[#8E939E] hover:text-white transition-colors duration-200"
                 onMouseEnter={() => onCursorChange?.('button')}
                 onMouseLeave={() => onCursorChange?.('default')}
               >
@@ -84,15 +85,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
               </a>
             ))}
 
-            {/* Simple rectangular CTA button (2-4px radius, no pill) */}
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="inline-flex items-center justify-center px-4 py-2 rounded-[2px] bg-[#0A0C0F] hover:bg-[#216BFF] text-white font-body text-[13px] font-medium tracking-wide transition-colors duration-200"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-[2px] bg-white hover:bg-[#216BFF] text-[#07090E] hover:text-white font-body text-[14px] font-medium tracking-normal transition-all duration-200"
               onMouseEnter={() => onCursorChange?.('button')}
               onMouseLeave={() => onCursorChange?.('default')}
             >
-              START A PROJECT →
+              Start a project
             </a>
           </nav>
 
@@ -100,53 +100,43 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden relative w-10 h-10 rounded-[2px] border border-[#D6D2C9] bg-transparent flex items-center justify-center text-[#0A0C0F]"
+            className="md:hidden w-10 h-10 rounded-[2px] flex items-center justify-center text-white focus:outline-none"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </header>
 
       {/* Fullscreen Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[8999] bg-[#F2F0EA] flex flex-col justify-between p-6 sm:p-10 transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 z-[8999] bg-[#07090E] flex flex-col justify-between p-8 sm:p-12 transition-all duration-300 md:hidden ${
           mobileMenuOpen
             ? 'opacity-100 pointer-events-auto translate-y-0'
             : 'opacity-0 pointer-events-none -translate-y-4'
         }`}
       >
-        <div className="pt-20">
-          <span className="font-mono text-[11px] text-[#73777F] tracking-widest uppercase block mb-8">
-            NAVIGATION
-          </span>
-
-          <nav className="flex flex-col gap-5">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
-                className="flex items-baseline justify-between border-b border-[#D6D2C9] pb-3 text-2xl font-display font-bold text-[#0A0C0F] hover:text-[#216BFF] transition-colors"
-              >
-                <span>{link.label}</span>
-              </a>
-            ))}
-          </nav>
+        <div className="pt-24 space-y-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={(e) => handleLinkClick(e, link.href)}
+              className="block font-display text-4xl font-bold text-white hover:text-[#216BFF] transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
 
-        {/* Mobile Menu Bottom CTA */}
-        <div className="pt-6 border-t border-[#D6D2C9] space-y-4">
+        <div className="pt-8 border-t border-white/[0.08]">
           <a
             href="#contact"
             onClick={(e) => handleLinkClick(e, '#contact')}
-            className="w-full py-3.5 rounded-[2px] bg-[#0A0C0F] text-white font-body text-sm font-medium tracking-wide flex items-center justify-center transition-colors"
+            className="block text-center py-4 rounded-[2px] bg-white text-[#07090E] font-medium text-base hover:bg-[#216BFF] hover:text-white transition-colors"
           >
-            START A PROJECT →
+            Start a project
           </a>
-          <p className="font-mono text-[11px] text-[#73777F]">
-            Pune &amp; Mumbai, India
-          </p>
         </div>
       </div>
     </>

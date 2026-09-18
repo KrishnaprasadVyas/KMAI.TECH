@@ -1,0 +1,90 @@
+{
+  "consoleMessages": [
+    "[debug] [vite] connecting...",
+    "[debug] [vite] connected.",
+    "[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+    "[debug] [vite] connecting...",
+    "[debug] [vite] connected.",
+    "[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+    "[debug] [vite] connecting...",
+    "[debug] [vite] connected.",
+    "[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+  ],
+  "overflowCheck": {
+    "docWidth": 390,
+    "bodyWidth": 390,
+    "scrollWidth": 390,
+    "overflowingElements": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "className": "absolute top-1/4 -right-20 w-[500px] h-[500px] rounded-full bg-[#006EFF]/15 blur-[130px] pointer-events-none",
+        "right": 470,
+        "windowWidth": 390
+      },
+      {
+        "tag": "DIV",
+        "id": "",
+        "className": "flex w-fit animate-marquee group-hover:[animation-play-state:paused]",
+        "right": 3070.1299591064453,
+        "windowWidth": 390
+      },
+      {
+        "tag": "DIV",
+        "id": "",
+        "className": "flex items-center gap-10 md:gap-16 pr-10 md:pr-16 shrink-0",
+        "right": 1776.4580841064453,
+        "windowWidth": 390
+      },
+      {
+        "tag": "DIV",
+        "id": "",
+        "className": "flex items-center gap-10 md:gap-16",
+        "right": 665.7080688476562,
+        "windowWidth": 390
+      },
+      {
+        "tag": "SPAN",
+        "id": "",
+        "className": "text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-white/20 hover:text-white transition-colors duration-300",
+        "right": 615.7080688476562,
+        "windowWidth": 390
+      },
+      {
+        "tag": "SPAN",
+        "id": "",
+        "className": "w-2.5 h-2.5 rounded-full bg-[#006EFF] shadow-[0_0_10px_#006EFF]",
+        "right": 665.7080688476562,
+        "windowWidth": 390
+      },
+      {
+        "tag": "DIV",
+        "id": "",
+        "className": "flex items-center gap-10 md:gap-16",
+        "right": 1027.6925048828125,
+        "windowWidth": 390
+      },
+      {
+        "tag": "SPAN",
+        "id": "",
+        "className": "text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-white/20 hover:text-white transition-colors duration-300",
+        "right": 977.6924438476562,
+        "windowWidth": 390
+      },
+      {
+        "tag": "SPAN",
+        "id": "",
+        "className": "w-2.5 h-2.5 rounded-full bg-[#006EFF] shadow-[0_0_10px_#006EFF]",
+        "right": 1027.6925048828125,
+        "windowWidth": 390
+      },
+      {
+        "tag": "DIV",
+        "id": "",
+        "className": "flex items-center gap-10 md:gap-16",
+        "right": 1315.7237548828125,
+        "windowWidth": 390
+      }
+    ]
+  }
+}

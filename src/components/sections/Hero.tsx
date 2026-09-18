@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ArrowDown } from 'lucide-react';
+import { GeometricK } from '../common/GeometricK';
 
 interface HeroProps {
   isLoaded: boolean;
@@ -10,8 +11,8 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
-  const thesisRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
+  const subtextRef = useRef<HTMLParagraphElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -22,32 +23,32 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-      gsap.set('.hero-line-inner', { yPercent: 105, opacity: 0 });
-      gsap.set(thesisRef.current, { opacity: 0, y: 24 });
-      gsap.set(ctaRef.current, { opacity: 0, y: 16 });
+      gsap.set('.hero-title-line', { yPercent: 110, opacity: 0 });
+      gsap.set(subtextRef.current, { opacity: 0, y: 30 });
+      gsap.set(triggerRef.current, { opacity: 0, y: 20 });
 
-      tl.to('.hero-line-inner', {
+      tl.to('.hero-title-line', {
         yPercent: 0,
         opacity: 1,
-        duration: 1.1,
+        duration: 1.2,
         stagger: 0.12,
       })
         .to(
-          thesisRef.current,
+          subtextRef.current,
           {
             opacity: 1,
             y: 0,
-            duration: 0.85,
+            duration: 0.9,
             ease: 'power3.out',
           },
-          '-=0.5'
+          '-=0.6'
         )
         .to(
-          ctaRef.current,
+          triggerRef.current,
           {
             opacity: 1,
             y: 0,
-            duration: 0.75,
+            duration: 0.8,
             ease: 'power3.out',
           },
           '-=0.5'
@@ -68,68 +69,57 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
     <section
       ref={containerRef}
       id="hero"
-      className="relative min-h-[calc(100svh-84px)] w-full flex flex-col justify-between pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-8 sm:pb-10 md:pb-12 px-5 sm:px-8 md:px-12 bg-[#F2F0EA] text-[#0A0C0F] border-b border-[#D6D2C9] overflow-hidden"
+      className="relative min-h-[92vh] w-full flex flex-col justify-between pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-12 sm:pb-14 md:pb-16 px-6 sm:px-10 md:px-16 overflow-hidden"
     >
-      {/* Top Editorial Headline Container */}
+      {/* Top Monolithic Display Typography */}
       <div className="w-full max-w-[1540px] mx-auto">
-        <div className="mb-3 sm:mb-5">
-          <span className="font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.08em] text-[#73777F]">
-            [ 00 / INDEPENDENT DIGITAL TECHNOLOGY STUDIO ]
+        <div className="flex items-center gap-4 mb-8 sm:mb-12">
+          <GeometricK size={36} theme="dark" />
+          <span className="font-display font-semibold text-lg sm:text-xl tracking-tight text-white/90">
+            KMAI
           </span>
         </div>
 
         <h1
           ref={headlineRef}
-          className="font-display font-extrabold uppercase text-[#0A0C0F] leading-[0.88] tracking-[-0.05em] select-none text-[50px] xs:text-[58px] sm:text-[72px] md:text-[88px] lg:text-[108px] xl:text-[124px]"
+          className="font-display font-extrabold uppercase text-white tracking-[-0.05em] leading-[0.9] select-none text-[40px] xs:text-[52px] sm:text-[80px] md:text-[110px] lg:text-[136px] xl:text-[152px]"
         >
           <div className="overflow-hidden">
-            <span className="hero-line-inner block">SOFTWARE</span>
+            <span className="hero-title-line block">WE BUILD</span>
           </div>
           <div className="overflow-hidden">
-            <span className="hero-line-inner block">WITH A</span>
+            <span className="hero-title-line block">DIGITAL</span>
           </div>
           <div className="overflow-hidden">
-            <span className="hero-line-inner block font-serif italic font-normal lowercase tracking-[-0.025em] text-[#0A0C0F]">
-              point of view.
-            </span>
+            <span className="hero-title-line block text-white/40">EXPERIENCES.</span>
           </div>
         </h1>
       </div>
 
-      {/* Asymmetric 12-Column Subgrid: Editorial Thesis & Navigation Action */}
-      <div className="w-full max-w-[1540px] mx-auto pt-8 sm:pt-10 md:pt-12 border-t border-[#D6D2C9] mt-8 sm:mt-12 md:mt-14">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-end">
-          {/* Left Metadata / Index */}
-          <div className="md:col-span-3 lg:col-span-3">
-            <span className="font-mono text-[11px] text-[#73777F] tracking-[0.08em] uppercase block mb-1">
-              EST. 2026 // MUMBAI &amp; PUNE
-            </span>
-            <span className="font-body text-[13px] text-[#0A0C0F] font-medium block">
-              Architecting bespoke software &amp; web experiences
-            </span>
-          </div>
-
-          {/* Center Thesis Statement */}
-          <div className="md:col-span-6 lg:col-span-6">
+      {/* Bottom Sub-Composition: Calm Narrative & Direct Action */}
+      <div className="w-full max-w-[1540px] mx-auto mt-10 sm:mt-14 md:mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+          <div className="md:col-span-8 lg:col-span-7">
             <p
-              ref={thesisRef}
-              className="font-body text-[19px] sm:text-[21px] md:text-[22px] leading-[1.30] text-[#0A0C0F] font-normal"
+              ref={subtextRef}
+              className="font-body text-lg sm:text-xl md:text-2xl text-[#8E939E] font-normal leading-relaxed max-w-2xl"
             >
-              An independent technology studio engineering custom software, bespoke web experiences, and operational automation for ambitious organizations.
+              An independent studio engineering high-performance software, bespoke web platforms, and operational systems for ambitious organizations.
             </p>
           </div>
 
-          {/* Right Direct Action */}
-          <div ref={ctaRef} className="md:col-span-3 lg:col-span-3 flex md:justify-end">
+          <div ref={triggerRef} className="md:col-span-4 lg:col-span-5 flex md:justify-end">
             <button
               type="button"
               onClick={scrollToWork}
               onMouseEnter={() => onCursorChange?.('button')}
               onMouseLeave={() => onCursorChange?.('default')}
-              className="group inline-flex items-center gap-2 px-5 py-3 rounded-[2px] bg-[#0A0C0F] hover:bg-[#216BFF] text-white font-body text-[13px] font-medium tracking-wide transition-colors duration-200"
+              className="group inline-flex items-center gap-3 text-white/90 hover:text-white font-body text-sm md:text-base font-medium transition-colors"
             >
-              <span>EXPLORE SELECTED WORK</span>
-              <ArrowDown size={14} className="group-hover:translate-y-0.5 transition-transform duration-150" />
+              <span>Explore Selected Work</span>
+              <div className="w-9 h-9 rounded-full border border-white/20 group-hover:border-white group-hover:bg-white group-hover:text-[#07090E] flex items-center justify-center transition-all duration-200">
+                <ArrowDown size={14} className="group-hover:translate-y-0.5 transition-transform" />
+              </div>
             </button>
           </div>
         </div>

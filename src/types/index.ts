@@ -40,6 +40,8 @@ export interface Testimonial {
   organization: string;
   year: string;
   isPlaceholder: boolean;
+  projectTag?: string;
+  outcome?: string;
 }
 
 export interface TechnologyItem {

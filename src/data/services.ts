@@ -3,86 +3,58 @@ import type { Service } from '../types';
 export const services: Service[] = [
   {
     number: '01',
-    title: 'SOFTWARE DEVELOPMENT',
-    summary: 'Custom software systems built around the way your business actually works.',
+    title: 'SOFTWARE ARCHITECTURE',
+    summary: 'Custom full-stack web platforms, internal systems, and mission-critical engines.',
     description:
-      'We architect, engineer, and deploy tailor-made web platforms, dashboards, and internal business backbones engineered for speed, high uptime, and zero friction.',
+      'We architect, engineer, and deploy tailor-made web platforms, operational dashboards, and resilient business backbones engineered for speed, high uptime, and zero operational friction.',
     deliverables: [
-      'Full-Stack Web Applications',
-      'Internal Tooling & Operations Dashboards',
-      'API Architecture & Microservices',
-      'Database Modeling & Security'
+      'Full-Stack Web Applications & High-Concurrency APIs',
+      'Internal Operations Tooling & Executive Dashboards',
+      'Database Modeling, Microservices & Cloud Architecture',
+      'Automated Testing, CI/CD Pipelines & DevOps Infrastructure'
     ],
-    tools: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Express']
+    tools: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Express', 'Docker', 'Vercel']
   },
   {
     number: '02',
-    title: 'WEB DESIGN & DEVELOPMENT',
-    summary: 'High-performance websites designed to look exceptional and convert visitors.',
+    title: 'BESPOKE WEB DESIGN',
+    summary: 'High-performance websites designed to project authority and convert visitors.',
     description:
-      'Award-level digital experiences combining bespoke creative direction, fluid motion design, meticulous typography, and rapid load times.',
+      'Award-level digital experiences combining bespoke creative direction, fluid GPU-accelerated motion design, meticulous typography, and instant sub-second page loads.',
     deliverables: [
-      'Editorial & Studio Portfolio Websites',
-      'High-Conversion Marketing Platforms',
-      'Interactive Web Experiences & Motion Design',
-      'Full SEO & Performance Optimization'
+      'Editorial Studio & Brand Portfolio Platforms',
+      'High-Conversion B2B Marketing Systems',
+      'Interactive Web Experiences & Kinetic Motion Choreography',
+      'Lighthouse 100 Performance & Technical SEO Engineering'
     ],
-    tools: ['Tailwind CSS', 'GSAP', 'Vite', 'Lenis', 'Next.js']
+    tools: ['Tailwind CSS', 'GSAP', 'Vite', 'Lenis', 'Next.js', 'Figma']
   },
   {
     number: '03',
     title: 'BUSINESS AUTOMATION',
-    summary: 'Remove repetitive work and build systems that allow businesses to operate smarter.',
+    summary: 'Self-driving operational pipelines that eliminate manual bottlenecks.',
     description:
-      'We eliminate bottlenecks by interconnecting payment gateways, CRMs, ERPs, messaging bots, and internal spreadsheets into self-driving business pipelines.',
+      'We eliminate human error and repetitive overhead by interconnecting payment gateways, CRMs, ERPs, messaging bots, and internal accounting systems into self-driving business workflows.',
     deliverables: [
-      'Payment & Invoice Reconciliation Workflows',
-      'Automated Customer Onboarding & Notifications',
-      'CRM, Webhook & Third-Party Integrations',
-      'Data Extraction & Reporting Automation'
+      'Automated Invoicing, Payment & Tax Exemption Engines',
+      'Multi-Channel Customer Onboarding & Notification Dispatch',
+      'CRM, Webhook & Complex Third-Party API Orchestration',
+      'Continuous Telemetry, Data Extraction & Analytics Automation'
     ],
-    tools: ['Cloudflare Workers', 'Webhooks', 'Serverless', 'CRMs', 'Zapier/Make']
+    tools: ['Cloudflare Workers', 'Serverless APIs', 'Webhooks', 'Stripe / Razorpay', 'Supabase']
   },
   {
     number: '04',
     title: 'AI SOLUTIONS',
-    summary: 'Practical intelligent systems integrated into real business workflows.',
+    summary: 'Practical intelligent systems integrated into real business operations.',
     description:
-      'We bypass AI hype to deliver tangible enterprise value: intelligent document search, agentic data processors, automated customer triage, and customized LLM systems.',
+      'We bypass superficial AI hype to engineer concrete operational leverage: intelligent retrieval-augmented generation (RAG), autonomous support triage, structured document parsing, and custom LLM workflows.',
     deliverables: [
-      'Custom LLM Integration & Prompt Pipelines',
-      'Intelligent Knowledge Bases & RAG Systems',
-      'Automated Support & Workflow Assistants',
-      'Data Classification & Entity Extraction'
+      'Custom LLM Integration & Production Prompt Pipelines',
+      'Intelligent Knowledge Retrieval & Vector RAG Architectures',
+      'Autonomous Customer Support & Internal Triage Agents',
+      'Automated Document Classification & Entity Extraction Engines'
     ],
-    tools: ['OpenAI / Claude APIs', 'Vector Embeddings', 'Python', 'Node.js']
-  },
-  {
-    number: '05',
-    title: 'DIGITAL PRODUCTS',
-    summary: 'End-to-end mobile and digital products engineered from idea to scale.',
-    description:
-      'From UX wireframing and user research through to production mobile apps, we shape raw concepts into scalable, intuitive digital businesses.',
-    deliverables: [
-      'Cross-Platform iOS & Android Apps',
-      'SaaS Product Architecture & MVP Builds',
-      'User Journey Mapping & UI/UX Design',
-      'Subscription & Billing Systems'
-    ],
-    tools: ['React Native', 'Expo', 'Supabase', 'Zustand', 'Stripe/Razorpay']
-  },
-  {
-    number: '06',
-    title: 'CUSTOM SYSTEMS',
-    summary: 'Bespoke infrastructure, specialized engines, and mission-critical logic.',
-    description:
-      'When off-the-shelf tools fail to meet specialized industry requirements, we develop dedicated software engines, custom algorithms, and robust cloud configurations.',
-    deliverables: [
-      'Legacy System Modernization',
-      'High-Concurrency Cloud Deployments',
-      'Multi-Tenant Architecture',
-      'Custom Analytics & Telemetry Engines'
-    ],
-    tools: ['Docker', 'AWS / OVH / Vercel', 'Redis', 'MongoDB', 'PostgreSQL']
+    tools: ['OpenAI / Claude APIs', 'Vector Embeddings', 'Python', 'Node.js', 'LangChain']
   }
 ];

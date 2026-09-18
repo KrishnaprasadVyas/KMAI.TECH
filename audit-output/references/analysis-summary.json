@@ -1,0 +1,629 @@
+{
+  "uncommon": {
+    "title": "Home - Uncommon",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "textColor": "rgb(17, 18, 20)",
+    "fontFamilies": [
+      "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897"
+    ],
+    "topFontSizesPx": [
+      67.5,
+      24,
+      18,
+      12,
+      10.5,
+      9
+    ],
+    "sampleHeadings": [
+      {
+        "tag": "h1",
+        "text": "Love\n \nto\n \nthe\n \nhidden",
+        "fontSize": "67.5px",
+        "fontWeight": "400",
+        "lineHeight": "70.875px",
+        "letterSpacing": "-0.9px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "span",
+        "text": "Love\n \nto\n \nthe\n \nhidden",
+        "fontSize": "67.5px",
+        "fontWeight": "400",
+        "lineHeight": "70.875px",
+        "letterSpacing": "-0.9px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "span",
+        "text": "Love",
+        "fontSize": "67.5px",
+        "fontWeight": "400",
+        "lineHeight": "67.5px",
+        "letterSpacing": "-0.9px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "span",
+        "text": "hidden",
+        "fontSize": "67.5px",
+        "fontWeight": "400",
+        "lineHeight": "67.5px",
+        "letterSpacing": "-0.9px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "h3",
+        "text": "We design for impact. See for yourself.",
+        "fontSize": "67.5px",
+        "fontWeight": "400",
+        "lineHeight": "70.875px",
+        "letterSpacing": "-0.9px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "h3",
+        "text": "We design for impact. See for yourself.",
+        "fontSize": "67.5px",
+        "fontWeight": "400",
+        "lineHeight": "70.875px",
+        "letterSpacing": "-0.9px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      }
+    ],
+    "sampleBody": [
+      {
+        "tag": "span",
+        "text": "WORK WITH US",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "20.7px",
+        "letterSpacing": "normal",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "p",
+        "text": "Mat Voyce",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "25.2px",
+        "letterSpacing": "normal",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "p",
+        "text": "All Work",
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "lineHeight": "21.6px",
+        "letterSpacing": "normal",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "p",
+        "text": "All Work",
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "lineHeight": "21.6px",
+        "letterSpacing": "normal",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(18, 18, 18)"
+      },
+      {
+        "tag": "p",
+        "text": "We\n \ndon't\n \njust\n \ndesign,\n \nwe\n \npartner\n \nwith\n \nyou\n \nto",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "21.6px",
+        "letterSpacing": "normal",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      }
+    ],
+    "sampleMicro": [
+      {
+        "tag": "a",
+        "text": "WORK WITH US",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "13.2px",
+        "letterSpacing": "normal",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(17, 18, 20)"
+      },
+      {
+        "tag": "span",
+        "text": "WORK WITH US",
+        "fontSize": "9px",
+        "fontWeight": "500",
+        "lineHeight": "10.44px",
+        "letterSpacing": "0.6px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "p",
+        "text": "MENU",
+        "fontSize": "9px",
+        "fontWeight": "500",
+        "lineHeight": "9px",
+        "letterSpacing": "0.6px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "tag": "p",
+        "text": "CLOSE",
+        "fontSize": "9px",
+        "fontWeight": "500",
+        "lineHeight": "9px",
+        "letterSpacing": "0.6px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "tag": "p",
+        "text": "/HOME",
+        "fontSize": "9px",
+        "fontWeight": "500",
+        "lineHeight": "10.44px",
+        "letterSpacing": "0.6px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "span",
+        "text": "FEATURED\n \nPROJECT",
+        "fontSize": "10.5px",
+        "fontWeight": "500",
+        "lineHeight": "12.18px",
+        "letterSpacing": "0.7px",
+        "fontFamily": "__neuemontreal_9c9897, __neuemontreal_Fallback_9c9897",
+        "color": "rgba(255, 255, 255, 0.6)"
+      }
+    ]
+  },
+  "dennis": {
+    "title": "Dennis Snellenberg • Freelance Designer & Developer",
+    "bgColor": "rgb(28, 29, 32)",
+    "textColor": "rgb(28, 29, 32)",
+    "fontFamilies": [
+      "\"Dennis Sans\", sans-serif"
+    ],
+    "topFontSizesPx": [
+      216,
+      60.48,
+      54,
+      33.12,
+      17.28,
+      14.688,
+      0
+    ],
+    "sampleHeadings": [
+      {
+        "tag": "h2",
+        "text": "Hello",
+        "fontSize": "54px",
+        "fontWeight": "450",
+        "lineHeight": "57.51px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "h2",
+        "text": "Bonjour",
+        "fontSize": "54px",
+        "fontWeight": "450",
+        "lineHeight": "57.51px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "h2",
+        "text": "स्वागत हे",
+        "fontSize": "54px",
+        "fontWeight": "450",
+        "lineHeight": "57.51px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "h2",
+        "text": "Ciao",
+        "fontSize": "54px",
+        "fontWeight": "450",
+        "lineHeight": "57.51px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "h2",
+        "text": "Hallå",
+        "fontSize": "54px",
+        "fontWeight": "450",
+        "lineHeight": "57.51px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "h2",
+        "text": "Guten tag",
+        "fontSize": "54px",
+        "fontWeight": "450",
+        "lineHeight": "57.51px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(255, 255, 255)"
+      }
+    ],
+    "sampleBody": [
+      {
+        "tag": "span",
+        "text": "Menu",
+        "fontSize": "17.28px",
+        "fontWeight": "450",
+        "lineHeight": "27.648px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "a",
+        "text": "Home",
+        "fontSize": "17.28px",
+        "fontWeight": "450",
+        "lineHeight": "27.648px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(28, 29, 32)"
+      },
+      {
+        "tag": "span",
+        "text": "Home",
+        "fontSize": "17.28px",
+        "fontWeight": "450",
+        "lineHeight": "27.648px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "a",
+        "text": "Work",
+        "fontSize": "17.28px",
+        "fontWeight": "450",
+        "lineHeight": "27.648px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(28, 29, 32)"
+      },
+      {
+        "tag": "span",
+        "text": "Work",
+        "fontSize": "17.28px",
+        "fontWeight": "450",
+        "lineHeight": "27.648px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(255, 255, 255)"
+      },
+      {
+        "tag": "a",
+        "text": "About",
+        "fontSize": "17.28px",
+        "fontWeight": "450",
+        "lineHeight": "27.648px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(28, 29, 32)"
+      }
+    ],
+    "sampleMicro": [
+      {
+        "tag": "p",
+        "text": "View",
+        "fontSize": "0px",
+        "fontWeight": "450",
+        "lineHeight": "0px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Dennis Sans\", sans-serif",
+        "color": "rgb(255, 255, 255)"
+      }
+    ]
+  },
+  "minhpham": {
+    "title": "Minh Pham - Multidisciplinary Designer",
+    "bgColor": "rgb(13, 13, 13)",
+    "textColor": "rgb(183, 171, 152)",
+    "fontFamilies": [
+      "\"Avant Garde\", sans-serif, serif",
+      "\"Nunito Sans\", sans-serif",
+      "\"Avant Garde\", sans-serif"
+    ],
+    "topFontSizesPx": [
+      116.667,
+      33.3333,
+      13.3333,
+      11.6667,
+      10
+    ],
+    "sampleHeadings": [
+      {
+        "tag": "h1",
+        "text": "MAKING\nGOOD\nSHIT\nSINCE\n2009",
+        "fontSize": "116.667px",
+        "fontWeight": "700",
+        "lineHeight": "98px",
+        "letterSpacing": "-5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(183, 171, 152)"
+      },
+      {
+        "tag": "h2",
+        "text": "VISUAL",
+        "fontSize": "116.667px",
+        "fontWeight": "700",
+        "lineHeight": "98px",
+        "letterSpacing": "-5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(183, 171, 152)"
+      },
+      {
+        "tag": "h2",
+        "text": "VISUAL",
+        "fontSize": "116.667px",
+        "fontWeight": "700",
+        "lineHeight": "98px",
+        "letterSpacing": "-5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(183, 171, 152)"
+      },
+      {
+        "tag": "h2",
+        "text": "VISUAL",
+        "fontSize": "116.667px",
+        "fontWeight": "700",
+        "lineHeight": "98px",
+        "letterSpacing": "-5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(13, 13, 13)"
+      },
+      {
+        "tag": "h2",
+        "text": "MOTION",
+        "fontSize": "116.667px",
+        "fontWeight": "700",
+        "lineHeight": "98px",
+        "letterSpacing": "-5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(183, 171, 152)"
+      },
+      {
+        "tag": "h2",
+        "text": "MOTION",
+        "fontSize": "116.667px",
+        "fontWeight": "700",
+        "lineHeight": "98px",
+        "letterSpacing": "-5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(183, 171, 152)"
+      }
+    ],
+    "sampleBody": [],
+    "sampleMicro": [
+      {
+        "tag": "span",
+        "text": "100%",
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "lineHeight": "11px",
+        "letterSpacing": "-0.3px",
+        "fontFamily": "\"Avant Garde\", sans-serif, serif",
+        "color": "rgb(183, 171, 152)"
+      },
+      {
+        "tag": "p",
+        "text": "ABOUT ME",
+        "fontSize": "11.6667px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "letterSpacing": "5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(183, 171, 152)"
+      },
+      {
+        "tag": "p",
+        "text": "WHAT I DO",
+        "fontSize": "11.6667px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "letterSpacing": "5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(183, 171, 152)"
+      },
+      {
+        "tag": "p",
+        "text": "EXPERIENCE",
+        "fontSize": "11.6667px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "letterSpacing": "5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(183, 171, 152)"
+      },
+      {
+        "tag": "p",
+        "text": "HISTORY",
+        "fontSize": "11.6667px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "letterSpacing": "5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(183, 171, 152)"
+      },
+      {
+        "tag": "p",
+        "text": "CLIENTS",
+        "fontSize": "11.6667px",
+        "fontWeight": "700",
+        "lineHeight": "21px",
+        "letterSpacing": "5.83333px",
+        "fontFamily": "\"Avant Garde\", sans-serif",
+        "color": "rgb(183, 171, 152)"
+      }
+    ]
+  },
+  "cappen": {
+    "title": "Cappen | Award-Winning Web Design & Development Studio",
+    "bgColor": "rgb(252, 252, 252)",
+    "textColor": "rgb(252, 252, 252)",
+    "fontFamilies": [
+      "HelveticaNowDisplay, sans-serif",
+      "\"Martian Mono\", sans-serif"
+    ],
+    "topFontSizesPx": [
+      25,
+      16,
+      15,
+      10
+    ],
+    "sampleHeadings": [],
+    "sampleBody": [
+      {
+        "tag": "span",
+        "text": "HUMAN THINKERS",
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "letterSpacing": "normal",
+        "fontFamily": "HelveticaNowDisplay, sans-serif",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "tag": "span",
+        "text": "HUMAN",
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "letterSpacing": "normal",
+        "fontFamily": "HelveticaNowDisplay, sans-serif",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "tag": "span",
+        "text": "HUMAN",
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "letterSpacing": "normal",
+        "fontFamily": "HelveticaNowDisplay, sans-serif",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "tag": "span",
+        "text": "THINKERS",
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "letterSpacing": "normal",
+        "fontFamily": "HelveticaNowDisplay, sans-serif",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "tag": "span",
+        "text": "THINKERS",
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "letterSpacing": "normal",
+        "fontFamily": "HelveticaNowDisplay, sans-serif",
+        "color": "rgb(0, 0, 0)"
+      },
+      {
+        "tag": "span",
+        "text": "DIGITAL MAKERS",
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "letterSpacing": "normal",
+        "fontFamily": "HelveticaNowDisplay, sans-serif",
+        "color": "rgb(0, 0, 0)"
+      }
+    ],
+    "sampleMicro": [
+      {
+        "tag": "h3",
+        "text": "We use cookies — the digital kind 🍪",
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Martian Mono\", sans-serif",
+        "color": "rgb(252, 252, 252)"
+      },
+      {
+        "tag": "h3",
+        "text": "Cookie preferences",
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Martian Mono\", sans-serif",
+        "color": "rgb(252, 252, 252)"
+      },
+      {
+        "tag": "p",
+        "text": "We and our partners use cookies and other technologies to im",
+        "fontSize": "10px",
+        "fontWeight": "300",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Martian Mono\", sans-serif",
+        "color": "rgb(252, 252, 252)"
+      },
+      {
+        "tag": "h3",
+        "text": "Essential",
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Martian Mono\", sans-serif",
+        "color": "rgb(252, 252, 252)"
+      },
+      {
+        "tag": "p",
+        "text": "Essential cookies enable basic functions and are necessary f",
+        "fontSize": "10px",
+        "fontWeight": "300",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Martian Mono\", sans-serif",
+        "color": "rgb(252, 252, 252)"
+      },
+      {
+        "tag": "h3",
+        "text": "Statistics",
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "fontFamily": "\"Martian Mono\", sans-serif",
+        "color": "rgb(252, 252, 252)"
+      }
+    ]
+  }
+}

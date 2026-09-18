@@ -1,20 +1,27 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('KMAI.tech Art-Directed Editorial Redesign (First 4 Areas)', () => {
-  test('does not contain deprecated AI glow or noise overlays', async ({ page }) => {
+test.describe('KMAI.tech Art-Directed Editorial Studio Redesign', () => {
+  test('eliminates all AI tropes, glow overlays, and unwanted faux-metadata', async ({ page }) => {
     await page.goto('http://localhost:5173/');
     await page.waitForTimeout(2500);
 
-    // Verify noise-overlay is gone
+    // Verify noise overlay is gone
     const noise = await page.$('.noise-overlay');
     expect(noise).toBeNull();
 
-    // Verify no text-glow or box-glow classes exist in the DOM
+    // Verify no glow utility classes exist
     const glowElements = await page.$$('.text-glow, .box-glow, .box-glow-lg');
     expect(glowElements.length).toBe(0);
+
+    // Verify unwanted metadata strings are completely removed
+    const bodyText = await page.innerText('body');
+    expect(bodyText).not.toContain('EST. 2026');
+    expect(bodyText).not.toContain('MUMBAI & PUNE');
+    expect(bodyText).not.toContain('[ 00 / INDEPENDENT DIGITAL TECHNOLOGY STUDIO ]');
+    expect(bodyText).not.toContain('INDEPENDENT DIGITAL TECHNOLOGY STUDIO');
   });
 
-  test('header features minimal editorial layout on Paper canvas without pills', async ({ page, isMobile }) => {
+  test('header features minimal editorial navigation without pills or glowing borders', async ({ page, isMobile }) => {
     await page.goto('http://localhost:5173/');
     await page.waitForTimeout(2500);
 
@@ -22,80 +29,76 @@ test.describe('KMAI.tech Art-Directed Editorial Redesign (First 4 Areas)', () =>
     await expect(header).toBeVisible();
 
     if (!isMobile) {
-      // Clean editorial navigation links
-      const workLink = header.locator('a[href="#work"]');
-      await expect(workLink).toContainText('WORK');
-
-      // Rectangular CTA button
-      const ctaBtn = header.locator('a:has-text("START A PROJECT")');
-      await expect(ctaBtn).toBeVisible();
+      const nav = header.locator('nav');
+      await expect(nav.locator('a:has-text("Work")')).toBeVisible();
+      await expect(nav.locator('a:has-text("Services")')).toBeVisible();
+      await expect(nav.locator('a:has-text("Studio")')).toBeVisible();
+      await expect(nav.locator('a:has-text("Contact")')).toBeVisible();
+      await expect(nav.locator('a:has-text("Start a project")')).toBeVisible();
     } else {
-      // Mobile menu toggle button is visible
       const menuBtn = header.locator('button[aria-label="Toggle navigation menu"]');
       await expect(menuBtn).toBeVisible();
     }
-
-    // Verify header has clean hairline border without blurry glow pills
-    const headerClasses = await header.getAttribute('class');
-    expect(headerClasses).not.toContain('shadow-[0_0_25px');
   });
 
-  test('hero section features colossal editorial typography and Paper canvas', async ({ page, isMobile }) => {
+  test('hero section features monumental typography WE BUILD DIGITAL EXPERIENCES.', async ({ page, isMobile }) => {
     await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(3500);
+    await page.waitForTimeout(3000);
 
     const hero = page.locator('#hero');
     await expect(hero).toBeVisible();
 
-    // Check colossal headline
     const h1 = hero.locator('h1');
     await expect(h1).toBeVisible();
-    await expect(h1).toContainText('SOFTWARE');
-    await expect(h1).toContainText('WITH A');
-    await expect(h1).toContainText('point of view');
+    await expect(h1).toContainText('WE BUILD');
+    await expect(h1).toContainText('DIGITAL');
+    await expect(h1).toContainText('EXPERIENCES');
 
     if (!isMobile) {
       const fontSize = await h1.evaluate((el) => parseFloat(window.getComputedStyle(el).fontSize));
-      expect(fontSize).toBeGreaterThanOrEqual(60);
+      expect(fontSize).toBeGreaterThanOrEqual(80);
     }
-
-    // Verify zero glowing sphere blurred divs in hero
-    const glowingSphere = await page.$('#hero [class*="blur-[150px]"], #hero [class*="blur-[130px]"]');
-    expect(glowingSphere).toBeNull();
   });
 
-  test('selected work intro features Paper canvas with large display heading', async ({ page }) => {
+  test('manifesto section presents clean monumental typography without cards', async ({ page }) => {
     await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(3500);
+    await page.waitForTimeout(2500);
 
-    const workIntro = page.locator('#work-intro');
-    await expect(workIntro).toBeVisible();
-
-    // Verify category label and display title
-    await expect(workIntro).toContainText('01 / SELECTED WORK');
-    await expect(workIntro).toContainText('ARCHITECTED DIGITAL SYSTEMS');
-
-    // Verify no card containers exist within intro
-    const cards = await page.$$('#work-intro .rounded-lg.border, #work-intro .rounded-2xl.border, #work-intro .rounded-3xl.border');
-    expect(cards.length).toBe(0);
+    const manifesto = page.locator('#manifesto');
+    await expect(manifesto).toBeVisible();
+    await expect(manifesto.locator('h2')).toContainText(/COMPLEX/);
+    await expect(manifesto.locator('h2')).toContainText(/EXPERIENCES/);
   });
 
-  test('flagship case study 01 features Navy architectural plate without card box styling or AI sparkles', async ({ page }) => {
+  test('selected work showcases authentic projects with editorial imagery and zero card boxes', async ({ page }) => {
     await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(3500);
+    await page.waitForTimeout(2500);
 
     const workSection = page.locator('#work');
     await expect(workSection).toBeVisible();
+    await expect(workSection).toContainText('MAVT');
+    await expect(workSection).toContainText('Shri Gurudev');
+  });
 
-    // Verify flagship project title exists
-    await expect(workSection).toContainText('Shri Gurudev Ashram');
+  test('the studio section presents human founders without fake terminal badges', async ({ page }) => {
+    await page.goto('http://localhost:5173/');
+    await page.waitForTimeout(2500);
 
-    // Verify no AI sparkles icons or round card borders
-    const sparkles = await page.$$('#work svg.lucide-sparkles');
-    expect(sparkles.length).toBe(0);
+    const aboutSection = page.locator('#about');
+    await expect(aboutSection).toBeVisible();
+    await expect(aboutSection).toContainText('Krishnaprasad Vyas');
+    await expect(aboutSection).toContainText('Maithili Makkar');
+    await expect(aboutSection).toContainText('Ali Abu Nazahat');
+  });
 
-    // Verify flagship container does not have heavy card container styling
-    const roundedCard = await page.$$('#work [data-flagship="true"].rounded-2xl, #work [data-flagship="true"].rounded-3xl');
-    expect(roundedCard.length).toBe(0);
+  test('contact section features climax statement and direct email channel', async ({ page }) => {
+    await page.goto('http://localhost:5173/');
+    await page.waitForTimeout(2500);
+
+    const contactSection = page.locator('#contact');
+    await expect(contactSection).toBeVisible();
+    await expect(contactSection).toContainText("LET'S BUILD");
+    await expect(contactSection).toContainText('IMPOSSIBLE');
+    await expect(contactSection).toContainText('contact@kmai.tech');
   });
 });
