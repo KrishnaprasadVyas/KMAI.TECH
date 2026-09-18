@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { GeometricK } from '../common/GeometricK';
 
 interface NavbarProps {
   onCursorChange?: (variant: 'default' | 'button' | 'project' | 'image' | 'footer', text?: string) => void;
@@ -11,7 +12,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 30);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -28,10 +29,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: 'WORK', href: '#work', index: '01' },
-    { label: 'SERVICES', href: '#services', index: '02' },
-    { label: 'ABOUT', href: '#about', index: '03' },
-    { label: 'CONTACT', href: '#contact', index: '04' },
+    { label: '01 // WORK', href: '#work' },
+    { label: '02 // SERVICES', href: '#services' },
+    { label: '03 // ABOUT', href: '#about' },
+    { label: '04 // CONTACT', href: '#contact' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -46,10 +47,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[9000] transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-[9000] transition-all duration-300 ${
           scrolled
-            ? 'bg-[#08111F]/80 backdrop-blur-md border-b border-white/5 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
-            : 'bg-transparent py-7 md:py-8'
+            ? 'bg-[#08090C]/90 backdrop-blur-md border-b border-white/8 py-3.5'
+            : 'bg-transparent border-b border-transparent py-6'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -64,41 +65,44 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
             onMouseEnter={() => onCursorChange?.('button')}
             onMouseLeave={() => onCursorChange?.('default')}
           >
-            <div className="w-8 h-8 rounded-lg bg-[#08111F] border border-[#006EFF]/30 flex items-center justify-center group-hover:border-[#006EFF] group-hover:shadow-[0_0_15px_rgba(0,110,255,0.4)] transition-all duration-300">
-              <span className="font-bold text-sm tracking-tighter text-white">
-                K<span className="text-[#006EFF]">.</span>
+            <div className="w-8 h-8 rounded-lg bg-[#0E1015] border border-white/10 flex items-center justify-center group-hover:border-[#0066FF] transition-colors duration-200">
+              <GeometricK size={18} glow={false} variant="badge" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-bold text-sm md:text-base tracking-tight text-white group-hover:text-[#F5F6F8] leading-none">
+                KMAI<span className="text-[#0066FF] font-mono text-xs ml-0.5">.tech</span>
+              </span>
+              <span className="font-mono text-[9px] text-[#8A92A0] tracking-widest uppercase mt-0.5">
+                STUDIO // PUNE &amp; MUMBAI
               </span>
             </div>
-            <span className="font-bold text-base md:text-lg tracking-tight text-white group-hover:text-[#F3F5F7]">
-              KMAI<span className="text-[#006EFF] font-mono font-medium text-xs ml-1">.tech</span>
-            </span>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-9">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="group relative font-mono text-xs tracking-widest text-[#A0A7B1] hover:text-white transition-colors duration-200 py-1"
+                className="font-mono text-xs tracking-wider text-[#8A92A0] hover:text-white transition-colors duration-200 py-1"
                 onMouseEnter={() => onCursorChange?.('button')}
                 onMouseLeave={() => onCursorChange?.('default')}
               >
                 <span>{link.label}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#006EFF] transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
 
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#006EFF]/40 hover:border-[#006EFF] bg-[#006EFF]/10 hover:bg-[#006EFF] text-xs font-mono text-white tracking-widest transition-all duration-300 shadow-[0_0_20px_rgba(0,110,255,0.2)] hover:shadow-[0_0_25px_rgba(0,110,255,0.6)]"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 hover:border-[#0066FF] bg-[#0E1015] hover:bg-[#0066FF] text-[11px] font-mono text-white tracking-wider transition-colors duration-200"
               onMouseEnter={() => onCursorChange?.('button')}
               onMouseLeave={() => onCursorChange?.('default')}
             >
-              <span>LET'S TALK</span>
-              <ArrowUpRight size={14} className="text-[#38BDF8] group-hover:text-white" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0066FF] group-hover:bg-white" />
+              <span>COMMISSION</span>
+              <ArrowUpRight size={12} className="text-[#8A92A0]" />
             </a>
           </nav>
 
@@ -106,25 +110,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden relative w-10 h-10 rounded-full border border-white/10 bg-[#08111F] flex items-center justify-center text-white"
+            className="md:hidden relative w-10 h-10 rounded-lg border border-white/10 bg-[#0E1015] flex items-center justify-center text-white"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </header>
 
       {/* Fullscreen Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[8999] bg-[#05070B] flex flex-col justify-between p-8 md:p-16 transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 z-[8999] bg-[#08090C] flex flex-col justify-between p-8 sm:p-12 transition-all duration-400 md:hidden ${
           mobileMenuOpen
             ? 'opacity-100 pointer-events-auto translate-y-0'
-            : 'opacity-0 pointer-events-none -translate-y-6'
+            : 'opacity-0 pointer-events-none -translate-y-4'
         }`}
       >
-        <div className="pt-20">
-          <p className="font-mono text-xs text-[#006EFF] tracking-widest uppercase mb-8">
-            // NAVIGATION
+        <div className="pt-24">
+          <p className="font-mono text-xs text-[#0066FF] tracking-widest uppercase mb-8">
+            // STUDIO DIRECTORY
           </p>
 
           <nav className="flex flex-col gap-6">
@@ -133,31 +137,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange }) => {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="group flex items-baseline justify-between border-b border-white/10 pb-4 text-3xl sm:text-4xl font-extrabold text-[#F3F5F7] tracking-tight hover:text-[#006EFF] transition-colors"
+                className="flex items-baseline justify-between border-b border-white/10 pb-4 text-3xl font-extrabold text-[#F5F6F8] tracking-tight hover:text-[#0066FF] transition-colors"
               >
                 <span>{link.label}</span>
-                <span className="font-mono text-xs text-[#A0A7B1] group-hover:text-[#006EFF]">
-                  {link.index}
-                </span>
               </a>
             ))}
           </nav>
         </div>
 
         {/* Mobile Menu Footer */}
-        <div className="pt-8 border-t border-white/10">
-          <p className="text-xl font-bold text-white mb-2">
-            Let's build something <span className="text-[#006EFF]">useful.</span>
-          </p>
+        <div className="pt-8 border-t border-white/10 font-mono text-xs text-[#8A92A0] space-y-2">
+          <div className="flex items-center gap-2 text-white">
+            <span className="w-2 h-2 rounded-full bg-[#0066FF]" />
+            <span>KMAI.tech // CREATIVE TECHNOLOGY STUDIO</span>
+          </div>
+          <p>Pune &amp; Mumbai, India • GMT +5:30</p>
           <a
             href="mailto:krishnaprasadvyas@gmail.com"
-            className="font-mono text-sm text-[#A0A7B1] hover:text-[#006EFF] transition-colors block"
+            className="text-[#F5F6F8] underline block pt-2"
           >
             krishnaprasadvyas@gmail.com
           </a>
-          <p className="font-mono text-xs text-white/40 mt-4">
-            © 2026 KMAI.tech • All rights reserved
-          </p>
         </div>
       </div>
     </>
