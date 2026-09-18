@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-19T04:19:30Z",
+  "title": "Design System: KMAI.tech",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Enormous Black / Ink",
+        "canonical": "#0A0C0F",
+        "tonalRamp": ["#050709", "#0A0C0F", "#14171D", "#1E222B"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Warm White Space / Paper",
+        "canonical": "#F2F0EA",
+        "tonalRamp": ["#FFFFFF", "#FAF9F5", "#F2F0EA", "#E5E2D8"]
+      },
+      "canvas-dark": {
+        "role": "neutral",
+        "displayName": "Obsidian Void",
+        "canonical": "#07090E",
+        "tonalRamp": ["#040508", "#07090E", "#0F131C", "#181D2A"]
+      },
+      "accent": {
+        "role": "accent",
+        "displayName": "Blueprint Signal Blue",
+        "canonical": "#216BFF",
+        "tonalRamp": ["#689DFF", "#4584FF", "#216BFF", "#0D43B8", "#072B7A"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Architectural Slate",
+        "canonical": "#73777F",
+        "tonalRamp": ["#8E939E", "#73777F", "#595D65", "#41444B"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display XL",
+        "purpose": "Monumental section statements and hero declarations."
+      },
+      "headline": {
+        "displayName": "Headline / Display L",
+        "purpose": "Major section anchors and editorial thesis statements."
+      },
+      "title": {
+        "displayName": "Title / H2",
+        "purpose": "Service pillar names, project titles, and leadership names."
+      },
+      "serif-quote": {
+        "displayName": "Editorial Serif Quote",
+        "purpose": "Authentic client statements and reflective commentary in italic."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Primary explanatory narrative and positioning copy."
+      },
+      "label": {
+        "displayName": "Label / Index",
+        "purpose": "Section indices (01 / 04), category tags, and system status."
+      }
+    },
+    "shadows": [
+      {
+        "name": "flat-by-default",
+        "value": "none",
+        "purpose": "Zero artificial drop shadows. Pure tonal layering and contrast."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-kinetic-out",
+        "value": "power4.out",
+        "purpose": "Display typography reveals and entrance transitions."
+      },
+      {
+        "name": "ease-curtain",
+        "value": "power4.inOut",
+        "purpose": "Architectural curtain wipe transitions."
+      },
+      {
+        "name": "lenis-smooth",
+        "value": "120Hz hardware-accelerated momentum",
+        "purpose": "Viewport-wide virtual smooth scroll."
+      }
+    ],
+    "breakpoints": [
+      { "name": "xs", "value": "475px" },
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ],
+    "tenets": [
+      "Enormous black typography",
+      "Warm white space",
+      "Massive project imagery",
+      "Occasional blue intervention",
+      "Almost no borders",
+      "Occasional black full-bleed sections"
+    ]
+  }
+}
