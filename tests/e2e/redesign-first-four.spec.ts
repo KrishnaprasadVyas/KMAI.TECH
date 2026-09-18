@@ -61,4 +61,23 @@ test.describe('KMAI.tech Art-Directed Redesign (First 4 Areas)', () => {
     const glowingSphere = await page.$('#hero [class*="blur-[150px]"], #hero [class*="blur-[130px]"]');
     expect(glowingSphere).toBeNull();
   });
+
+  test('manifesto section uses asymmetric editorial grid with zero card containers or neon drop-shadows', async ({ page }) => {
+    await page.goto('http://localhost:5173/');
+    await page.waitForTimeout(3500);
+
+    const manifesto = page.locator('#manifesto');
+    await expect(manifesto).toBeVisible();
+
+    // Verify manifesto contains core statement
+    await expect(manifesto).toContainText('ARCHITECT');
+
+    // Verify no card containers exist within manifesto (zero .rounded-lg, .rounded-2xl with borders)
+    const cards = await page.$$('#manifesto .rounded-lg.border, #manifesto .rounded-2xl.border, #manifesto .rounded-3xl.border');
+    expect(cards.length).toBe(0);
+
+    // Verify no neon drop-shadow exists on words
+    const neonDrops = await page.$$('#manifesto [class*="drop-shadow-"]');
+    expect(neonDrops.length).toBe(0);
+  });
 });
