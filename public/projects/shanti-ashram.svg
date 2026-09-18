@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" fill="none">
+  <defs>
+    <linearGradient id="bgS" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#060A12"/>
+      <stop offset="1" stop-color="#0C1B33"/>
+    </linearGradient>
+    <linearGradient id="glowS" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#006EFF" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#006EFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blurS" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="35" result="blur"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bgS)"/>
+  <circle cx="300" cy="250" r="200" fill="#006EFF" opacity="0.1" filter="url(#blurS)"/>
+
+  <!-- Browser Frame -->
+  <rect x="50" y="45" width="1100" height="660" rx="14" fill="#0A1424" stroke="#162E52" stroke-width="1.5"/>
+  <rect x="50" y="45" width="1100" height="48" rx="14" fill="#0E1E38"/>
+  <circle cx="78" cy="69" r="6" fill="#FF5F56"/>
+  <circle cx="100" cy="69" r="6" fill="#FFBD2E"/>
+  <circle cx="122" cy="69" r="6" fill="#27C93F"/>
+  
+  <rect x="260" y="56" width="680" height="26" rx="6" fill="#060C16" stroke="#172F54"/>
+  <text x="600" y="73" fill="#6B85A8" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">https://shantiashramtrust.org</text>
+
+  <!-- Content -->
+  <text x="90" y="140" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="700">SHANTI ASHRAM TRUST</text>
+  <text x="820" y="140" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Initiatives</text>
+  <text x="910" y="140" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Impact</text>
+  <text x="980" y="140" fill="#006EFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600">Get Involved →</text>
+
+  <!-- Editorial layout -->
+  <text x="90" y="225" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="12" letter-spacing="2">PUBLIC TRUST &amp; SERVICE INITIATIVE</text>
+  <text x="90" y="280" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="44" font-weight="800">Uplifting Communities,</text>
+  <text x="90" y="335" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="44" font-weight="800">Inspiring Change.</text>
+
+  <text x="90" y="385" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="16">
+    A dignified humanitarian web presence designed to articulate charitable programs,
+  </text>
+  <text x="90" y="410" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="16">
+    community welfare projects, and social initiatives with transparency and grace.
+  </text>
+
+  <!-- Grid of 3 Pillar Cards -->
+  <rect x="90" y="460" width="310" height="200" rx="12" fill="#07101E" stroke="#19335A"/>
+  <text x="115" y="500" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700">01 / EDUCATION</text>
+  <text x="115" y="535" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700">Youth &amp; Child Welfare</text>
+  <text x="115" y="565" fill="#7B93B2" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Empowering rural students through learning aids, mentorship and modern resources.</text>
+
+  <rect x="430" y="460" width="310" height="200" rx="12" fill="#07101E" stroke="#19335A"/>
+  <text x="455" y="500" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700">02 / HEALTHCARE</text>
+  <text x="455" y="535" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700">Preventive Medical Camps</text>
+  <text x="455" y="565" fill="#7B93B2" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Facilitating free diagnostics, specialist consultations, and accessible medicine distribution.</text>
+
+  <rect x="770" y="460" width="310" height="200" rx="12" fill="#07101E" stroke="#19335A"/>
+  <text x="795" y="500" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700">03 / SUSTAINABILITY</text>
+  <text x="795" y="535" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700">Community Outreach</text>
+  <text x="795" y="565" fill="#7B93B2" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Sustainable living models and grassroots mobilization for long-term community dignity.</text>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" fill="none">
+  <defs>
+    <linearGradient id="bgM" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#040912"/>
+      <stop offset="1" stop-color="#09182E"/>
+    </linearGradient>
+    <linearGradient id="blueM" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#006EFF"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+    <filter id="glowM" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40" result="blur"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bgM)"/>
+  <circle cx="950" cy="300" r="220" fill="#006EFF" opacity="0.15" filter="url(#glowM)"/>
+
+  <!-- Browser Frame -->
+  <rect x="50" y="45" width="1100" height="660" rx="14" fill="#071221" stroke="#173155" stroke-width="1.5"/>
+  <rect x="50" y="45" width="1100" height="48" rx="14" fill="#0B1A2F"/>
+  <circle cx="78" cy="69" r="6" fill="#FF5F56"/>
+  <circle cx="100" cy="69" r="6" fill="#FFBD2E"/>
+  <circle cx="122" cy="69" r="6" fill="#27C93F"/>
+  
+  <rect x="280" y="56" width="640" height="26" rx="6" fill="#050C16" stroke="#152B4B"/>
+  <text x="600" y="73" fill="#6B85A8" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">https://mavt.in</text>
+
+  <!-- MAVT Header -->
+  <text x="90" y="140" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="800" letter-spacing="2">MAVT</text>
+  <text x="175" y="140" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="12">EXPEDITIONS &amp; YATRA</text>
+
+  <!-- Search Filter Bar -->
+  <rect x="90" y="170" width="1020" height="70" rx="12" fill="#0A182E" stroke="#1A3A66"/>
+  <text x="120" y="200" fill="#6A86AA" font-family="'JetBrains Mono', monospace" font-size="11">DEPARTURE CITY</text>
+  <text x="120" y="222" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="600">Mumbai / Pune</text>
+
+  <line x1="330" y1="185" x2="330" y2="225" stroke="#1B3356"/>
+  <text x="360" y="200" fill="#6A86AA" font-family="'JetBrains Mono', monospace" font-size="11">DESTINATION CIRCUIT</text>
+  <text x="360" y="222" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="600">Kailash Mansarovar / Char Dham</text>
+
+  <line x1="650" y1="185" x2="650" y2="225" stroke="#1B3356"/>
+  <text x="680" y="200" fill="#6A86AA" font-family="'JetBrains Mono', monospace" font-size="11">BATCH DATES</text>
+  <text x="680" y="222" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="600">May - June 2026</text>
+
+  <rect x="940" y="182" width="150" height="46" rx="8" fill="url(#blueM)"/>
+  <text x="1015" y="210" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" text-anchor="middle">Find Journey →</text>
+
+  <!-- Main Grid: Left Itinerary Cards, Right Booking Widget -->
+  <!-- Card 1 -->
+  <rect x="90" y="265" width="640" height="195" rx="12" fill="#081426" stroke="#152F54"/>
+  <rect x="110" y="285" width="180" height="155" rx="8" fill="#0D203B"/>
+  <text x="200" y="365" fill="#38BDF8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" text-anchor="middle">SACRED CIRCUIT</text>
+  <text x="310" y="310" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700">Divine Himalayan Pilgrimage 2026</text>
+  <text x="310" y="335" fill="#7592B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">12 Days / 11 Nights • Guided spiritual voyage</text>
+  <text x="310" y="365" fill="#93C5FD" font-family="'JetBrains Mono', monospace" font-size="12">Verified Accommodations • Luxury Coach • Medical Support</text>
+  <text x="310" y="420" fill="#006EFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800">₹ 38,500 <tspan font-size="13" font-weight="400" fill="#6A86AA">/ person</tspan></text>
+
+  <!-- Card 2 -->
+  <rect x="90" y="480" width="640" height="195" rx="12" fill="#081426" stroke="#152F54"/>
+  <rect x="110" y="500" width="180" height="155" rx="8" fill="#0D203B"/>
+  <text x="200" y="580" fill="#38BDF8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" text-anchor="middle">COASTAL TEMPLE TOUR</text>
+  <text x="310" y="525" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700">South India Jyotirlinga Special</text>
+  <text x="310" y="550" fill="#7592B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">8 Days / 7 Nights • Temple darshan &amp; heritage</text>
+  <text x="310" y="580" fill="#93C5FD" font-family="'JetBrains Mono', monospace" font-size="12">Special Darshan Passes Included • Group Concierge</text>
+  <text x="310" y="635" fill="#006EFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800">₹ 24,900 <tspan font-size="13" font-weight="400" fill="#6A86AA">/ person</tspan></text>
+
+  <!-- Right Passenger Booking Card -->
+  <rect x="755" y="265" width="355" height="410" rx="14" fill="#0A182D" stroke="#1A3B69"/>
+  <text x="785" y="305" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700">Instant Seat Reservation</text>
+  <text x="785" y="330" fill="#7592B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Supabase Realtime Sync Engine</text>
+
+  <rect x="785" y="360" width="295" height="45" rx="8" fill="#060E1A" stroke="#132B4C"/>
+  <text x="805" y="388" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="14">Krishnaprasad Vyas</text>
+
+  <rect x="785" y="420" width="295" height="45" rx="8" fill="#060E1A" stroke="#132B4C"/>
+  <text x="805" y="448" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="14">+91 93099 20441</text>
+
+  <rect x="785" y="480" width="140" height="45" rx="8" fill="#060E1A" stroke="#132B4C"/>
+  <text x="855" y="508" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" text-anchor="middle">2 Pilgrims</text>
+
+  <rect x="940" y="480" width="140" height="45" rx="8" fill="#060E1A" stroke="#132B4C"/>
+  <text x="1010" y="508" fill="#38BDF8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" text-anchor="middle">AC Volvo</text>
+
+  <rect x="785" y="550" width="295" height="50" rx="8" fill="url(#blueM)"/>
+  <text x="932" y="582" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="700" text-anchor="middle">Confirm &amp; Proceed →</text>
+</svg>

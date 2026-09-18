@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" fill="none">
+  <defs>
+    <linearGradient id="bgP" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#05080E"/>
+      <stop offset="1" stop-color="#0E1A2C"/>
+    </linearGradient>
+    <filter id="glowP" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bgP)"/>
+  <circle cx="200" cy="200" r="180" fill="#006EFF" opacity="0.1" filter="url(#glowP)"/>
+
+  <!-- Browser Frame -->
+  <rect x="50" y="45" width="1100" height="660" rx="14" fill="#091320" stroke="#162E4F" stroke-width="1.5"/>
+  <rect x="50" y="45" width="1100" height="48" rx="14" fill="#0D1D34"/>
+  <circle cx="78" cy="69" r="6" fill="#FF5F56"/>
+  <circle cx="100" cy="69" r="6" fill="#FFBD2E"/>
+  <circle cx="122" cy="69" r="6" fill="#27C93F"/>
+  
+  <rect x="280" y="56" width="640" height="26" rx="6" fill="#050C16" stroke="#142B49"/>
+  <text x="600" y="73" fill="#6B85A8" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">https://priyasurana.in</text>
+
+  <!-- Editorial Navigation -->
+  <text x="90" y="140" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700">PRIYA SURANA</text>
+  <text x="750" y="140" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Research</text>
+  <text x="840" y="140" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Publications</text>
+  <text x="940" y="140" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">CV / Bio</text>
+  <text x="1030" y="140" fill="#006EFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600">Contact</text>
+
+  <!-- Editorial Hero -->
+  <text x="90" y="225" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="12" letter-spacing="2">ACADEMIC RESEARCH &amp; PROFESSIONAL PORTFOLIO</text>
+  <text x="90" y="280" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="44" font-weight="800">Exploring Systems,</text>
+  <text x="90" y="335" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="44" font-weight="800">Data, &amp; Scholarly Insights.</text>
+
+  <text x="90" y="385" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="16">
+    A minimalist, typography-led digital portfolio designed to archive academic publications,
+  </text>
+  <text x="90" y="410" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="16">
+    pedagogical contributions, conference talks, and intellectual discourse.
+  </text>
+
+  <!-- Publications Table / List -->
+  <rect x="90" y="450" width="1020" height="220" rx="12" fill="#07111E" stroke="#162E50"/>
+  
+  <text x="120" y="485" fill="#64748B" font-family="'JetBrains Mono', monospace" font-size="11">YEAR</text>
+  <text x="200" y="485" fill="#64748B" font-family="'JetBrains Mono', monospace" font-size="11">TITLE &amp; TOPIC</text>
+  <text x="750" y="485" fill="#64748B" font-family="'JetBrains Mono', monospace" font-size="11">DISCIPLINE</text>
+  <text x="980" y="485" fill="#64748B" font-family="'JetBrains Mono', monospace" font-size="11">PAPER</text>
+  
+  <line x1="110" y1="500" x2="1080" y2="500" stroke="#152843"/>
+
+  <!-- Row 1 -->
+  <text x="120" y="535" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="13">2025</text>
+  <text x="200" y="535" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600">Cognitive Frameworks in Cross-Disciplinary Research Analysis</text>
+  <text x="750" y="535" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Theoretical Synthesis</text>
+  <text x="980" y="535" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="12">Download PDF ↗</text>
+
+  <line x1="110" y1="555" x2="1080" y2="555" stroke="#152843"/>
+
+  <!-- Row 2 -->
+  <text x="120" y="590" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="13">2024</text>
+  <text x="200" y="590" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600">Empirical Methodologies in Societal Transformation Metrics</text>
+  <text x="750" y="590" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Data Methodologies</text>
+  <text x="980" y="590" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="12">Download PDF ↗</text>
+
+  <line x1="110" y1="610" x2="1080" y2="610" stroke="#152843"/>
+
+  <!-- Row 3 -->
+  <text x="120" y="645" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="13">2023</text>
+  <text x="200" y="645" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600">Pedagogical Evolution Across Modern Learning Environments</text>
+  <text x="750" y="645" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Education Systems</text>
+  <text x="980" y="645" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="12">Download PDF ↗</text>
+</svg>

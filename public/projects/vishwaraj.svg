@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" fill="none">
+  <defs>
+    <linearGradient id="bgV" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#040810"/>
+      <stop offset="1" stop-color="#091526"/>
+    </linearGradient>
+    <linearGradient id="blueV" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#006EFF"/>
+      <stop offset="1" stop-color="#1683FF"/>
+    </linearGradient>
+    <filter id="glowV" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="35" result="blur"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bgV)"/>
+  <circle cx="850" cy="220" r="190" fill="#006EFF" opacity="0.14" filter="url(#glowV)"/>
+
+  <!-- Browser Frame -->
+  <rect x="50" y="45" width="1100" height="660" rx="14" fill="#081220" stroke="#152B47" stroke-width="1.5"/>
+  <rect x="50" y="45" width="1100" height="48" rx="14" fill="#0C1B30"/>
+  <circle cx="78" cy="69" r="6" fill="#FF5F56"/>
+  <circle cx="100" cy="69" r="6" fill="#FFBD2E"/>
+  <circle cx="122" cy="69" r="6" fill="#27C93F"/>
+  
+  <rect x="260" y="56" width="680" height="26" rx="6" fill="#040A12" stroke="#132742"/>
+  <text x="600" y="73" fill="#6B85A8" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">https://vishwarajpolychem.com</text>
+
+  <!-- Header -->
+  <text x="90" y="140" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800">VISHWARAJ POLYCHEM</text>
+  <text x="750" y="140" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Chemical Products</text>
+  <text x="890" y="140" fill="#94A3B8" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Industries</text>
+  <rect x="990" y="120" width="125" height="34" rx="6" fill="url(#blueV)"/>
+  <text x="1052" y="142" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Request Quote →</text>
+
+  <!-- Industrial Hero -->
+  <text x="90" y="225" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="12" letter-spacing="2">SPECIALTY POLYMERS &amp; INDUSTRIAL CHEMICALS</text>
+  <text x="90" y="280" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="44" font-weight="800">Precision Chemistry.</text>
+  <text x="90" y="335" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="44" font-weight="800">Global Reliability.</text>
+
+  <text x="90" y="385" fill="#8CA3BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="16">
+    High-performance polymer compounding, specialty formulations, and scalable industrial supply
+  </text>
+  <text x="90" y="410" fill="#8CA3BF" font-family="'Plus Jakarta Sans', sans-serif" font-size="16">
+    serving automotive, textiles, packaging, and infrastructure sectors across 15+ countries.
+  </text>
+
+  <!-- 3 Industrial Product Highlights -->
+  <rect x="90" y="450" width="310" height="210" rx="12" fill="#060E1A" stroke="#162D4A"/>
+  <text x="115" y="488" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="11">PRODUCT LINE 01</text>
+  <text x="115" y="520" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700">Polymer Masterbatches</text>
+  <text x="115" y="548" fill="#758DAE" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Color concentrates, UV stabilizers &amp; flame retardant additive solutions.</text>
+  <text x="115" y="625" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="12">View TDS &amp; MSDS ↗</text>
+
+  <rect x="430" y="450" width="310" height="210" rx="12" fill="#060E1A" stroke="#162D4A"/>
+  <text x="455" y="488" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="11">PRODUCT LINE 02</text>
+  <text x="455" y="520" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700">Engineering Compounds</text>
+  <text x="455" y="548" fill="#758DAE" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">High thermal resistance, glass fiber reinforced polyamides and alloys.</text>
+  <text x="455" y="625" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="12">View TDS &amp; MSDS ↗</text>
+
+  <rect x="770" y="450" width="310" height="210" rx="12" fill="#060E1A" stroke="#162D4A"/>
+  <text x="795" y="488" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="11">PRODUCT LINE 03</text>
+  <text x="795" y="520" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700">Specialty Dispersions</text>
+  <text x="795" y="548" fill="#758DAE" font-family="'Plus Jakarta Sans', sans-serif" font-size="13">Custom liquid additives, mold release agents, and specialized surface modifiers.</text>
+  <text x="795" y="625" fill="#006EFF" font-family="'JetBrains Mono', monospace" font-size="12">View TDS &amp; MSDS ↗</text>
+</svg>
