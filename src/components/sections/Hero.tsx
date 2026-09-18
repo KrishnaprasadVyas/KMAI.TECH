@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { ArrowDownRight, Sparkles } from 'lucide-react';
+import { ArrowDownRight } from 'lucide-react';
 import { GeometricK } from '../common/GeometricK';
 import { MagneticButton } from '../common/MagneticButton';
+import { SectionLabel } from '../common/SectionLabel';
 
 interface HeroProps {
   isLoaded: boolean;
@@ -100,8 +101,11 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
     <section
       ref={containerRef}
       id="hero"
-      className="relative min-h-screen w-full flex flex-col justify-between pt-32 pb-16 px-6 md:px-12 overflow-hidden bg-[#05070B]"
+      className="relative min-h-screen w-full flex flex-col justify-between pt-28 sm:pt-32 pb-12 sm:pb-16 px-6 md:px-12 overflow-hidden bg-[#05070B]"
     >
+      {/* Ultra-subtle technical grid */}
+      <div className="hero-grid" />
+
       {/* Background Ambient Electric Blue Aura */}
       <div className="absolute top-1/4 -right-20 w-[500px] h-[500px] rounded-full bg-[#006EFF]/15 blur-[130px] pointer-events-none" />
       <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#0044B0]/10 blur-[100px] pointer-events-none" />
@@ -116,36 +120,30 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
           <span>CREATIVE TECHNOLOGY STUDIO</span>
         </div>
         <div className="hidden sm:flex items-center gap-6">
-          <span>BUILT BY KRISHNAPRASAD VYAS, MAITHILI MAKKAR &amp; ALI ABU NAZAHAT</span>
-          <span>// 2026</span>
+          <span>KMAI.TECH</span>
+          <SectionLabel number="00" label="08" />
         </div>
       </div>
 
       {/* Main Hero Centerpiece */}
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-auto py-12">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto py-8 sm:py-12">
         {/* Left Column: Monumental Editorial Typography */}
         <div ref={headlineRef} className="lg:col-span-8 flex flex-col">
           <div className="overflow-hidden mb-1">
-            <span className="hero-line-inner block text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold tracking-tighter leading-[0.9] text-white">
+            <span className="hero-line-inner block text-[clamp(2.8rem,10vw,9rem)] font-extrabold tracking-tighter leading-[0.9] text-white">
               WE BUILD
             </span>
           </div>
 
           <div className="overflow-hidden mb-1">
-            <span className="hero-line-inner block text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold tracking-tighter leading-[0.9] text-white">
-              SMART
-            </span>
-          </div>
-
-          <div className="overflow-hidden">
-            <span className="hero-line-inner block text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-r from-[#006EFF] via-[#1683FF] to-[#38BDF8] drop-shadow-[0_0_40px_rgba(0,110,255,0.4)]">
+            <span className="hero-line-inner block text-[clamp(2.8rem,10vw,9rem)] font-extrabold tracking-tighter leading-[0.9] text-white">
               DIGITAL
             </span>
           </div>
 
           <div className="overflow-hidden">
-            <span className="hero-line-inner block text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold tracking-tighter leading-[0.9] text-white">
-              BUSINESSES.
+            <span className="hero-line-inner block text-[clamp(2.8rem,10vw,9rem)] font-extrabold tracking-tighter leading-[0.9] text-white text-glow">
+              SYSTEMS.
             </span>
           </div>
         </div>
@@ -166,8 +164,7 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
           </div>
 
           <div className="mt-8 text-center">
-            <span className="font-mono text-[11px] tracking-[0.25em] text-[#A0A7B1] uppercase flex items-center gap-2 justify-center">
-              <Sparkles size={12} className="text-[#006EFF]" />
+            <span className="font-mono text-[11px] tracking-[0.25em] text-[#A0A7B1] uppercase">
               INTERACTIVE IDENTITY // KMAI
             </span>
           </div>
@@ -178,18 +175,17 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
       <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-start md:items-end justify-between gap-8 pt-8 border-t border-white/5">
         <div ref={subtextRef} className="max-w-xl">
           <p className="font-mono text-xs text-[#006EFF] tracking-widest uppercase mb-2">
-            IDEAS → SYSTEMS → IMPACT
+            Web · Software · Automation · AI
           </p>
           <p className="text-base sm:text-lg text-[#A0A7B1] font-light leading-relaxed">
-            Software. Web Experiences. Automation. AI Solutions. We engineer robust digital engines
-            built around real business operations and measurable impact.
+            We engineer robust digital engines built around practical business operations.
           </p>
         </div>
 
-        <div ref={ctaRef} className="flex flex-wrap items-center gap-4">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row w-full sm:w-auto items-stretch sm:items-center gap-4">
           <MagneticButton
             variant="primary"
-            className="px-7 py-4 text-xs font-mono tracking-widest uppercase"
+            className="w-full sm:w-auto px-7 py-4 text-xs font-mono tracking-widest uppercase"
             onClick={scrollToWork}
             onMouseEnter={() => onCursorChange?.('button')}
             onMouseLeave={() => onCursorChange?.('default')}
@@ -200,7 +196,7 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
 
           <MagneticButton
             variant="outline"
-            className="px-7 py-4 text-xs font-mono tracking-widest uppercase"
+            className="w-full sm:w-auto px-7 py-4 text-xs font-mono tracking-widest uppercase"
             onClick={scrollToContact}
             onMouseEnter={() => onCursorChange?.('button')}
             onMouseLeave={() => onCursorChange?.('default')}

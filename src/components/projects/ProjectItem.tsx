@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import type { Project } from '../../types';
+import { AccentLine } from '../common/AccentLine';
 
 interface ProjectItemProps {
   project: Project;
@@ -17,31 +18,45 @@ export const ProjectItem: React.FC<ProjectItemProps> = ({
   onClick,
   onCursorChange,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
-      className="group relative border-b border-white/10 transition-all duration-300 cursor-pointer"
+      role="button"
+      tabIndex={0}
+      className="group relative border-b border-white/10 transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#006EFF] focus-visible:ring-offset-0 focus-visible:bg-white/[0.02]"
       onMouseEnter={() => {
+        setIsHovered(true);
         onHoverStart(project);
-        onCursorChange?.('project', 'VIEW PROJECT');
+        onCursorChange?.('project', 'VIEW ↗');
       }}
       onMouseLeave={() => {
+        setIsHovered(false);
         onHoverEnd();
         onCursorChange?.('default');
       }}
       onClick={() => onClick(project)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick(project);
+        }
+      }}
     >
+      {/* Expanding accent line at top */}
+      <AccentLine active={isHovered} />
       {/* Background row highlight on hover */}
       <div className="absolute inset-0 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       <div className="py-8 sm:py-12 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
         {/* Left Side: Index, Title, Status */}
         <div className="flex items-baseline gap-6 sm:gap-10 md:gap-14">
-          <span className="font-mono text-sm md:text-base text-[#A0A7B1] group-hover:text-[#006EFF] transition-colors duration-300">
+          <span className="font-mono text-sm md:text-base text-[#A0A7B1] group-hover:text-[#006EFF] group-hover:translate-x-1 transition-all duration-300">
             {project.number}
           </span>
 
           <div>
-            <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#F3F5F7] group-hover:text-white group-hover:translate-x-3 transition-all duration-300 tracking-tight">
+            <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#F3F5F7] group-hover:text-white group-hover:translate-x-2 transition-all duration-300 tracking-tight">
               {project.title}
             </h3>
             <p className="md:hidden mt-2 text-sm text-[#A0A7B1] font-light">

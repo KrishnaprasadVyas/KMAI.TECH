@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { services } from '../../data/services';
+import { SectionLabel } from '../common/SectionLabel';
 
 interface ServicesProps {
   onCursorChange?: (variant: 'default' | 'button' | 'project' | 'image' | 'footer', text?: string) => void;
@@ -18,9 +19,7 @@ export const Services: React.FC<ServicesProps> = ({ onCursorChange }) => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 border-b border-white/10 pb-8">
           <div>
-            <span className="font-mono text-xs tracking-widest text-[#006EFF] uppercase block mb-3">
-              // EXPERTISE &amp; CAPABILITIES
-            </span>
+            <SectionLabel number="01" label="SERVICES" className="mb-4" />
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight">
               WHAT WE BUILD
             </h2>
@@ -38,7 +37,7 @@ export const Services: React.FC<ServicesProps> = ({ onCursorChange }) => {
             return (
               <div
                 key={service.number}
-                className="group relative border-b border-white/10 transition-all duration-500 cursor-pointer"
+                className="group relative border-b border-white/10 transition-all duration-500"
                 onMouseEnter={() => {
                   setActiveService(idx);
                   onCursorChange?.('button');
@@ -46,7 +45,6 @@ export const Services: React.FC<ServicesProps> = ({ onCursorChange }) => {
                 onMouseLeave={() => {
                   onCursorChange?.('default');
                 }}
-                onClick={() => setActiveService(isActive ? null : idx)}
               >
                 {/* Expanding Blue Hover Line Accent */}
                 <div
@@ -56,6 +54,13 @@ export const Services: React.FC<ServicesProps> = ({ onCursorChange }) => {
                 />
 
                 <div className="py-8 md:py-12 flex flex-col transition-all duration-300">
+                  <button
+                    type="button"
+                    aria-expanded={isActive}
+                    aria-controls={`service-content-${idx}`}
+                    onClick={() => setActiveService(isActive ? null : idx)}
+                    className="w-full text-left flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-[#006EFF] focus-visible:ring-offset-8 focus-visible:ring-offset-[#05070B] rounded-lg"
+                  >
                   {/* Primary Row Header */}
                   <div className="flex items-baseline justify-between gap-4">
                     <div className="flex items-baseline gap-6 md:gap-14">
@@ -98,9 +103,11 @@ export const Services: React.FC<ServicesProps> = ({ onCursorChange }) => {
                   <p className="mt-3 ml-12 md:ml-20 text-sm md:text-base text-[#A0A7B1] font-light max-w-2xl">
                     {service.summary}
                   </p>
+                  </button>
 
                   {/* Expanded Content Drawer */}
                   <div
+                    id={`service-content-${idx}`}
                     className={`grid transition-all duration-500 ease-in-out overflow-hidden ${
                       isActive
                         ? 'grid-rows-[1fr] opacity-100 mt-8'

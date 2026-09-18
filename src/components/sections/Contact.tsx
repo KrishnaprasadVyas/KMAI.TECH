@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight, Mail, Phone, Globe, MessageSquare } from 'lucide-react';
 import { MagneticButton } from '../common/MagneticButton';
+import { SectionLabel } from '../common/SectionLabel';
 
 interface ContactProps {
   onCursorChange?: (variant: 'default' | 'button' | 'project' | 'image' | 'footer', text?: string) => void;
@@ -10,26 +11,21 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
   return (
     <section
       id="contact"
-      className="relative py-28 md:py-44 px-6 md:px-12 bg-[#05070B] overflow-hidden"
+      className="relative py-32 md:py-52 px-6 md:px-12 bg-[#05070B] overflow-hidden"
     >
       {/* Background Electric Blue Glow */}
       <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full bg-[#006EFF]/15 blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex items-center gap-3 mb-10">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#006EFF] shadow-[0_0_12px_#006EFF] animate-pulse" />
-          <span className="font-mono text-xs tracking-widest text-[#006EFF] uppercase">
-            // INITIATE COLLABORATION
-          </span>
-        </div>
+        <SectionLabel number="08" label="CONTACT" className="mb-10" />
 
         {/* Monumental Headline */}
         <div className="mb-16">
-          <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-extrabold text-white tracking-tighter leading-[0.92]">
-            LET'S BUILD<br />
-            SOMETHING<br />
+          <h2 className="text-[11vw] sm:text-7xl md:text-8xl lg:text-[7rem] font-extrabold text-white tracking-tighter leading-[0.92]">
+            HAVE SOMETHING<br />
+            WORTH<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#006EFF] via-[#1683FF] to-[#38BDF8] drop-shadow-[0_0_40px_rgba(0,110,255,0.4)]">
-              USEFUL.
+              BUILDING?
             </span>
           </h2>
         </div>
@@ -46,12 +42,12 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
           </div>
 
           {/* Large Action Buttons */}
-          <div className="lg:col-span-6 flex flex-wrap gap-4 lg:justify-end">
+          <div className="lg:col-span-6 flex flex-col sm:flex-row w-full sm:w-auto items-stretch sm:items-center gap-4 lg:justify-end">
             <MagneticButton
               as="a"
               href="mailto:krishnaprasadvyas@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20KMAI.tech"
               variant="primary"
-              className="px-8 py-5 text-xs sm:text-sm font-mono tracking-widest uppercase"
+              className="w-full sm:w-auto px-8 py-5 text-xs sm:text-sm font-mono tracking-widest uppercase"
               onMouseEnter={() => onCursorChange?.('button')}
               onMouseLeave={() => onCursorChange?.('default')}
             >
@@ -65,7 +61,7 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
               target="_blank"
               rel="noopener noreferrer"
               variant="secondary"
-              className="px-8 py-5 text-xs sm:text-sm font-mono tracking-widest uppercase"
+              className="w-full sm:w-auto px-8 py-5 text-xs sm:text-sm font-mono tracking-widest uppercase"
               onMouseEnter={() => onCursorChange?.('button')}
               onMouseLeave={() => onCursorChange?.('default')}
             >

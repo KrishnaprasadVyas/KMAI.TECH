@@ -18,7 +18,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (isTouch || prefersReducedMotion) return;
+    if (isTouch || prefersReducedMotion || !isVisible) return;
 
     const el = containerRef.current;
     if (!el) return;
@@ -47,7 +47,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [isTouch, prefersReducedMotion]);
+  }, [isTouch, prefersReducedMotion, isVisible]);
 
   if (isTouch || prefersReducedMotion) return null;
 

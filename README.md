@@ -23,7 +23,7 @@ Repository: [https://github.com/KrishnaprasadVyas/KMAI.TECH](https://github.com/
 
 ## ✦ Technical Architecture
 
-Built with a strict 60fps performance budget, zero template bloat, and modern type safety:
+Built with a focus on performance, minimal template bloat, and modern type safety:
 
 - **Framework**: React 19 + TypeScript + Vite
 - **Styling**: Tailwind CSS (with custom design tokens, clip-path utilities, and subtle grain overlay)
@@ -45,7 +45,7 @@ Built with a strict 60fps performance budget, zero template bloat, and modern ty
    - Session storage caching for snappy return visits.
 
 2. **Dennis Snellenberg-Inspired Floating Cursor Preview**:
-   - High-performance RAF and GSAP `quickTo` cursor tracking.
+   - High-performance cursor tracking.
    - Floating project preview card with momentum-based rotation and tilt physics.
    - Row expansion with smooth typographic shifts.
    - Morphing cursor badges: `"VIEW PROJECT"`, `"EXPLORE"`, `"LET'S TALK"`, and magnetic button snap.
