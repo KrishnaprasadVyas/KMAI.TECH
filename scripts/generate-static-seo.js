@@ -139,9 +139,13 @@ function createPageHtml(baseHtml, { title, description, url, image, type = 'webs
   html = html.replace(/<meta property="twitter:description" content=".*?"\s*\/?>/i, `<meta property="twitter:description" content="${escapeHtml(description)}" />`);
   html = html.replace(/<meta property="twitter:image" content=".*?"\s*\/?>/i, `<meta property="twitter:image" content="${image}" />`);
 
-  // Inject Page-Specific Semantic Body Content inside <div id="root">
+  // Inject Page-Specific Semantic Body Content inside <noscript> (Prevents FOUC for JS users)
   if (bodyContent) {
-    html = html.replace(/<div id="root">[\s\S]*?<\/div>/, `<div id="root">\n${bodyContent}\n    </div>`);
+    if (/<noscript>[\s\S]*?<\/noscript>/.test(html)) {
+      html = html.replace(/<noscript>[\s\S]*?<\/noscript>/, `<noscript>\n${bodyContent}\n    </noscript>`);
+    } else {
+      html = html.replace('</body>', `  <noscript>\n${bodyContent}\n  </noscript>\n</body>`);
+    }
   }
 
   // Append page-specific structured data before </head> if provided

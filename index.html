@@ -153,9 +153,10 @@
     <link rel="preload" href="/cursor-outline-white.png" as="image" />
   </head>
   <body class="bg-[#F2F0EA] text-[#0A0C0F] font-body antialiased selection:bg-[#216BFF] selection:text-white overflow-x-hidden">
-    <div id="root">
-      <!-- Semantic Static Fallback for AI Crawlers & Search Engines (Replaced seamlessly by React on load) -->
-      <main style="max-width: 1200px; margin: 0 auto; padding: 48px 24px;">
+    <div id="root"></div>
+    <noscript>
+      <!-- Semantic Static Fallback for AI Crawlers & Non-JS Clients (Zero flash for JS-enabled browsers) -->
+      <main style="max-width: 1200px; margin: 0 auto; padding: 48px 24px; font-family: sans-serif;">
         <header>
           <p style="text-transform: uppercase; font-size: 14px; letter-spacing: 0.1em; color: #595D65;">Creative Technology Studio</p>
           <h1 style="font-size: 40px; margin: 8px 0 16px 0;">KMAI.tech — Engineering Digital Systems & Bespoke Software</h1>
@@ -205,11 +206,6 @@
           <p><a href="/start-a-project" style="font-weight: bold; color: #216BFF;">Inquire about starting a project &rarr;</a> | Email: <a href="mailto:contact@kmai.tech">contact@kmai.tech</a></p>
         </section>
       </main>
-    </div>
-    <noscript>
-      <div style="padding: 24px; text-align: center; font-family: sans-serif; background: #0A0C0F; color: #F2F0EA;">
-        <p>JavaScript is required for the interactive experience. For studio inquiries, reach out at <a href="mailto:contact@kmai.tech" style="color: #216BFF;">contact@kmai.tech</a> or visit <a href="/start-a-project" style="color: #216BFF;">our inquiry page</a>.</p>
-      </div>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
