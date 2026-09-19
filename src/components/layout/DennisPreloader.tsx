@@ -12,11 +12,18 @@ export const DennisPreloader: React.FC<DennisPreloaderProps> = ({ onComplete }) 
   const pathRef = useRef<SVGPathElement>(null);
   const kRef = useRef<HTMLDivElement>(null);
   const prefersReduced = usePrefersReducedMotion();
-  const [dim, setDim] = useState({ w: 0, h: 0 });
+  const [dim, setDim] = useState(() => ({
+    w: typeof window !== 'undefined' ? window.innerWidth : 1440,
+    h: typeof window !== 'undefined' ? window.innerHeight : 900,
+  }));
 
-  // Capture window dimensions after mount (SSR-safe)
+  // Update window dimensions on resize
   useEffect(() => {
-    setDim({ w: window.innerWidth, h: window.innerHeight });
+    const handleResize = () => {
+      setDim({ w: window.innerWidth, h: window.innerHeight });
+    };
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -85,8 +92,6 @@ export const DennisPreloader: React.FC<DennisPreloaderProps> = ({ onComplete }) 
       gsap.killTweensOf([kEl, path, overlay]);
     };
   }, [dim, prefersReduced, onComplete]);
-
-  if (dim.w === 0) return null;
 
   const { w, h } = dim;
   const curvedPath = `M0 0 L${w} 0 L${w} ${h} Q${w / 2} ${h + 300} 0 ${h} L0 0`;

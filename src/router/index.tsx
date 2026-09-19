@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-const Home = lazy(() => import('../pages/Home'));
+import Home from '../pages/Home';
 const ProjectDetail = lazy(() => import('../pages/ProjectDetail'));
 const StartProject = lazy(() => import('../pages/StartProject'));
 const NotFound = lazy(() => import('../pages/NotFound'));

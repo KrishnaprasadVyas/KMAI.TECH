@@ -70,7 +70,7 @@ export function App() {
           <Navbar onCursorChange={handleCursorChange} isIntroActive={isIntroActive} />
 
           {/* Main Experience Stream */}
-          <main className="w-full relative z-10">
+          <main className="w-full relative z-10 min-h-screen">
             <AppRouter isLoaded={!isIntroActive} onCursorChange={handleCursorChange} />
           </main>
 
