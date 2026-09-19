@@ -20,6 +20,42 @@
     font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
+  /* Hide default OS cursor globally so custom cursor is exclusively shown */
+  html,
+  body,
+  *,
+  *::before,
+  *::after,
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  [role="button"],
+  .cursor-pointer,
+  .cursor-default {
+    cursor: none !important;
+  }
+
+  /* Restore cursor only for purely touch mobile devices without hover */
+  @media (hover: none) and (pointer: coarse) {
+    html,
+    body,
+    *,
+    *::before,
+    *::after,
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    [role="button"],
+    .cursor-pointer,
+    .cursor-default {
+      cursor: auto !important;
+    }
+  }
+
   #root {
     width: 100% !important;
     max-width: 100% !important;
@@ -130,5 +166,26 @@
 
   .clip-hidden {
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+
+  @keyframes studioScroll {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(120%);
+      opacity: 0;
+    }
+  }
+
+  .animate-studio-scroll {
+    animation: studioScroll 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
 }

@@ -58,12 +58,8 @@ export const ProjectItem: React.FC<ProjectItemProps> = ({
               {project.category}
             </span>
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-[11px] font-mono text-[#73777F]">
+              <span className="text-[11px] font-body text-[#73777F]">
                 {project.year}
-              </span>
-              <span className="text-white/20">•</span>
-              <span className="text-[10px] font-mono text-[#216BFF] uppercase tracking-wider">
-                {project.status}
               </span>
             </div>
           </div>

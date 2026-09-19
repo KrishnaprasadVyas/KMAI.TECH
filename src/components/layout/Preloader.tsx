@@ -67,7 +67,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           onComplete();
         },
       });
-    }, containerRef);
+    }, containerRef.current || undefined);
 
     return () => ctx.revert();
   }, [onComplete]);
@@ -98,14 +98,10 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           />
         </div>
 
-        {/* Quiet Tabular Metadata & Progress */}
-        <div className="flex items-center justify-between w-48 sm:w-56 font-mono text-[11px] tracking-widest text-[#8E939E] uppercase">
-          <span className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#216BFF]" />
-            <span>STUDIO</span>
-          </span>
-          <span className="tabular-nums text-white/90">
-            {String(counter).padStart(2, '0')}%
+        {/* Quiet counter */}
+        <div className="w-48 sm:w-56 flex justify-center">
+          <span className="font-display font-bold text-sm text-white/60 tabular-nums">
+            {String(counter).padStart(2, '0')}
           </span>
         </div>
       </div>

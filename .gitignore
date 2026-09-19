@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Testing and tool artifacts
+test-results/
+.agent/
+awwwards-landing-page/
+

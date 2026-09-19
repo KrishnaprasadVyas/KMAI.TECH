@@ -6,7 +6,7 @@ export const projects: Project[] = [
     slug: 'shri-gurudev-ashram',
     number: '01',
     title: 'Shri Gurudev Ashram',
-    category: 'Web Platform / Donation System',
+    category: 'Web Platform & Donation System',
     year: '2025',
     status: 'COMPLETED',
     shortDescription: 'Comprehensive spiritual digital platform & donor management ecosystem.',

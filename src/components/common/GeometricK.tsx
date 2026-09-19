@@ -5,30 +5,35 @@ interface GeometricKProps {
   size?: number;
   theme?: 'light' | 'dark'; // 'light' is for Paper canvas (#F2F0EA); 'dark' is for Navy canvas (#101827)
   glow?: boolean;
-  variant?: 'mark' | 'badge';
+  variant?: 'mark' | 'badge' | 'monumental' | 'aperture';
 }
 
 export const GeometricK: React.FC<GeometricKProps> = ({
   className = '',
-  size = 32,
+  size = 24,
   theme = 'light',
+  variant = 'mark',
 }) => {
   const spineColor = theme === 'light' ? '#0A0C0F' : '#F2F0EA';
   const armColor = '#216BFF'; // Electric Blue graphic accent
   const legColor = theme === 'light' ? '#0A0C0F' : '#F2F0EA';
 
+  const isMonumental = variant === 'monumental' || variant === 'aperture';
+  const width = isMonumental ? '100%' : Math.round(size * (104 / 154));
+  const height = isMonumental ? '100%' : size;
+
   return (
     <div
-      className={`inline-flex items-center justify-center select-none ${className}`}
-      style={{ width: size, height: size }}
+      className={`inline-flex items-center justify-center select-none shrink-0 ${className}`}
+      style={{ width, height }}
       aria-label="KMAI Geometric Emblem"
       role="img"
     >
       <svg
-        viewBox="0 0 200 200"
+        viewBox="48 22 104 154"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full"
+        className="w-full h-full block"
       >
         {/* 1. Monolithic Vertical Spine (Sharp Architectural Polygon) */}
         <polygon

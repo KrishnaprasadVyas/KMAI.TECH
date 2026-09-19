@@ -23,6 +23,7 @@ export default {
         sans: ['Geist', 'sans-serif'],
         serif: ['"Instrument Serif"', 'serif'],
         mono: ['"IBM Plex Mono"', 'monospace'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       letterSpacing: {
         tighter: '-0.04em',

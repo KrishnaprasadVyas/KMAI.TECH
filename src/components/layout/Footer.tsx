@@ -1,8 +1,10 @@
 import React from 'react';
 import { GeometricK } from '../common/GeometricK';
 
+import type { CursorVariant } from '../common/CustomCursor';
+
 interface FooterProps {
-  onCursorChange?: (variant: 'default' | 'button' | 'project' | 'image' | 'footer', text?: string) => void;
+  onCursorChange?: (variant: CursorVariant, text?: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
@@ -12,7 +14,7 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
   };
 
   return (
-    <footer className="w-full py-16 sm:py-20 px-6 sm:px-10 md:px-16 border-t border-white/[0.08] bg-[#07090E]">
+    <footer data-theme="dark" className="w-full py-16 sm:py-20 px-6 sm:px-10 md:px-16 border-t border-white/[0.08] bg-[#07090E]">
       <div className="w-full max-w-[1540px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
         {/* Brand & Direct Links */}
         <div className="flex items-center gap-4">

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, Check, Copy } from 'lucide-react';
+import type { CursorVariant } from '../common/CustomCursor';
+import { CurvedHorizon } from '../common/CurvedHorizon';
+import { RoundedButton } from '../common/RoundedButton';
+import { Magnetic } from '../common/Magnetic';
 
 interface ContactProps {
-  onCursorChange?: (variant: 'default' | 'button' | 'project' | 'image' | 'footer', text?: string) => void;
+  onCursorChange?: (variant: CursorVariant, text?: string) => void;
 }
 
 export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
@@ -25,7 +29,15 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
   };
 
   return (
-    <section id="contact" className="relative scroll-mt-24 w-full bg-[#07090E] text-[#F5F5F7] py-28 sm:py-36 md:py-48 px-6 sm:px-10 md:px-16">
+    <div className="relative w-full bg-[#F2F0EA]">
+      {/* Dennis Snellenberg Signature Curved Horizon Transition */}
+      <CurvedHorizon fillColor="#07090E" />
+
+      <section
+        id="contact"
+        data-theme="dark"
+        className="relative scroll-mt-24 w-full bg-[#07090E] text-[#F5F5F7] py-28 sm:py-36 md:py-48 px-6 sm:px-10 md:px-16"
+      >
       <div className="w-full max-w-[1540px] mx-auto">
         {/* Monumental Climax Statement */}
         <div className="mb-20 sm:mb-28">
@@ -49,26 +61,28 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
             <div className="space-y-4 pt-4">
               <div>
                 <span className="font-body text-xs text-[#8E939E] block mb-1">Direct email</span>
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  onMouseEnter={() => onCursorChange?.('button')}
-                  onMouseLeave={() => onCursorChange?.('default')}
-                  className="group inline-flex items-center gap-3 font-display text-xl sm:text-2xl font-bold text-white hover:text-[#216BFF] transition-colors"
-                >
-                  <span>contact@kmai.tech</span>
-                  {isCopied ? (
-                    <Check size={16} className="text-emerald-400" />
-                  ) : (
-                    <Copy size={16} className="text-white/40 group-hover:text-white transition-colors" />
-                  )}
-                </button>
+                <Magnetic strength={0.3}>
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    onMouseEnter={() => onCursorChange?.('button')}
+                    onMouseLeave={() => onCursorChange?.('default')}
+                    className="group inline-flex items-center gap-3 font-display text-xl sm:text-2xl font-bold text-white hover:text-[#216BFF] transition-colors py-1"
+                  >
+                    <span>contact@kmai.tech</span>
+                    {isCopied ? (
+                      <Check size={16} className="text-emerald-400" />
+                    ) : (
+                      <Copy size={16} className="text-white/40 group-hover:text-white transition-colors" />
+                    )}
+                  </button>
+                </Magnetic>
               </div>
 
               <div>
                 <span className="font-body text-xs text-[#8E939E] block mb-1">Direct inquiries</span>
                 <p className="font-body text-base text-white/80">
-                  Response within 24 hours. Confidential NDA provided upon request.
+                  Response within 24 hours.
                 </p>
               </div>
             </div>
@@ -132,15 +146,20 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
                 </div>
 
                 <div className="pt-4">
-                  <button
+                  <RoundedButton
                     type="submit"
+                    backgroundColor="#216BFF"
+                    hoverTextColor="white"
+                    restTextColor="#F2F0EA"
                     onMouseEnter={() => onCursorChange?.('button')}
                     onMouseLeave={() => onCursorChange?.('default')}
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-[2px] bg-white hover:bg-[#216BFF] text-[#07090E] hover:text-white font-body text-base font-medium tracking-normal transition-colors duration-200"
+                    className="border-white/30 px-8 py-4 text-base tracking-normal font-medium"
                   >
-                    <span>Send inquiry</span>
-                    <ArrowUpRight size={18} />
-                  </button>
+                    <span className="inline-flex items-center gap-3">
+                      <span>Send inquiry</span>
+                      <ArrowUpRight size={18} />
+                    </span>
+                  </RoundedButton>
                 </div>
               </form>
             )}
@@ -148,5 +167,6 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
         </div>
       </div>
     </section>
+    </div>
   );
 };

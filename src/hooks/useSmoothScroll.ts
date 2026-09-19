@@ -3,6 +3,8 @@ import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import { registerLenisInstance } from './useScrollVelocity';
+
 gsap.registerPlugin(ScrollTrigger);
 
 export function useSmoothScroll(enabled: boolean = true) {
@@ -29,6 +31,8 @@ export function useSmoothScroll(enabled: boolean = true) {
     });
 
     lenisRef.current = lenis;
+    registerLenisInstance(lenis);
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
 
     // Synchronize Lenis scroll with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
@@ -41,6 +45,7 @@ export function useSmoothScroll(enabled: boolean = true) {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      registerLenisInstance(null);
       gsap.ticker.remove(updateTicker);
       lenis.destroy();
       lenisRef.current = null;

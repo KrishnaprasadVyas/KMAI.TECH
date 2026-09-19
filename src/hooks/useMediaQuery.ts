@@ -26,11 +26,10 @@ export function useIsTouchDevice(): boolean {
 
   useEffect(() => {
     const checkTouch = () => {
-      setIsTouch(
-        'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0 ||
-        window.matchMedia('(pointer: coarse)').matches
-      );
+      // Pure touch devices (smartphones/tablets) have hover: none and pointer: coarse.
+      // Laptops/desktops with touchscreens still have hover: hover and pointer: fine!
+      const isPureTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+      setIsTouch(isPureTouch);
     };
 
     checkTouch();

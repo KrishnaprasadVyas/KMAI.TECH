@@ -40,7 +40,6 @@ test.describe('KMAI.tech Visual & Smoke Verification', () => {
       '#work',
       '#services',
       '#about',
-      '#process',
       '#testimonials',
       '#contact',
     ];

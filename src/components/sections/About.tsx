@@ -1,7 +1,8 @@
 import React from 'react';
+import type { CursorVariant } from '../common/CustomCursor';
 
 interface AboutProps {
-  onCursorChange?: (variant: 'default' | 'button' | 'project' | 'image' | 'footer', text?: string) => void;
+  onCursorChange?: (variant: CursorVariant, text?: string) => void;
 }
 
 export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
@@ -30,7 +31,7 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
   ];
 
   return (
-    <section id="about" className="relative scroll-mt-24 w-full py-28 sm:py-36 md:py-48 px-6 sm:px-10 md:px-16">
+    <section id="about" data-theme="light" className="relative scroll-mt-24 w-full py-28 sm:py-36 md:py-48 px-6 sm:px-10 md:px-16">
       <div className="w-full max-w-[1540px] mx-auto">
         {/* Section Header */}
         <div className="mb-20 sm:mb-28">
@@ -42,8 +43,8 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
           </p>
         </div>
 
-        {/* Founders Editorial Showcase (Human, Pure Typography & Whitespace, Zero Boxed Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16 lg:gap-24">
+        {/* Founders Editorial Showcase */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16 lg:gap-24 border-t border-black/10 pt-16">
           {founders.map((founder) => (
             <div
               key={founder.name}
@@ -51,14 +52,11 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
               onMouseEnter={() => onCursorChange?.('button')}
               onMouseLeave={() => onCursorChange?.('default')}
             >
-              {/* Initials / Architectural Monogram */}
-              <div className="w-16 h-16 rounded-[2px] bg-[#0A0C0F] group-hover:bg-[#216BFF] flex items-center justify-center text-[#F2F0EA] group-hover:text-white transition-colors duration-300">
-                <span className="font-display font-bold text-xl tracking-tight">
-                  {founder.initials}
-                </span>
+              {/* Minimalist Monogram / Initials */}
+              <div className="w-14 h-14 rounded-[2px] bg-[#0A0C0F] text-[#F2F0EA] flex items-center justify-center font-display font-bold text-lg tracking-wider transition-colors group-hover:bg-[#216BFF]">
+                {founder.initials}
               </div>
 
-              {/* Identity & Role */}
               <div className="space-y-1">
                 <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#0A0C0F] tracking-tight">
                   {founder.name}
@@ -66,12 +64,11 @@ export const About: React.FC<AboutProps> = ({ onCursorChange }) => {
                 <p className="font-body text-sm font-medium text-[#216BFF]">
                   {founder.role}
                 </p>
-                <p className="font-body text-xs text-[#73777F]">
+                <p className="font-body text-xs text-[#73777F] tracking-wide pt-0.5">
                   {founder.focus}
                 </p>
               </div>
 
-              {/* Bio */}
               <p className="font-body text-base text-[#595D65] font-normal leading-relaxed">
                 {founder.bio}
               </p>

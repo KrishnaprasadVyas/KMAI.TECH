@@ -1,145 +1,225 @@
-import React, { useEffect } from 'react';
-import { X, ExternalLink, CheckCircle, Layers, Activity } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import gsap from 'gsap';
+import { X, ExternalLink } from 'lucide-react';
 import type { Project } from '../../types';
+import { pauseLenis, resumeLenis } from '../../hooks/useScrollVelocity';
+import type { CursorVariant } from '../common/CustomCursor';
 
 interface CaseStudyModalProps {
   project: Project | null;
   onClose: () => void;
+  onCursorChange?: (variant: CursorVariant, text?: string) => void;
 }
 
-export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose }) => {
+export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose, onCursorChange }) => {
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [activeProject, setActiveProject] = useState<Project | null>(project);
+
+  // Sync internal state with prop
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+    if (project) {
+      setActiveProject(project);
+    }
+  }, [project]);
+
+  useEffect(() => {
+    if (!activeProject) return;
+
+    // Pause Lenis smooth scrolling during modal view
+    pauseLenis();
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+    document.body.style.overflow = 'hidden';
+
+    // Cinematic expansion entrance animation
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion && backdropRef.current && containerRef.current) {
+      gsap.fromTo(
+        backdropRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.32, ease: 'power2.out' }
+      );
+
+      gsap.fromTo(
+        containerRef.current,
+        { opacity: 0, scale: 0.96, y: 24 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.38, ease: 'power3.out' }
+      );
+    }
+
+    // Direct wheel scrolling listener ensuring native mouse wheel response
+    const scrollEl = scrollContainerRef.current;
+    const handleWheel = (e: WheelEvent) => {
+      e.stopPropagation();
+      if (scrollEl) {
+        scrollEl.scrollTop += e.deltaY;
+      }
     };
 
-    if (project) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', handleKeyDown);
-    } else {
-      document.body.style.overflow = '';
+    if (scrollEl) {
+      scrollEl.addEventListener('wheel', handleWheel, { passive: true });
     }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+      resumeLenis();
       window.removeEventListener('keydown', handleKeyDown);
+      if (scrollEl) {
+        scrollEl.removeEventListener('wheel', handleWheel);
+      }
     };
-  }, [project, onClose]);
+  }, [activeProject]);
 
-  if (!project) return null;
+  const handleClose = () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  return (
+    if (!prefersReducedMotion && backdropRef.current && containerRef.current) {
+      gsap.to(backdropRef.current, { opacity: 0, duration: 0.22, ease: 'power2.in' });
+      gsap.to(containerRef.current, {
+        opacity: 0,
+        scale: 0.97,
+        y: 16,
+        duration: 0.24,
+        ease: 'power3.in',
+        onComplete: () => {
+          setActiveProject(null);
+          onClose();
+        },
+      });
+    } else {
+      setActiveProject(null);
+      onClose();
+    }
+  };
+
+  if (!project && !activeProject) return null;
+  const current = project || activeProject;
+  if (!current) return null;
+
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-project-title"
-      className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-md animate-[fadeIn_0.2s_ease-out]"
+      data-lenis-prevent="true"
+      data-lenis-prevent-wheel="true"
+      className="fixed inset-0 z-[99950] flex items-center justify-center p-4 sm:p-6 md:p-10"
     >
-      {/* Backdrop click area */}
-      <div className="absolute inset-0 cursor-pointer" onClick={onClose} aria-hidden="true" />
+      {/* Cinematic Blur Backdrop */}
+      <div
+        ref={backdropRef}
+        data-theme="dark"
+        className="absolute inset-0 bg-black/85 backdrop-blur-md cursor-pointer transition-opacity"
+        onClick={handleClose}
+        aria-hidden="true"
+      />
 
-      {/* Modal Container */}
-      <div className="relative z-10 w-full max-w-5xl max-h-[90vh] bg-[#101827] border border-[#2A303B] rounded-[2px] shadow-2xl overflow-hidden flex flex-col">
+      {/* Expanded Modal Shell */}
+      <div
+        ref={containerRef}
+        data-theme="light"
+        data-lenis-prevent="true"
+        data-lenis-prevent-wheel="true"
+        className="relative z-10 w-full max-w-5xl max-h-[90vh] bg-[#F2F0EA] text-[#0A0C0F] border border-black/[0.08] rounded-[2px] shadow-2xl overflow-hidden flex flex-col"
+      >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-[#2A303B] bg-[#0E1523]">
-          <div className="flex items-center gap-3 sm:gap-4">
-            <span className="font-mono text-xs sm:text-sm text-[#216BFF] font-bold tracking-wider uppercase">
-              PROJECT // {project.number}
-            </span>
-            <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-white/20" />
-            <span className="hidden sm:inline-block font-mono text-xs text-[#73777F] uppercase tracking-wider">
-              {project.category}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <span className="hidden sm:inline-block font-mono text-[10px] text-[#73777F] tracking-wider uppercase">
-              [ ESC TO CLOSE ]
-            </span>
-            <button
-              type="button"
-              onClick={onClose}
-              className="w-8 h-8 rounded-[2px] border border-[#2A303B] hover:border-white/40 bg-transparent text-white flex items-center justify-center transition-colors"
-              aria-label="Close modal"
-            >
-              <X size={16} />
-            </button>
-          </div>
+        <div className="flex items-center justify-between px-6 sm:px-8 py-4 border-b border-black/[0.08] bg-[#F2F0EA] shrink-0">
+          <span className="font-body text-sm text-[#73777F]">{current.category}</span>
+          <button
+            type="button"
+            onClick={handleClose}
+            onMouseEnter={() => onCursorChange?.('button')}
+            onMouseLeave={() => onCursorChange?.('default')}
+            className="w-8 h-8 rounded-[2px] border border-black/[0.08] hover:border-black/30 bg-transparent text-[#0A0C0F] flex items-center justify-center transition-colors"
+            aria-label="Close modal"
+          >
+            <X size={16} />
+          </button>
         </div>
 
-        {/* Scrollable Modal Body */}
-        <div className="overflow-y-auto p-6 sm:p-8 md:p-10 space-y-8">
-          {/* Title & Metadata Header */}
+        {/* Scrollable Case Study Body */}
+        <div
+          ref={scrollContainerRef}
+          data-lenis-prevent="true"
+          data-lenis-prevent-wheel="true"
+          className="overflow-y-auto flex-1 min-h-0 p-6 sm:p-8 md:p-10 space-y-8"
+        >
+          {/* Title & Metadata */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <div className="flex items-center gap-3 mb-3">
-                <span className="px-2.5 py-1 rounded-[2px] text-[11px] font-mono font-medium tracking-wider bg-[#0E1523] text-[#216BFF] border border-[#2A303B] uppercase">
-                  ● {project.status}
-                </span>
-                <span className="font-mono text-xs text-[#73777F] uppercase">
-                  RELEASE YEAR: {project.year}
-                </span>
+                <span className="font-body text-sm text-[#595D65]">{current.year}</span>
               </div>
               <h2
                 id="modal-project-title"
-                className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
+                className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A0C0F] tracking-tight"
               >
-                {project.title}
+                {current.title}
               </h2>
             </div>
 
-            {/* Launch live site button */}
-            {project.url ? (
+            {/* Action link */}
+            {current.url ? (
               <a
-                href={project.url}
+                href={current.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-[2px] bg-[#216BFF] hover:bg-[#0D43B8] text-white font-body text-[13px] font-medium tracking-wide transition-colors shrink-0"
+                onMouseEnter={() => onCursorChange?.('button')}
+                onMouseLeave={() => onCursorChange?.('default')}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-[2px] bg-[#0A0C0F] hover:bg-[#216BFF] text-[#F2F0EA] font-body text-[13px] font-medium transition-colors shrink-0"
               >
-                <span>OPEN LIVE WEBSITE</span>
+                <span>Visit live site</span>
                 <ExternalLink size={14} />
               </a>
             ) : (
-              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[2px] bg-[#0E1523] border border-[#2A303B] text-[#73777F] font-mono text-xs tracking-wider shrink-0">
-                <Activity size={14} className="text-[#216BFF]" />
-                <span>PRIVATE CLIENT DEPLOYMENT</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[2px] bg-[#0A0C0F]/[0.06] text-[#595D65] font-body text-sm shrink-0">
+                <span>Private deployment</span>
               </div>
             )}
           </div>
 
-          {/* Project Visual Showcase (Hero WebP) */}
-          <div className="w-full rounded-[2px] overflow-hidden border border-[#2A303B] bg-[#0A0D14]">
+          {/* Monumental Hero Image */}
+          <div className="w-full rounded-[2px] overflow-hidden border border-black/[0.08] bg-[#E5E2D8]">
             <img
-              src={project.image}
-              alt={project.title}
+              src={current.image}
+              alt={current.title}
               className="w-full h-auto object-cover"
             />
           </div>
 
-          {/* Detailed Project Breakdown Grid */}
+          {/* Project Architecture & Stack */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-4">
-            {/* Overview & Deliverables */}
             <div className="md:col-span-7 space-y-5">
               <div>
-                <h3 className="font-mono text-xs text-[#216BFF] tracking-widest uppercase flex items-center gap-2 mb-3">
-                  <Layers size={14} />
-                  SYSTEM ARCHITECTURE &amp; SCOPE
+                <h3 className="font-display font-semibold text-lg text-[#0A0C0F] mb-3">
+                  About the project
                 </h3>
-                <p className="font-body text-[#CBD5E1] text-base sm:text-lg leading-relaxed font-normal">
-                  {project.description}
+                <p className="font-body text-[#595D65] text-base sm:text-lg leading-relaxed font-normal">
+                  {current.description}
                 </p>
               </div>
 
-              {/* Deliverables */}
-              {project.deliverables && (
-                <div className="pt-4 border-t border-[#2A303B]">
-                  <h4 className="font-mono text-xs text-[#73777F] tracking-widest uppercase mb-3">
-                    KEY DELIVERABLES &amp; INTEGRATIONS
+              {current.deliverables && (
+                <div className="pt-4 border-t border-black/[0.08]">
+                  <h4 className="font-display font-semibold text-lg text-[#0A0C0F] mb-3">
+                    What was delivered
                   </h4>
                   <ul className="space-y-2.5">
-                    {project.deliverables.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-sm text-white/90">
-                        <CheckCircle size={15} className="text-[#216BFF] shrink-0 mt-0.5" />
+                    {current.deliverables.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-sm text-[#595D65]">
+                        <span className="text-[#73777F] select-none font-body text-xs mt-0.5 shrink-0">—</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -148,17 +228,16 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
               )}
             </div>
 
-            {/* Technical Specifications */}
-            <div className="md:col-span-5 space-y-6 bg-[#0E1523] p-6 rounded-[2px] border border-[#2A303B]">
+            <div className="md:col-span-5 space-y-6 bg-[#E5E2D8] p-6 rounded-[2px] border border-black/[0.08]">
               <div>
-                <span className="font-mono text-xs text-[#73777F] tracking-widest uppercase block mb-3">
-                  PRODUCTION STACK
-                </span>
+                <h4 className="font-display font-semibold text-lg text-[#0A0C0F] mb-3">
+                  Production stack
+                </h4>
                 <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
+                  {current.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-[2px] bg-[#101827] border border-[#2A303B] text-xs font-mono text-[#F2F0EA]"
+                      className="px-2.5 py-1 rounded-[2px] bg-[#0A0C0F]/[0.06] text-[#0A0C0F] font-body text-sm"
                     >
                       {tech}
                     </span>
@@ -166,41 +245,31 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                 </div>
               </div>
 
-              <div className="border-t border-[#2A303B] pt-4 space-y-3 font-mono text-xs">
-                <div className="flex justify-between text-[#73777F]">
-                  <span>CATEGORY</span>
-                  <span className="text-white font-medium">{project.category}</span>
+              <div className="border-t border-black/[0.08] pt-4 space-y-3">
+                <div className="flex justify-between">
+                  <span className="font-body text-sm text-[#595D65]">Category</span>
+                  <span className="font-body text-sm text-[#0A0C0F] font-medium">{current.category}</span>
                 </div>
-                <div className="flex justify-between text-[#73777F]">
-                  <span>TIMELINE</span>
-                  <span className="text-white font-medium">{project.year}</span>
-                </div>
-                <div className="flex justify-between text-[#73777F]">
-                  <span>STATUS</span>
-                  <span className="text-[#216BFF] font-semibold">{project.status}</span>
+                <div className="flex justify-between">
+                  <span className="font-body text-sm text-[#595D65]">Timeline</span>
+                  <span className="font-body text-sm text-[#0A0C0F] font-medium">{current.year}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Additional Real Project Screenshots Gallery */}
-          {project.images?.secondary && project.images.secondary.length > 0 && (
-            <div className="pt-8 border-t border-[#2A303B] space-y-6">
-              <div className="flex items-center justify-between">
-                <h4 className="font-mono text-xs text-[#216BFF] tracking-widest uppercase">
-                  // ADDITIONAL PRODUCTION SCREENS ({project.images.secondary.length})
-                </h4>
-                <span className="font-mono text-[11px] text-[#73777F]">AUTHENTIC VIEWPORT CAPTURES</span>
-              </div>
+          {/* Secondary Gallery */}
+          {current.images?.secondary && current.images.secondary.length > 0 && (
+            <div className="pt-8 border-t border-black/[0.08] space-y-6">
               <div className="space-y-6">
-                {project.images.secondary.map((imgSrc, idx) => (
+                {current.images.secondary.map((imgSrc, idx) => (
                   <div
                     key={idx}
-                    className="w-full rounded-[2px] overflow-hidden border border-[#2A303B] bg-[#0A0D14]"
+                    className="w-full rounded-[2px] overflow-hidden border border-black/[0.08] bg-[#E5E2D8]"
                   >
                     <img
                       src={imgSrc}
-                      alt={`${project.title} screen ${idx + 1}`}
+                      alt={`${current.title} screen ${idx + 1}`}
                       className="w-full h-auto object-cover"
                       loading="lazy"
                     />
@@ -211,6 +280,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

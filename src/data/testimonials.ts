@@ -17,7 +17,7 @@ export const testimonials: Testimonial[] = [
     year: '2025',
     isPlaceholder: false,
     projectTag: 'Full-Stack Web & Community Portal',
-    outcome: '99.99% Uptime // 85% Latency Reduction',
+    outcome: '99.99% Uptime · 85% Latency Reduction',
   },
   {
     id: 'TESTIMONIAL_MAVT_EXPEDITIONS',
