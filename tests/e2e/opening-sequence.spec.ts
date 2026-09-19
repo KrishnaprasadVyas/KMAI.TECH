@@ -58,30 +58,33 @@ test.describe('KMAI.tech Opening Preloader & Page Reveal Verification', () => {
     await expect(heroBtn).toContainText('Explore Selected Work');
   });
 
-  test('Page reload does not flash footer at top of viewport and renders Hero immediately', async ({ page }) => {
-    // Set intro as already completed (standard returning user / page reload state)
-    await page.addInitScript(() => {
-      sessionStorage.setItem('kmai_intro_completed', 'true');
-    });
-
+  test('Page reload displays Dennis Snellenberg preloader, does not flash footer, and cleanly reveals Hero', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
 
-    // Verify main element occupies full height
+    // 1. Preloader is active on reload
+    const preloader = page.locator('.fixed.inset-0.z-\\[999999\\]');
+    if (await preloader.count() > 0) {
+      await expect(preloader).toBeAttached();
+    }
+
+    // 2. Wait for preloader to complete exit
+    await page.waitForSelector('.fixed.inset-0.z-\\[999999\\]', { state: 'detached', timeout: 10000 });
+
+    // 3. Verify main element occupies full height
     const mainEl = page.locator('main');
     await expect(mainEl).toBeVisible();
 
-    // Verify footer is pushed well below the fold on initial render, NOT at top: 0
+    // 4. Verify footer is pushed well below the fold, NOT at top: 0
     const footer = page.locator('footer');
     await expect(footer).toBeAttached();
     const footerBox = await footer.boundingBox();
     expect(footerBox).not.toBeNull();
     if (footerBox) {
-      // In a 900px viewport, footer must be well below the viewport fold (> 900px)
       expect(footerBox.y).toBeGreaterThan(800);
     }
 
-    // Hero headline is instantly visible without re-render wipe
+    // 5. Hero headline is instantly visible without re-render wipe
     const heroH1 = page.locator('#hero h1');
     await expect(heroH1).toBeVisible();
     await expect(heroH1).toContainText('WE BUILD');

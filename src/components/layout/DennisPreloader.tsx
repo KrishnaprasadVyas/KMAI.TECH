@@ -36,7 +36,6 @@ export const DennisPreloader: React.FC<DennisPreloaderProps> = ({ onComplete }) 
 
     if (prefersReduced) {
       // Instant reveal for reduced-motion users
-      sessionStorage.setItem('kmai_intro_completed', 'true');
       onComplete();
       return;
     }
@@ -49,43 +48,42 @@ export const DennisPreloader: React.FC<DennisPreloaderProps> = ({ onComplete }) 
 
     path.setAttribute('d', curvedPath);
 
-    // Phase 1: KMAI wordmark scale-in entrance (0 → 0.6s)
+    // Phase 1: KMAI wordmark scale-in entrance (0 → 0.45s)
     gsap.fromTo(
       kEl,
-      { scale: 0.9, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.6, ease: 'power3.out' }
+      { scale: 0.92, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.45, ease: 'power3.out' }
     );
 
-    // Phase 2: After 1.2s hold, begin exit sequence
+    // Phase 2: After 800ms hold, begin exit sequence
     const timer = window.setTimeout(() => {
       // KMAI wordmark fades and scales smoothly
       gsap.to(kEl, {
-        scale: 1.1,
+        scale: 1.08,
         opacity: 0,
-        duration: 0.45,
+        duration: 0.35,
         ease: 'power2.in',
       });
 
-      // Curved SVG flattens (0.3s delay, so curve flattens as overlay starts moving)
+      // Curved SVG flattens (delay 0.15s)
       gsap.to(path, {
         attr: { d: flatPath },
-        duration: 0.7,
+        duration: 0.6,
         ease: [0.76, 0, 0.24, 1] as unknown as string,
-        delay: 0.25,
+        delay: 0.15,
       });
 
       // Overlay slides upward — pure transform, no pinning
       gsap.to(overlay, {
         yPercent: -100,
-        duration: 0.95,
+        duration: 0.8,
         ease: 'power3.inOut',
-        delay: 0.35,
+        delay: 0.2,
         onComplete: () => {
-          sessionStorage.setItem('kmai_intro_completed', 'true');
           onComplete();
         },
       });
-    }, 1200);
+    }, 800);
 
     return () => {
       window.clearTimeout(timer);

@@ -45,11 +45,22 @@ export function App() {
   const [isIntroActive, setIsIntroActive] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const completed = sessionStorage.getItem('kmai_intro_completed') === 'true';
-      return !prefersReduced && !completed;
+      return !prefersReduced;
     }
     return false;
   });
+
+  // Reset scroll to top on hard load/reload so the preloader always reveals the Hero
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      if (isIntroActive) {
+        window.scrollTo(0, 0);
+      }
+    }
+  }, [isIntroActive]);
 
   const handleIntroComplete = useCallback(() => {
     setIsIntroActive(false);
