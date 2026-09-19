@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { usePrefersReducedMotion } from '../../hooks/useMediaQuery';
 import type { CursorVariant } from '../common/CustomCursor';
 import { GeometricK } from '../common/GeometricK';
+import { scrollToTarget } from '../../utils/scroll';
 
 function useWindowHeight() {
   const [H, setH] = useState(0);
@@ -114,16 +115,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCurso
     e.preventDefault();
     onClose();
     if (href.startsWith('#')) {
-      if (window.location.pathname !== '/') {
-        window.location.href = '/' + href;
-        return;
-      }
-      if (href === '#hero' || href === '#') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        return;
-      }
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      scrollToTarget(href);
     } else {
       window.location.href = href;
     }

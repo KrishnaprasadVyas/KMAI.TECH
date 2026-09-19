@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowDown } from 'lucide-react';
 import type { CursorVariant } from '../common/CustomCursor';
 import { KineticMarquee } from '../common/KineticMarquee';
+import { scrollToTarget } from '../../utils/scroll';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -162,8 +163,7 @@ export const Hero: React.FC<HeroProps> = ({ isLoaded, onCursorChange }) => {
   }, [isLoaded]);
 
   const scrollToWork = () => {
-    const el = document.getElementById('work');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    scrollToTarget('#work');
   };
 
   return (

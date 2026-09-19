@@ -36,11 +36,11 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
       <section
         id="contact"
         data-theme="dark"
-        className="relative scroll-mt-24 w-full bg-[#07090E] text-[#F5F5F7] py-28 sm:py-36 md:py-48 px-6 sm:px-10 md:px-16"
+        className="relative scroll-mt-0 w-full bg-[#07090E] text-[#F5F5F7] pt-12 sm:pt-16 md:pt-20 pb-24 sm:pb-32 md:pb-40 px-6 sm:px-10 md:px-16"
       >
       <div className="w-full max-w-[1540px] mx-auto">
         {/* Monumental Climax Statement */}
-        <div className="mb-20 sm:mb-28">
+        <div className="mb-10 sm:mb-14">
           <h2 className="font-display font-extrabold uppercase text-white tracking-[-0.05em] leading-[0.88] text-[48px] xs:text-[60px] sm:text-[80px] md:text-[104px] lg:text-[128px] xl:text-[144px]">
             LET'S BUILD
             <br />

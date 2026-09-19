@@ -1,6 +1,7 @@
 import React from 'react';
 import { GeometricK } from '../common/GeometricK';
 import type { CursorVariant } from '../common/CustomCursor';
+import { scrollToTarget } from '../../utils/scroll';
 
 interface FooterProps {
   onCursorChange?: (variant: CursorVariant, text?: string) => void;
@@ -9,22 +10,13 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    if (window.location.pathname !== '/') {
-      window.location.href = '/';
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    scrollToTarget(0);
   };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     if (href.startsWith('#')) {
-      if (window.location.pathname !== '/') {
-        window.location.href = '/' + href;
-      } else {
-        const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }
+      scrollToTarget(href);
     } else {
       window.location.href = href;
     }

@@ -22,22 +22,22 @@ test.describe('KMAI.tech Art-Directed Editorial Studio Redesign', () => {
   });
 
   test('header features minimal editorial navigation without pills or glowing borders', async ({ page, isMobile }) => {
-    await page.goto('http://localhost:5173/');
-    await page.waitForTimeout(2500);
+    await page.goto('/');
+    await page.waitForTimeout(3000);
 
     const header = page.locator('header');
     await expect(header).toBeVisible();
 
+    const logo = header.locator('a[aria-label="KMAI Home"]');
+    await expect(logo).toBeVisible();
+
+    const menuBtn = header.locator('button[aria-label="Open navigation"]');
+    await expect(menuBtn).toBeVisible();
+
     if (!isMobile) {
-      const nav = header.locator('nav');
-      await expect(nav.locator('a:has-text("Work")')).toBeVisible();
-      await expect(nav.locator('a:has-text("Services")')).toBeVisible();
-      await expect(nav.locator('a:has-text("Studio")')).toBeVisible();
-      await expect(nav.locator('a:has-text("Contact")')).toBeVisible();
-      await expect(nav.locator('a:has-text("Start a project")')).toBeVisible();
-    } else {
-      const menuBtn = header.locator('button[aria-label="Toggle navigation menu"]');
-      await expect(menuBtn).toBeVisible();
+      const ctaBtn = header.locator('a[aria-label="Begin project conversation"]');
+      await expect(ctaBtn).toBeVisible();
+      await expect(ctaBtn).toContainText('BEGIN');
     }
   });
 

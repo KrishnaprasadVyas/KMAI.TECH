@@ -7,6 +7,7 @@ import { RoundedButton } from '../common/RoundedButton';
 import type { CursorVariant } from '../common/CustomCursor';
 import { useIsTouchDevice, usePrefersReducedMotion } from '../../hooks/useMediaQuery';
 import { ExternalLink } from 'lucide-react';
+import { scrollToTarget } from '../../utils/scroll';
 
 interface SelectedWorkProps {
   onCursorChange?: (variant: CursorVariant, text?: string) => void;
@@ -179,8 +180,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onCursorChange }) =>
   const metaRefs = useRef<(HTMLElement | null)[]>([]);
 
   const scrollToContact = () => {
-    const el = document.querySelector('#contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    scrollToTarget('#contact');
   };
 
   // GSAP inertia shift on hover — title left, meta right
@@ -204,7 +204,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onCursorChange }) =>
     <section
       id="work"
       data-theme="light"
-      className="relative scroll-mt-16 w-full py-24 sm:py-32 md:py-40 bg-[#F2F0EA]"
+      className="relative scroll-mt-0 w-full pt-16 sm:pt-20 md:pt-24 pb-24 sm:pb-32 md:pb-40 bg-[#F2F0EA]"
     >
       <div className="w-full max-w-[1540px] mx-auto px-6 sm:px-10 md:px-16">
 

@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { GeometricK } from '../common/GeometricK';
 import { SidebarNav } from './SidebarNav';
 import type { CursorVariant } from '../common/CustomCursor';
+import { scrollToTarget } from '../../utils/scroll';
 
 interface NavbarProps {
   onCursorChange?: (variant: CursorVariant, text?: string) => void;
@@ -44,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ── Slime Magnetic Physics for CTA ──────────────────────────────────────────
+  // ── Calm Slime Magnetic Physics for CTA (subtle deformation, zero jiggly wobble) ────
   useEffect(() => {
     const wrap = ctaWrapRef.current;
     const bubble = ctaBubbleRef.current;
@@ -70,13 +71,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
         }
 
         const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-        // Magnetic pull offset
-        const moveX = dx * 0.42;
-        const moveY = dy * 0.42;
+        // Gentle magnetic pull
+        const moveX = dx * 0.20;
+        const moveY = dy * 0.20;
 
-        // Viscous slime stretch: stretches towards cursor, squashes perpendicularly
-        const stretch = 1 + Math.min(dist * 0.0032, 0.28);
-        const squash = 1 - Math.min(dist * 0.0022, 0.16);
+        // Subtle physical give: stretches up to 4%, squashes perpendicularly up to 2.5%
+        const stretch = 1 + Math.min(dist * 0.0006, 0.04);
+        const squash = 1 - Math.min(dist * 0.0004, 0.025);
 
         gsap.to(wrap, {
           x: moveX,
@@ -86,12 +87,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
           overwrite: 'auto',
         });
 
-        // Bubble deforms like slime along pull angle
+        // Bubble deforms slightly along pull angle
         gsap.to(bubble, {
           rotation: angle,
           scaleX: stretch,
           scaleY: squash,
-          duration: 0.3,
+          duration: 0.25,
           ease: 'power2.out',
           overwrite: 'auto',
         });
@@ -99,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
         // Counter-rotate inner content so 'BEGIN' text stays upright and readable
         gsap.to(content, {
           rotation: -angle,
-          duration: 0.3,
+          duration: 0.25,
           ease: 'power2.out',
           overwrite: 'auto',
         });
@@ -112,12 +113,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
       isHovering = false;
       onCursorChange?.('default');
 
-      // Elastic gel snap-back
+      // Smooth, controlled deceleration without jiggly oscillations
       gsap.to(wrap, {
         x: 0,
         y: 0,
-        duration: 1.0,
-        ease: 'elastic.out(1.2, 0.35)',
+        duration: 0.6,
+        ease: 'power3.out',
         overwrite: 'auto',
       });
 
@@ -125,15 +126,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
         rotation: 0,
         scaleX: 1,
         scaleY: 1,
-        duration: 1.0,
-        ease: 'elastic.out(1.2, 0.35)',
+        duration: 0.6,
+        ease: 'power3.out',
         overwrite: 'auto',
       });
 
       gsap.to(content, {
         rotation: 0,
-        duration: 1.0,
-        ease: 'elastic.out(1.2, 0.35)',
+        duration: 0.6,
+        ease: 'power3.out',
         overwrite: 'auto',
       });
     };
@@ -149,24 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
 
   const scrollToSection = (href: string) => {
     setSidebarOpen(false);
-    if (href === '#' || href === '/') {
-      if (window.location.pathname !== '/') {
-        window.location.href = '/';
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-      return;
-    }
-    if (href.startsWith('#')) {
-      if (window.location.pathname !== '/') {
-        window.location.href = '/' + href;
-      } else {
-        const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }
-      return;
-    }
-    window.location.href = href;
+    scrollToTarget(href);
   };
 
   const visible = mounted && !isIntroActive;
@@ -272,27 +256,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
           {/* Inner Content — Counter-rotated so text stays upright */}
           <div
             ref={ctaContentRef}
-            className="flex flex-col items-center justify-center will-change-transform select-none"
+            className="flex items-center justify-center will-change-transform select-none"
           >
-            {/* Minimalist Arrow */}
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="text-white mb-0.5"
-            >
-              <path
-                d="M7 17L17 7M17 7H9M17 7V15"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-
             {/* Stylized Poppins typography: BEGIN */}
-            <span className="font-poppins font-black text-[11px] uppercase tracking-[0.22em] text-white leading-none">
+            <span className="font-poppins font-black text-[12px] uppercase tracking-[0.24em] text-white leading-none">
               BEGIN
             </span>
           </div>

@@ -34,7 +34,7 @@ export const Process: React.FC<ProcessProps> = ({ onCursorChange }) => {
   ];
 
   return (
-    <section id="process" data-theme="light" className="relative scroll-mt-24 w-full py-28 sm:py-36 md:py-48 px-6 sm:px-10 md:px-16">
+    <section id="process" data-theme="light" className="relative scroll-mt-0 w-full pt-16 sm:pt-20 md:pt-24 pb-28 sm:pb-36 md:pb-48 px-6 sm:px-10 md:px-16">
       <div className="w-full max-w-[1540px] mx-auto">
         {/* Section Header */}
         <div className="mb-20 sm:mb-28">

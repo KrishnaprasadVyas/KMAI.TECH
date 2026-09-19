@@ -8,22 +8,19 @@ import { Navbar } from './components/layout/Navbar';
 import { DennisPreloader } from './components/layout/DennisPreloader';
 import { AppRouter } from './router';
 import { Footer } from './components/layout/Footer';
+import { scrollToTarget } from './utils/scroll';
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
     if (hash) {
-      const id = hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        const timer = setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 120);
-        return () => clearTimeout(timer);
-      }
+      const timer = setTimeout(() => {
+        scrollToTarget(hash);
+      }, 140);
+      return () => clearTimeout(timer);
     } else {
-      window.scrollTo(0, 0);
+      scrollToTarget(0, { immediate: true });
     }
   }, [pathname, hash]);
 
