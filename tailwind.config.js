@@ -32,7 +32,9 @@ export default {
       },
       animation: {
         'marquee': 'marquee 35s linear infinite',
+        'marquee-slow': 'marquee 50s linear infinite',
         'pulse-subtle': 'pulseSubtle 4s ease-in-out infinite',
+        'glow-pulse': 'glowPulse 6s ease-in-out infinite',
       },
       keyframes: {
         marquee: {
@@ -42,6 +44,10 @@ export default {
         pulseSubtle: {
           '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
           '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+        },
+        glowPulse: {
+          '0%, 100%': { opacity: '0.15' },
+          '50%': { opacity: '0.25' },
         }
       }
     },

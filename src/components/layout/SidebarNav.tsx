@@ -26,6 +26,7 @@ const NAV_ITEMS: NavItem[] = [
   { title: 'Process',      href: '#process'      },
   { title: 'Testimonials', href: '#testimonials' },
   { title: 'Contact',      href: '#contact'      },
+  { title: 'Start a Project', href: '/start-a-project' },
 ];
 
 export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCursorChange }) => {
@@ -112,9 +113,20 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCurso
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     onClose();
-    if (href === '#hero') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (href.startsWith('#')) {
+      if (window.location.pathname !== '/') {
+        window.location.href = '/' + href;
+        return;
+      }
+      if (href === '#hero' || href === '#') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = href;
+    }
   };
 
   return (

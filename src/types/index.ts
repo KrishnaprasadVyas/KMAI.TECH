@@ -21,6 +21,11 @@ export interface Project {
   featured?: boolean;
   deliverables?: string[];
   highlight?: string;
+  challenge?: string;
+  solution?: string;
+  keyFeatures?: string[];
+  outcome?: string;
+  ogImage?: string;
 }
 
 export interface Service {
@@ -39,7 +44,8 @@ export interface Testimonial {
   role: string;
   organization: string;
   year: string;
-  isPlaceholder: boolean;
+  approved?: boolean;
+  isPlaceholder?: boolean;
   projectTag?: string;
   outcome?: string;
 }

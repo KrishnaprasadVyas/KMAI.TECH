@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import type { Project } from '../../types';
+import { AccentLine } from '../common/AccentLine';
 
 interface ProjectItemProps {
   project: Project;
@@ -17,19 +18,33 @@ export const ProjectItem: React.FC<ProjectItemProps> = ({
   onClick,
   onCursorChange,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
-      className="group relative border-b border-[#2A303B] transition-all duration-300 cursor-pointer"
+      role="button"
+      tabIndex={0}
+      className="group relative border-b border-[#2A303B] transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#216BFF] focus-visible:ring-offset-0 focus-visible:bg-white/[0.02]"
       onMouseEnter={() => {
+        setIsHovered(true);
         onHoverStart(project);
-        onCursorChange?.('project', 'VIEW PROJECT');
+        onCursorChange?.('project', 'VIEW ↗');
       }}
       onMouseLeave={() => {
+        setIsHovered(false);
         onHoverEnd();
         onCursorChange?.('default');
       }}
       onClick={() => onClick(project)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick(project);
+        }
+      }}
     >
+      {/* Expanding accent line at top */}
+      <AccentLine active={isHovered} />
       {/* Background row highlight on hover */}
       <div className="absolute inset-0 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 

@@ -5,6 +5,7 @@ interface GeometricKProps {
   size?: number;
   theme?: 'light' | 'dark'; // 'light' is for Paper canvas (#F2F0EA); 'dark' is for Navy canvas (#101827)
   glow?: boolean;
+  interactive?: boolean;
   variant?: 'mark' | 'badge' | 'monumental' | 'aperture';
 }
 

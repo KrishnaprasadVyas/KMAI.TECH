@@ -38,6 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
       }
       setIsOverDarkSection(overDark);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
@@ -148,9 +149,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
 
   const scrollToSection = (href: string) => {
     setSidebarOpen(false);
-    if (href === '#') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (href === '#' || href === '/') {
+      if (window.location.pathname !== '/') {
+        window.location.href = '/';
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+    if (href.startsWith('#')) {
+      if (window.location.pathname !== '/') {
+        window.location.href = '/' + href;
+      } else {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
+    }
+    window.location.href = href;
   };
 
   const visible = mounted && !isIntroActive;
@@ -162,10 +178,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
 
   return (
     <>
-      {/* ── Brand mark — KMAI text only (logo removed), placed slightly right ── */}
+      {/* ── Brand mark — KMAI text only, placed slightly right ── */}
       <a
-        href="#"
-        onClick={(e) => { e.preventDefault(); scrollToSection('#'); }}
+        href="/"
+        onClick={(e) => { e.preventDefault(); scrollToSection('/'); }}
         aria-label="KMAI Home"
         className={`fixed top-6 left-8 sm:left-10 md:left-14 lg:left-16 z-[9700] select-none transition-opacity duration-500 group ${
           visible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'

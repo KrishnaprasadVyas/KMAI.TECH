@@ -40,6 +40,16 @@ export const projects: Project[] = [
       'Cloud Architecture on Vercel & OVHCloud Infrastructure',
     ],
     highlight: 'Flagship Community & Fundraising Engine',
+    challenge: 'The organization required a unified digital ecosystem to handle global spiritual content, process offline and online donations securely, and automate time-consuming administrative workflows.',
+    solution: 'A full-stack React and Node.js platform integrated with Razorpay and custom automation for donor management.',
+    keyFeatures: [
+      'Online Donation Engine with Razorpay Gateway',
+      'Automated 80G Tax Exemption Receipts',
+      'Dynamic Event & Satsang Schedules',
+      'Cloud Architecture (Vercel & OVHCloud)'
+    ],
+    outcome: 'Delivered a responsive web platform with automated receipt generation and centralized donor records.',
+    ogImage: '/projects/gurudev-ashram/hero.webp',
   },
   {
     id: 2,
@@ -66,6 +76,15 @@ export const projects: Project[] = [
       'Lightning-Fast Global CDN Edge Delivery via Cloudflare',
     ],
     highlight: 'Humanitarian Mission Showcase',
+    challenge: 'The trust needed an accessible digital presence to communicate their humanitarian mission and initiatives to a global audience.',
+    solution: 'A high-performance, statically generated web experience optimized for global edge delivery.',
+    keyFeatures: [
+      'Editorial Storytelling Layout',
+      'High-Accessibility Web Standards',
+      'Cloudflare Edge Delivery'
+    ],
+    outcome: 'Deployed an accessible, lightning-fast digital presence for the organization.',
+    ogImage: '/projects/shanti-ashram/hero.webp',
   },
   {
     id: 3,
@@ -92,6 +111,15 @@ export const projects: Project[] = [
       'Passenger Management & Operations Interface',
     ],
     highlight: 'Experiential Journey Commerce',
+    challenge: 'Required a structured digital platform to manage complex pilgrimage itineraries, seat bookings, and passenger operations.',
+    solution: 'A Next.js and Supabase web application providing an interactive booking flow and operations management.',
+    keyFeatures: [
+      'Multi-Leg Itinerary Planner',
+      'Interactive Booking Flow',
+      'Passenger Operations Interface'
+    ],
+    outcome: 'Delivered a complete pilgrimage booking platform with integrated passenger management.',
+    ogImage: '/projects/mavt/hero.webp',
   },
   {
     id: 4,
@@ -125,6 +153,15 @@ export const projects: Project[] = [
       'Push Notifications & Spiritual Community Feed',
     ],
     highlight: 'Native Mobile Ecosystem',
+    challenge: 'The community needed a mobile-first solution for on-the-go yatra booking, field collections, and member notifications.',
+    solution: 'A cross-platform React Native (Expo) application powered by Supabase for real-time synchronization.',
+    keyFeatures: [
+      'Cross-Platform Native Build (iOS/Android)',
+      'Offline Donation Sync Protocols',
+      'Push Notifications Feed'
+    ],
+    outcome: 'Engineered a mobile ecosystem with offline-capable field collector workflows.',
+    ogImage: '/projects/gurudev-app/hero.webp',
   },
   {
     id: 5,
@@ -151,6 +188,15 @@ export const projects: Project[] = [
       'Responsive Scholarly Portfolio Presentation',
     ],
     highlight: 'Academic Identity Archive',
+    challenge: 'Required a clean, editorial digital space to archive and present academic research and professional publications.',
+    solution: 'A bespoke React application with strict typography and minimalist aesthetic structures.',
+    keyFeatures: [
+      'Academic Publication Directory',
+      'Editorial Typography System',
+      'Responsive Presentation'
+    ],
+    outcome: 'Launched a professional personal website for academic curation.',
+    ogImage: '/projects/priya-surana/hero.webp',
   },
   {
     id: 6,
@@ -177,5 +223,14 @@ export const projects: Project[] = [
       'Global Export Capabilities & Infrastructure Overview',
     ],
     highlight: 'Enterprise Industrial Showcase',
+    challenge: 'The enterprise needed a digital catalog to present complex chemical specifications and handle B2B inquiries.',
+    solution: 'A structured industrial website featuring a technical specification catalog and RFQ architecture.',
+    keyFeatures: [
+      'Chemical Specification Catalog',
+      'B2B RFQ Architecture',
+      'Global Infrastructure Overview'
+    ],
+    outcome: 'Delivered an enterprise industrial showcase tailored for global B2B procurement.',
+    ogImage: '/projects/vishwaraj/hero.webp',
   },
 ];

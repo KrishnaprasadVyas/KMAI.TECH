@@ -1,43 +1,36 @@
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 
 export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(query).matches;
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    const mediaQueryList = window.matchMedia(query);
-    const listener = (event: MediaQueryListEvent) => setMatches(event.matches);
-
-    setMatches(mediaQueryList.matches);
-    mediaQueryList.addEventListener('change', listener);
-
-    return () => mediaQueryList.removeEventListener('change', listener);
-  }, [query]);
-
-  return matches;
+  return useSyncExternalStore(
+    (onStoreChange) => {
+      if (typeof window === 'undefined') return () => {};
+      const mediaQueryList = window.matchMedia(query);
+      mediaQueryList.addEventListener('change', onStoreChange);
+      return () => mediaQueryList.removeEventListener('change', onStoreChange);
+    },
+    () => (typeof window !== 'undefined' ? window.matchMedia(query).matches : false),
+    () => false
+  );
 }
 
 export function useIsTouchDevice(): boolean {
-  const [isTouch, setIsTouch] = useState<boolean>(false);
-
-  useEffect(() => {
-    const checkTouch = () => {
-      // Pure touch devices (smartphones/tablets) have hover: none and pointer: coarse.
-      // Laptops/desktops with touchscreens still have hover: hover and pointer: fine!
-      const isPureTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-      setIsTouch(isPureTouch);
-    };
-
-    checkTouch();
-    window.addEventListener('resize', checkTouch);
-    return () => window.removeEventListener('resize', checkTouch);
-  }, []);
-
-  return isTouch;
+  return useSyncExternalStore(
+    (onStoreChange) => {
+      if (typeof window === 'undefined') return () => {};
+      const mql = window.matchMedia('(hover: none) and (pointer: coarse)');
+      mql.addEventListener('change', onStoreChange);
+      window.addEventListener('resize', onStoreChange);
+      return () => {
+        mql.removeEventListener('change', onStoreChange);
+        window.removeEventListener('resize', onStoreChange);
+      };
+    },
+    () => {
+      if (typeof window === 'undefined') return false;
+      return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    },
+    () => false
+  );
 }
 
 export function usePrefersReducedMotion(): boolean {

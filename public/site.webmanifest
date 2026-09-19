@@ -1,0 +1,22 @@
+{
+  "name": "KMAI.tech — Building Smarter Digital Businesses",
+  "short_name": "KMAI.tech",
+  "description": "Creative technology studio building software, websites, digital products, business automation systems, and intelligent digital solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05070B",
+  "theme_color": "#05070B",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}

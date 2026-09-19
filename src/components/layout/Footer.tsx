@@ -1,6 +1,5 @@
 import React from 'react';
 import { GeometricK } from '../common/GeometricK';
-
 import type { CursorVariant } from '../common/CustomCursor';
 
 interface FooterProps {
@@ -10,7 +9,25 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.location.pathname !== '/') {
+      window.location.href = '/';
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (href.startsWith('#')) {
+      if (window.location.pathname !== '/') {
+        window.location.href = '/' + href;
+      } else {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.location.href = href;
+    }
   };
 
   return (
@@ -31,7 +48,8 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
         {/* Footer Navigation */}
         <div className="flex flex-wrap items-center gap-8">
           <a
-            href="#work"
+            href="/#work"
+            onClick={(e) => handleNavClick(e, '#work')}
             className="font-body text-sm text-[#8E939E] hover:text-white transition-colors"
             onMouseEnter={() => onCursorChange?.('button')}
             onMouseLeave={() => onCursorChange?.('default')}
@@ -39,7 +57,8 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
             Work
           </a>
           <a
-            href="#services"
+            href="/#services"
+            onClick={(e) => handleNavClick(e, '#services')}
             className="font-body text-sm text-[#8E939E] hover:text-white transition-colors"
             onMouseEnter={() => onCursorChange?.('button')}
             onMouseLeave={() => onCursorChange?.('default')}
@@ -47,7 +66,8 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
             Services
           </a>
           <a
-            href="#about"
+            href="/#about"
+            onClick={(e) => handleNavClick(e, '#about')}
             className="font-body text-sm text-[#8E939E] hover:text-white transition-colors"
             onMouseEnter={() => onCursorChange?.('button')}
             onMouseLeave={() => onCursorChange?.('default')}
@@ -55,7 +75,17 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
             Studio
           </a>
           <a
-            href="#contact"
+            href="/start-a-project"
+            onClick={(e) => handleNavClick(e, '/start-a-project')}
+            className="font-body text-sm text-[#8E939E] hover:text-white transition-colors"
+            onMouseEnter={() => onCursorChange?.('button')}
+            onMouseLeave={() => onCursorChange?.('default')}
+          >
+            Start a Project
+          </a>
+          <a
+            href="/#contact"
+            onClick={(e) => handleNavClick(e, '#contact')}
             className="font-body text-sm text-[#8E939E] hover:text-white transition-colors"
             onMouseEnter={() => onCursorChange?.('button')}
             onMouseLeave={() => onCursorChange?.('default')}

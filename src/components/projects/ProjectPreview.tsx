@@ -33,7 +33,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
 
   // Global mouse tracking to guarantee cursor coordinate is known before hover
   useEffect(() => {
-    if (isTouch || prefersReducedMotion) return;
+    if (isTouch || prefersReducedMotion || !isVisible) return;
 
     const el = containerRef.current;
     if (!el) return;
@@ -85,7 +85,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
       if (settleTimer) window.clearTimeout(settleTimer);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [isTouch, prefersReducedMotion]);
+  }, [isTouch, prefersReducedMotion, isVisible]);
 
   // Dennis Snellenberg scale in / scale out animation
   useEffect(() => {
