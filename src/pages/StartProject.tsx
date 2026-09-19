@@ -100,22 +100,22 @@ const StartProject: React.FC<StartProjectProps> = ({ onCursorChange }) => {
         {/* Fallback Direct Contact */}
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-16">
           <a
-            href="mailto:hello@kmai.tech"
+            href="mailto:krishnaprasadvyas@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20KMAI.tech"
             onClick={() => trackEvent('click_email')}
             className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3 rounded-xl bg-[#08111F] border border-white/10 hover:border-[#006EFF]/50 text-white transition-colors"
           >
             <Mail size={16} className="text-[#006EFF]" />
-            <span className="font-mono text-xs tracking-widest uppercase">hello@kmai.tech</span>
+            <span className="font-mono text-xs tracking-widest uppercase">krishnaprasadvyas@gmail.com</span>
           </a>
           <a
-            href="https://wa.me/message/XXXXXX"
+            href="https://wa.me/919309920441?text=Hello%20KMAI%20Team,%20I'm%20interested%20in%20starting%20a%20project%20with%20KMAI.tech"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent('click_whatsapp')}
             className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3 rounded-xl bg-[#08111F] border border-white/10 hover:border-[#25D366]/50 text-white transition-colors"
           >
             <MessageCircle size={16} className="text-[#25D366]" />
-            <span className="font-mono text-xs tracking-widest uppercase">WhatsApp</span>
+            <span className="font-mono text-xs tracking-widest uppercase">WhatsApp (+91 9309920441)</span>
           </a>
         </div>
 
@@ -134,11 +134,28 @@ const StartProject: React.FC<StartProjectProps> = ({ onCursorChange }) => {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8 animate-[fadeIn_0.5s_ease-out]">
               
-              {/* Error Message */}
+              {/* Error Message with Mailto Fallback */}
               {status === 'error' && (
-                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 flex items-start gap-3 text-red-400">
-                  <AlertCircle size={18} className="shrink-0 mt-0.5" />
-                  <p className="text-sm font-medium">{errorMessage}</p>
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 space-y-3 text-red-400">
+                  <div className="flex items-start gap-3">
+                    <AlertCircle size={18} className="shrink-0 mt-0.5" />
+                    <p className="text-sm font-medium">{errorMessage}</p>
+                  </div>
+                  {formData.name && formData.email && (
+                    <div className="pt-2 border-t border-red-500/20">
+                      <a
+                        href={`mailto:krishnaprasadvyas@gmail.com?subject=${encodeURIComponent(
+                          `New Project Enquiry: ${formData.projectType} (${formData.name})`
+                        )}&body=${encodeURIComponent(
+                          `Name: ${formData.name}\nEmail: ${formData.email}\nOrganization: ${formData.company || 'N/A'}\nProject Type: ${formData.projectType}\nBudget Range: ${formData.budgetRange}\nTimeline: ${formData.timeline}\nPreferred Contact: ${formData.preferredContact}\n\nProject Overview:\n${formData.description}`
+                        )}`}
+                        className="inline-flex items-center gap-2 text-xs font-mono text-white bg-[#006EFF] hover:bg-[#1683FF] px-4 py-2 rounded-lg transition-colors"
+                      >
+                        <Mail size={14} />
+                        SEND DIRECTLY VIA EMAIL INSTEAD
+                      </a>
+                    </div>
+                  )}
                 </div>
               )}
 

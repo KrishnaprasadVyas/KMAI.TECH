@@ -43,7 +43,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ onCursorChange }) => {
       name: 'KMAI.tech',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://kmai.tech/logo.png', // Assuming a logo exists
+        url: 'https://kmai.tech/favicon.svg',
       },
     },
     description: project.description,

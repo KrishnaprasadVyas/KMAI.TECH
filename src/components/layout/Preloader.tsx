@@ -6,6 +6,8 @@ interface PreloaderProps {
   onComplete: () => void;
 }
 
+const WORDS = ['IDEAS', 'SYSTEMS', 'IMPACT'];
+
 export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [counter, setCounter] = useState(0);
   const [wordIndex, setWordIndex] = useState(0);
@@ -15,8 +17,6 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const lineRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
-
-  const words = ['IDEAS', 'SYSTEMS', 'IMPACT'];
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -55,9 +55,9 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     }
 
     // Cycle through words
-    const intervalTime = (duration * 1000) / words.length;
+    const intervalTime = (duration * 1000) / WORDS.length;
     const wordInterval = setInterval(() => {
-      setWordIndex((prev) => (prev < words.length - 1 ? prev + 1 : prev));
+      setWordIndex((prev) => (prev < WORDS.length - 1 ? prev + 1 : prev));
     }, intervalTime);
 
     // Split-panel reveal transition when 100 is reached
@@ -100,7 +100,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       clearInterval(wordInterval);
       tl.kill();
     };
-  }, [onComplete]);
+  }, [onComplete, prefersReducedMotion]);
 
   return (
     <div
@@ -144,7 +144,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               key={wordIndex}
               className="text-2xl md:text-5xl font-extrabold tracking-widest text-[#F3F5F7] animate-[fadeSlide_0.35s_ease-out]"
             >
-              {words[wordIndex]}
+              {WORDS[wordIndex]}
             </span>
           </div>
           <p className="mt-4 text-xs md:text-sm text-[#A0A7B1] font-mono tracking-widest uppercase">

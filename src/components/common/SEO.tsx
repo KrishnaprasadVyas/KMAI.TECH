@@ -14,7 +14,7 @@ export const SEO: React.FC<SEOProps> = ({
   title,
   description,
   canonicalUrl,
-  ogImage = '/og-default.jpg', // Fallback to a branded default
+  ogImage = '/og-image.png', // Fallback to a branded default
   ogType = 'website',
   schema
 }) => {

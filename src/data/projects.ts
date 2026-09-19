@@ -49,7 +49,7 @@ export const projects: Project[] = [
       'Cloud Architecture (Vercel & OVHCloud)'
     ],
     outcome: 'Delivered a responsive web platform with automated receipt generation and centralized donor records.',
-    ogImage: '/projects/sga/sga-1.jpg',
+    ogImage: '/projects/gurudev-ashram/hero.webp',
   },
   {
     id: 2,
@@ -84,7 +84,7 @@ export const projects: Project[] = [
       'Cloudflare Edge Delivery'
     ],
     outcome: 'Deployed an accessible, lightning-fast digital presence for the organization.',
-    ogImage: '/projects/sat/sat-1.jpg',
+    ogImage: '/projects/shanti-ashram/hero.webp',
   },
   {
     id: 3,
@@ -119,7 +119,7 @@ export const projects: Project[] = [
       'Passenger Operations Interface'
     ],
     outcome: 'Delivered a complete pilgrimage booking platform with integrated passenger management.',
-    ogImage: '/projects/mavt/mavt-1.jpg',
+    ogImage: '/projects/mavt/hero.webp',
   },
   {
     id: 4,
@@ -161,7 +161,7 @@ export const projects: Project[] = [
       'Push Notifications Feed'
     ],
     outcome: 'Engineered a mobile ecosystem with offline-capable field collector workflows.',
-    ogImage: '/projects/sga/sga-3.jpg',
+    ogImage: '/projects/gurudev-app/hero.webp',
   },
   {
     id: 5,
@@ -196,7 +196,7 @@ export const projects: Project[] = [
       'Responsive Presentation'
     ],
     outcome: 'Launched a professional personal website for academic curation.',
-    ogImage: '/projects/ps/ps-1.jpg',
+    ogImage: '/projects/priya-surana/hero.webp',
   },
   {
     id: 6,
@@ -231,6 +231,6 @@ export const projects: Project[] = [
       'Global Infrastructure Overview'
     ],
     outcome: 'Delivered an enterprise industrial showcase tailored for global B2B procurement.',
-    ogImage: '/projects/vp/vp-1.jpg',
+    ogImage: '/projects/vishwaraj/hero.webp',
   },
 ];

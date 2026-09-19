@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GeometricK } from '../common/GeometricK';
 import { MagneticButton } from '../common/MagneticButton';
 
@@ -8,8 +9,30 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const isHash = href.startsWith('/#');
+    const hashTarget = isHash ? href.substring(2) : '';
+
+    if (isHash) {
+      if (location.pathname === '/') {
+        const targetElement = document.getElementById(hashTarget);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        navigate(href);
+      }
+    } else {
+      navigate(href);
+    }
   };
 
   return (
@@ -82,22 +105,38 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
               </span>
               <ul className="space-y-3 font-mono text-xs text-[#A0A7B1]">
                 <li>
-                  <a href="#work" className="hover:text-white transition-colors">
+                  <a
+                    href="/#work"
+                    onClick={(e) => handleNavClick(e, '/#work')}
+                    className="hover:text-white transition-colors"
+                  >
                     01 // WORK
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-white transition-colors">
+                  <a
+                    href="/#services"
+                    onClick={(e) => handleNavClick(e, '/#services')}
+                    className="hover:text-white transition-colors"
+                  >
                     02 // SERVICES
                   </a>
                 </li>
                 <li>
-                  <a href="#about" className="hover:text-white transition-colors">
+                  <a
+                    href="/#about"
+                    onClick={(e) => handleNavClick(e, '/#about')}
+                    className="hover:text-white transition-colors"
+                  >
                     03 // ABOUT
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-white transition-colors">
+                  <a
+                    href="/#contact"
+                    onClick={(e) => handleNavClick(e, '/#contact')}
+                    className="hover:text-white transition-colors"
+                  >
                     04 // CONTACT
                   </a>
                 </li>

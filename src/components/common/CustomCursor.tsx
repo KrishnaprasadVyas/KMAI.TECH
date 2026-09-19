@@ -16,6 +16,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ cursorState }) => {
   const isTouch = useIsTouchDevice();
   const prefersReducedMotion = usePrefersReducedMotion();
   const [isVisible, setIsVisible] = useState(false);
+  const isVisibleRef = useRef(false);
 
   useEffect(() => {
     if (isTouch || prefersReducedMotion) return;
@@ -32,7 +33,10 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ cursorState }) => {
     const ringY = gsap.quickTo(ring, 'y', { duration: 0.35, ease: 'power3.out' });
 
     const onMouseMove = (e: MouseEvent) => {
-      if (!isVisible) setIsVisible(true);
+      if (!isVisibleRef.current) {
+        isVisibleRef.current = true;
+        setIsVisible(true);
+      }
       dotX(e.clientX);
       dotY(e.clientY);
       ringX(e.clientX);
@@ -40,10 +44,12 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ cursorState }) => {
     };
 
     const onMouseLeave = () => {
+      isVisibleRef.current = false;
       setIsVisible(false);
     };
 
     const onMouseEnter = () => {
+      isVisibleRef.current = true;
       setIsVisible(true);
     };
 
@@ -56,7 +62,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ cursorState }) => {
       document.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('mouseenter', onMouseEnter);
     };
-  }, [isTouch, prefersReducedMotion, isVisible]);
+  }, [isTouch, prefersReducedMotion]);
 
   // Handle cursor variant animations
   useEffect(() => {
