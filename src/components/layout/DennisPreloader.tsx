@@ -95,7 +95,7 @@ export const DennisPreloader: React.FC<DennisPreloaderProps> = ({ onComplete }) 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[9050] bg-[#07090E] flex items-center justify-center will-change-transform"
+      className="fixed inset-0 z-[999999] bg-[#07090E] flex items-center justify-center will-change-transform"
       aria-hidden="true"
     >
       {/* Geometric K centrepiece */}

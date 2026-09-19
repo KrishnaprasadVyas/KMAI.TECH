@@ -306,7 +306,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ cursorState }) => {
       {/* Click ripple layer spanning fixed screen */}
       <div
         ref={rippleContainerRef}
-        className="pointer-events-none fixed inset-0 z-[999998] overflow-hidden"
+        className="pointer-events-none fixed inset-0 z-[999998] z-[99998] cursor-ripple-container overflow-hidden"
         aria-hidden="true"
       />
 

@@ -177,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
   const K_OUT_DUR_MS   = 180;
 
   return (
-    <>
+    <header role="banner" className="fixed top-0 left-0 w-full h-16 pointer-events-none z-[9700]">
       {/* ── Brand mark — KMAI text only, placed slightly right ── */}
       <a
         href="/"
@@ -305,6 +305,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
         onClose={() => setSidebarOpen(false)}
         onCursorChange={onCursorChange}
       />
-    </>
+    </header>
   );
 };
