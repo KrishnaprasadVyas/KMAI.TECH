@@ -33,7 +33,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ onCursorChange }) => {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: `${project.title} - KMAI.tech Case Study`,
-    image: `https://kmai.tech${project.ogImage || project.image}`,
+    image: `https://www.kmai.tech${project.ogImage || project.image}`,
     author: {
       '@type': 'Organization',
       name: 'KMAI.tech',
@@ -43,7 +43,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ onCursorChange }) => {
       name: 'KMAI.tech',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://kmai.tech/favicon.svg',
+        url: 'https://www.kmai.tech/favicon.svg',
       },
     },
     description: project.description,

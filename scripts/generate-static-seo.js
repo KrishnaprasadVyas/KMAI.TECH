@@ -12,7 +12,7 @@ const projectsFile = path.resolve(__dirname, '../src/data/projects.ts');
 const distSitemapPath = path.resolve(distDir, 'sitemap.xml');
 const publicSitemapPath = path.resolve(__dirname, '../public/sitemap.xml');
 
-const siteUrl = 'https://kmai.tech';
+const siteUrl = 'https://www.kmai.tech';
 const today = new Date().toISOString().split('T')[0];
 
 function escapeHtml(str) {

@@ -18,7 +18,7 @@ export const SEO: React.FC<SEOProps> = ({
   ogType = 'website',
   schema
 }) => {
-  const siteUrl = 'https://kmai.tech'; // Assuming this is the production URL
+  const siteUrl = 'https://www.kmai.tech'; // Canonical production URL
   const fullUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : siteUrl;
   const fullImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 

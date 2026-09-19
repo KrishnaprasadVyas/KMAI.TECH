@@ -5,7 +5,7 @@
 **KMAI.tech** is a creative technology studio architecting high-performance software systems, bespoke web applications, operational automation, and digital products for modern enterprises and organizations.
 
 Built by: **Krishnaprasad Vyas, Maithili Makkar & Ali Abu Nazahat**  
-Live URL: [https://kmai.tech/](https://kmai.tech/)  
+Live URL: [https://www.kmai.tech/](https://www.kmai.tech/)  
 Repository: [https://github.com/KrishnaprasadVyas/KMAI.TECH](https://github.com/KrishnaprasadVyas/KMAI.TECH)
 
 ---
@@ -114,6 +114,6 @@ npm run preview
 - **Co-Founders**: Krishnaprasad Vyas, Maithili Makkar, Ali Abu Nazahat
 - **Email**: [krishnaprasadvyas@gmail.com](mailto:krishnaprasadvyas@gmail.com)
 - **Phone**: [+91 9309920441](tel:+919309920441)
-- **Website**: [https://kmai.tech/](https://kmai.tech/)
+- **Website**: [https://www.kmai.tech/](https://www.kmai.tech/)
 
 © 2026 KMAI.tech — All rights reserved.
