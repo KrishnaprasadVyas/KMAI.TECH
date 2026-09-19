@@ -1,4 +1,42 @@
+# Crawlers & Search Engines
 User-agent: *
 Allow: /
 
+# Explicit Permissions for AI Search Engines & LLM Answer Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemaps & AI Knowledge Manifests
 Sitemap: https://www.kmai.tech/sitemap.xml
+# LLM Knowledge Index: https://www.kmai.tech/llms.txt
+# LLM Full Specification: https://www.kmai.tech/llms-full.txt

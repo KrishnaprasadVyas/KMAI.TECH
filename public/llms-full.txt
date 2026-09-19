@@ -1,0 +1,104 @@
+# KMAI (KMAI.tech) — Full Technical & Studio Specification
+
+## 1. Studio Overview & Manifesto
+KMAI is an independent creative technology and software engineering studio operating globally at https://www.kmai.tech.
+Founded by Krishnaprasad Vyas, Maithili Makkar, and Ali Abu Nazahat, KMAI rejects generic agency bureaucracy, offshore junior dev pools, and cookie-cutter SaaS templates. Clients interface directly with senior system architects and engineering leads who build, ship, and support bespoke software systems.
+
+### Disambiguation & Entity Resolution
+- Canonical URL: https://www.kmai.tech/
+- Entity Name: KMAI / KMAI.tech / KMAI Creative Technology Studio
+- Not Affiliated With: Marianna Municipal Airport (ICAO: KMAI, Florida), Kearns Mancini Architects (Canada), or Android developer accounts under "KMAI" on Google Play.
+
+---
+
+## 2. Core Service Offerings
+
+### Service 1: Creative Web Engineering & Digital Experiences
+- Bespoke frontend architecture using modern React, TypeScript, and modern CSS tooling.
+- Micro-interactions, kinetic typography, and fluid GSAP animation pipelines running at consistent 60–120fps.
+- Sub-second first contentful paint (FCP), accessibility compliance (WCAG 2.1 AA), and robust mobile responsiveness.
+- Anti-template approach: custom grid systems, strict visual hierarchy, brand-tailored design languages.
+
+### Service 2: Custom Enterprise Software & Cloud Infrastructure
+- Scalable backend architectures powered by Node.js, Express, Go, or Python.
+- High-availability database modeling using PostgreSQL, MongoDB, and Firebase.
+- Microservice orchestration, edge compute, and hybrid cloud deployments across Vercel, AWS, and OVHCloud.
+- Strict security practices: encrypted transactional data, token-based auth, secure webhook pipelines.
+
+### Service 3: Operational & Workflow Automation
+- Elimination of manual administrative overhead through custom workflow orchestration.
+- Automated compliance engines (e.g. 80G tax exemption receipt generation and delivery via PDF pipelines and automated emails).
+- Third-party integrations: Razorpay, Stripe, CRM syncing, webhook triggers, inventory syncing.
+- Bespoke admin dashboards delivering real-time telemetry and reporting.
+
+---
+
+## 3. Case Studies & Deliverables
+
+### Project 01: Shri Gurudev Ashram
+- Slug: `/work/shri-gurudev-ashram`
+- Category: Web Platform & Donation System
+- URL: https://shrigurudevashram.org/
+- Deliverables:
+  - Online donation engine with Razorpay payment gateway integration.
+  - Automated 80G tax exemption receipt generation and centralized donor record vault.
+  - Dynamic event, satsang, and activity scheduling system.
+  - High-availability cloud deployment on Vercel frontend and OVHCloud backend.
+- Technologies: React, Tailwind CSS, Node.js, Express, MongoDB, Razorpay, Firebase, Vercel, OVHCloud.
+
+### Project 02: Shanti Ashram Trust
+- Slug: `/work/shanti-ashram-trust`
+- Category: Heritage Web Platform & Archival Showcase
+- Deliverables:
+  - Architectural overhaul of legacy public web assets.
+  - Secure online donation collection with localized compliance receipts.
+  - Historical photo archives, interactive event schedules, and institutional trust building.
+- Technologies: React, Tailwind CSS, TypeScript, Node.js, Express, Razorpay, Vercel, Cloudflare CDN.
+
+### Project 03: MAVT (Maharishi Arvind Vocational Training)
+- Slug: `/work/mavt`
+- Category: Education Portal & Institutional Administration
+- Deliverables:
+  - Course catalog and online student application intake engine.
+  - Centralized administrative dashboard for application verification and student roster tracking.
+  - Performance optimization delivering under 0.8s load times across tier-2 and tier-3 mobile networks.
+- Technologies: React, Vite, Tailwind CSS, Node.js, Express, MongoDB, RESTful APIs, Vercel.
+
+### Project 04: Priya Surana
+- Slug: `/work/priya-surana`
+- Category: Luxury Brand Identity & Digital Portfolio
+- Deliverables:
+  - Ultra-high-fidelity interactive portfolio showcasing couture designs and bridal collections.
+  - Frictionless VIP consultation booking funnel and direct WhatsApp Business API routing.
+  - Next-generation image pipeline utilizing AVIF/WebP responsive sets with zero visual degradation.
+- Technologies: React, TypeScript, Tailwind CSS, GSAP, Lenis Smooth Scroll, Vercel Edge Network.
+
+### Project 05: Vishwaraj Polychem
+- Slug: `/work/vishwaraj-polychem`
+- Category: Industrial B2B Catalog & Inquiry Engine
+- Deliverables:
+  - Structured B2B chemical product catalog featuring technical data sheets (TDS) and safety data sheets (MSDS).
+  - Multi-tier inquiry generation workflow capturing custom procurement requests.
+  - Enterprise-grade international SEO strategy targeting industrial procurement search terms.
+- Technologies: React, TypeScript, Node.js, Express, Tailwind CSS, REST APIs, Vercel.
+
+---
+
+## 4. Founders & Leadership
+1. **Krishnaprasad Vyas — Founder & CEO**
+   - Focus: Systems Strategy, Digital Architecture, and Commercial Partnerships.
+   - Profile: Leads technical trajectory and client engagements, aligning complex enterprise requirements with modern digital execution.
+2. **Maithili Makkar — Co-Founder & COO**
+   - Focus: Operations, Project Governance, and Delivery Pipelines.
+   - Profile: Oversees project delivery, operational excellence, client communication, and cross-functional alignment.
+3. **Ali Abu Nazahat — Co-Founder & CTO**
+   - Focus: Full-Stack Engineering, Automation, and Infrastructure.
+   - Profile: Architects edge services, database schemas, secure payment workflows, and automated system pipelines.
+
+---
+
+## 5. Contact & Collaboration
+- Primary Domain: https://www.kmai.tech/
+- Inquiry Channel: https://www.kmai.tech/start-a-project
+- Inquiries: contact@kmai.tech
+- Headquarters: Global / Remote Operations

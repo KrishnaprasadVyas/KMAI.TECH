@@ -11,6 +11,7 @@ const indexHtmlPath = path.resolve(distDir, 'index.html');
 const projectsFile = path.resolve(__dirname, '../src/data/projects.ts');
 const distSitemapPath = path.resolve(distDir, 'sitemap.xml');
 const publicSitemapPath = path.resolve(__dirname, '../public/sitemap.xml');
+const publicDir = path.resolve(__dirname, '../public');
 
 const siteUrl = 'https://www.kmai.tech';
 const today = new Date().toISOString().split('T')[0];
@@ -60,6 +61,16 @@ function extractProjectBlocks(content) {
   return blocks;
 }
 
+function parseArrayField(block, fieldName) {
+  const regex = new RegExp(`${fieldName}:\\s*\\[([\\s\\S]*?)\\]`);
+  const match = block.match(regex);
+  if (!match) return [];
+  return match[1]
+    .split(',')
+    .map(s => s.trim().replace(/^['"`]|['"`]$/g, '').trim())
+    .filter(Boolean);
+}
+
 // 1. Read and parse projects data
 const projectsContent = fs.readFileSync(projectsFile, 'utf-8');
 const projects = [];
@@ -68,7 +79,11 @@ const objectBlocks = extractProjectBlocks(projectsContent);
 for (const block of objectBlocks) {
   const slugMatch = block.match(/slug:\s*'([^']+)'/);
   const titleMatch = block.match(/title:\s*'([^']+)'/);
+  const catMatch = block.match(/category:\s*'([^']+)'/);
   const descMatch = block.match(/description:\s*(['"`])([\s\S]*?)\1/);
+  const challengeMatch = block.match(/challenge:\s*(['"`])([\s\S]*?)\1/);
+  const solutionMatch = block.match(/solution:\s*(['"`])([\s\S]*?)\1/);
+  const outcomeMatch = block.match(/outcome:\s*(['"`])([\s\S]*?)\1/);
   const ogImageMatch = block.match(/ogImage:\s*'([^']+)'/);
   const imageMatch = block.match(/\bimage:\s*'([^']+)'/);
   
@@ -76,7 +91,13 @@ for (const block of objectBlocks) {
     projects.push({
       slug: slugMatch[1],
       title: titleMatch[1],
+      category: catMatch ? catMatch[1] : 'Case Study',
       description: descMatch ? descMatch[2].replace(/\n/g, ' ').trim() : '',
+      challenge: challengeMatch ? challengeMatch[2].replace(/\n/g, ' ').trim() : '',
+      solution: solutionMatch ? solutionMatch[2].replace(/\n/g, ' ').trim() : '',
+      outcome: outcomeMatch ? outcomeMatch[2].replace(/\n/g, ' ').trim() : '',
+      technologies: parseArrayField(block, 'technologies'),
+      deliverables: parseArrayField(block, 'deliverables'),
       ogImage: ogImageMatch ? ogImageMatch[1] : (imageMatch ? imageMatch[1] : '/og-image.png'),
     });
   }
@@ -90,7 +111,7 @@ if (!fs.existsSync(indexHtmlPath)) {
 
 const templateHtml = fs.readFileSync(indexHtmlPath, 'utf-8');
 
-function createPageHtml(baseHtml, { title, description, url, image, type = 'website', schema }) {
+function createPageHtml(baseHtml, { title, description, url, image, type = 'website', schema, bodyContent }) {
   let html = baseHtml;
 
   // Replace Title & Primary Meta Tags
@@ -118,6 +139,11 @@ function createPageHtml(baseHtml, { title, description, url, image, type = 'webs
   html = html.replace(/<meta property="twitter:description" content=".*?"\s*\/?>/i, `<meta property="twitter:description" content="${escapeHtml(description)}" />`);
   html = html.replace(/<meta property="twitter:image" content=".*?"\s*\/?>/i, `<meta property="twitter:image" content="${image}" />`);
 
+  // Inject Page-Specific Semantic Body Content inside <div id="root">
+  if (bodyContent) {
+    html = html.replace(/<div id="root">[\s\S]*?<\/div>/, `<div id="root">\n${bodyContent}\n    </div>`);
+  }
+
   // Append page-specific structured data before </head> if provided
   if (schema) {
     const schemaScript = `\n    <script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n    </script>\n  `;
@@ -132,7 +158,7 @@ for (const project of projects) {
   const projectDir = path.resolve(distDir, 'work', project.slug);
   fs.mkdirSync(projectDir, { recursive: true });
 
-  const title = `${project.title} — KMAI.tech`;
+  const title = `${project.title} — KMAI.tech Case Study`;
   const description = project.description;
   const url = `${siteUrl}/work/${project.slug}`;
   const image = project.ogImage.startsWith('http') ? project.ogImage : `${siteUrl}${project.ogImage}`;
@@ -140,17 +166,23 @@ for (const project of projects) {
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url
+    },
     headline: `${project.title} — KMAI.tech Case Study`,
     image: image,
     url: url,
     author: {
       '@type': 'Organization',
-      name: 'KMAI.tech',
+      name: 'KMAI',
+      alternateName: ['KMAI.tech', 'KMAI Studio'],
       url: siteUrl
     },
     publisher: {
       '@type': 'Organization',
-      name: 'KMAI.tech',
+      name: 'KMAI',
+      alternateName: ['KMAI.tech', 'KMAI Studio'],
       url: siteUrl,
       logo: {
         '@type': 'ImageObject',
@@ -160,13 +192,65 @@ for (const project of projects) {
     description: description
   };
 
+  const bodyContent = `      <!-- Semantic Static Fallback for Search & AI Crawlers (Replaced seamlessly by React on load) -->
+      <main style="max-width: 1200px; margin: 0 auto; padding: 48px 24px;">
+        <nav style="margin-bottom: 24px;">
+          <a href="/" style="color: #216BFF; text-decoration: none;">&larr; Back to KMAI.tech</a>
+        </nav>
+        <article>
+          <header>
+            <p style="text-transform: uppercase; font-size: 14px; letter-spacing: 0.1em; color: #595D65;">${escapeHtml(project.category)}</p>
+            <h1 style="font-size: 40px; margin: 8px 0 16px 0;">${escapeHtml(project.title)} — KMAI Case Study</h1>
+            <p style="font-size: 18px; line-height: 1.6; color: #2D3139;">${escapeHtml(project.description)}</p>
+          </header>
+
+          ${project.challenge ? `
+          <section style="margin-top: 32px;">
+            <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">The Challenge</h2>
+            <p style="font-size: 16px; line-height: 1.6;">${escapeHtml(project.challenge)}</p>
+          </section>` : ''}
+
+          ${project.solution ? `
+          <section style="margin-top: 32px;">
+            <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">The Engineering Solution</h2>
+            <p style="font-size: 16px; line-height: 1.6;">${escapeHtml(project.solution)}</p>
+          </section>` : ''}
+
+          ${project.deliverables.length > 0 ? `
+          <section style="margin-top: 32px;">
+            <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Key Deliverables & Architectural Systems</h2>
+            <ul>
+              ${project.deliverables.map(d => `<li style="margin-bottom: 8px;">${escapeHtml(d)}</li>`).join('\n              ')}
+            </ul>
+          </section>` : ''}
+
+          ${project.technologies.length > 0 ? `
+          <section style="margin-top: 32px;">
+            <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Technologies & Infrastructure</h2>
+            <p>${escapeHtml(project.technologies.join(', '))}</p>
+          </section>` : ''}
+
+          ${project.outcome ? `
+          <section style="margin-top: 32px;">
+            <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Outcome</h2>
+            <p style="font-size: 16px; line-height: 1.6;">${escapeHtml(project.outcome)}</p>
+          </section>` : ''}
+
+          <footer style="margin-top: 48px; border-top: 1px solid #ddd; padding-top: 24px;">
+            <p>Built by <strong>KMAI.tech</strong> — Independent Creative Technology & Software Engineering Studio.</p>
+            <p><a href="/start-a-project" style="color: #216BFF; font-weight: bold;">Start a project with KMAI &rarr;</a> | Email: <a href="mailto:contact@kmai.tech">contact@kmai.tech</a></p>
+          </footer>
+        </article>
+      </main>`;
+
   const finalHtml = createPageHtml(templateHtml, {
     title,
     description,
     url,
     image,
     type: 'article',
-    schema: articleSchema
+    schema: articleSchema,
+    bodyContent
   });
 
   fs.writeFileSync(path.resolve(projectDir, 'index.html'), finalHtml);
@@ -178,16 +262,43 @@ const startProjectDir = path.resolve(distDir, 'start-a-project');
 fs.mkdirSync(startProjectDir, { recursive: true });
 
 const startProjectTitle = 'Start a Project — KMAI.tech';
-const startProjectDesc = 'Enquire about starting a digital project with KMAI.tech. Bespoke websites, software systems, and business automation.';
+const startProjectDesc = 'Inquire about starting a digital project with KMAI.tech. Bespoke websites, software systems, and business automation.';
 const startProjectUrl = `${siteUrl}/start-a-project`;
 const startProjectImage = `${siteUrl}/og-image.png`;
+
+const startProjectBody = `      <!-- Semantic Static Fallback for Search & AI Crawlers (Replaced seamlessly by React on load) -->
+      <main style="max-width: 900px; margin: 0 auto; padding: 48px 24px;">
+        <nav style="margin-bottom: 24px;">
+          <a href="/" style="color: #216BFF; text-decoration: none;">&larr; Back to KMAI.tech</a>
+        </nav>
+        <header>
+          <p style="text-transform: uppercase; font-size: 14px; letter-spacing: 0.1em; color: #595D65;">Initiate Collaboration</p>
+          <h1 style="font-size: 40px; margin: 8px 0 16px 0;">Start a Project with KMAI</h1>
+          <p style="font-size: 18px; line-height: 1.6; color: #2D3139;">
+            Collaborate directly with senior system architects and engineering leaders. Zero account managers, zero offshore intermediaries.
+          </p>
+        </header>
+        <section style="margin-top: 32px;">
+          <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">What We Build</h2>
+          <ul>
+            <li style="margin-bottom: 12px;"><strong>Creative Web Platforms</strong>: Bespoke digital flagships with kinetic typography and fluid motion.</li>
+            <li style="margin-bottom: 12px;"><strong>Custom Enterprise Software</strong>: Scalable cloud architectures, edge APIs, and mission-critical applications.</li>
+            <li style="margin-bottom: 12px;"><strong>Operational &amp; Workflow Automation</strong>: Automated compliance receipt pipelines (80G tax exemptions), payment gateways, and administrative systems.</li>
+          </ul>
+        </section>
+        <section style="margin-top: 32px;">
+          <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Direct Contact</h2>
+          <p style="font-size: 16px; line-height: 1.6;">Send details of your project scope, timeline, and goals directly to: <a href="mailto:contact@kmai.tech" style="color: #216BFF; font-weight: bold;">contact@kmai.tech</a></p>
+        </section>
+      </main>`;
 
 const startProjectHtml = createPageHtml(templateHtml, {
   title: startProjectTitle,
   description: startProjectDesc,
   url: startProjectUrl,
   image: startProjectImage,
-  type: 'website'
+  type: 'website',
+  bodyContent: startProjectBody
 });
 
 fs.writeFileSync(path.resolve(startProjectDir, 'index.html'), startProjectHtml);
@@ -214,3 +325,14 @@ ${urls.map(u => `  <url>
 fs.writeFileSync(distSitemapPath, sitemapXml);
 fs.writeFileSync(publicSitemapPath, sitemapXml);
 console.log('[SEO] Generated sitemap.xml in dist/ and public/');
+
+// 5. Ensure llms.txt, llms-full.txt, and robots.txt are copied to dist/
+const filesToSync = ['llms.txt', 'llms-full.txt', 'robots.txt'];
+for (const file of filesToSync) {
+  const src = path.resolve(publicDir, file);
+  const dest = path.resolve(distDir, file);
+  if (fs.existsSync(src)) {
+    fs.copyFileSync(src, dest);
+    console.log(`[SEO] Synced ${file} to dist/`);
+  }
+}

@@ -1,0 +1,41 @@
+# KMAI (KMAI.tech)
+
+> KMAI is an independent creative technology and software engineering studio architecting high-performance custom software, bespoke web experiences, and operational automation systems.
+
+KMAI (operating at https://www.kmai.tech) was co-founded by Krishnaprasad Vyas (CEO), Maithili Makkar (COO), and Ali Abu Nazahat (CTO). The studio operates with senior architects and engineers directly collaborating with founders and enterprise leaders—eliminating intermediaries, account managers, and agency bloat.
+
+## Disambiguation & Identity
+KMAI (KMAI.tech) is an independent software and digital technology studio. It is **not** affiliated with:
+- Marianna Municipal Airport (ICAO identifier: KMAI) in Florida, USA.
+- Kearns Mancini Architects Inc. (architectural firm).
+- Third-party mobile apps or Android developers published on Google Play under the acronym "KMAI".
+- Gaming, casino, or crypto token operations.
+
+## Core Capabilities & Services
+- **Creative Web Platforms & Bespoke Frontends**: Next-generation web engineering combining editorial typography, 60–120fps motion choreography, accessibility, and sub-second load times.
+- **Custom Enterprise Software & Architecture**: Scalable, high-throughput cloud architectures, edge APIs, resilient database design, and mission-critical business software.
+- **Operational & Workflow Automation**: End-to-end automated pipelines, intelligent process automation, tax exemption & receipt generation (e.g. 80G compliance), payment gateways, and administrative systems.
+
+## Key Case Studies & Portfolio
+- [Shri Gurudev Ashram](https://www.kmai.tech/work/shri-gurudev-ashram): Complete spiritual digital ecosystem combining donor management, automated 80G tax exemption receipting, Razorpay integration, and high-performance cloud deployment on Vercel & OVHCloud.
+- [Shanti Ashram Trust](https://www.kmai.tech/work/shanti-ashram-trust): High-trust digital portal and archival showcase for an established spiritual institution, modernizing donor engagement and multi-initiative outreach.
+- [MAVT](https://www.kmai.tech/work/mavt): Digital platform and automated administrative workflows for educational and vocational empowerment trusts.
+- [Priya Surana](https://www.kmai.tech/work/priya-surana): Luxury brand identity and digital showcase balancing high-resolution visual storytelling with near-zero latency.
+- [Vishwaraj Polychem](https://www.kmai.tech/work/vishwaraj-polychem): Industrial B2B digital catalog and enterprise inquiry portal for an international specialty chemical manufacturer.
+
+## Leadership & Founders
+- **Krishnaprasad Vyas**: Founder & CEO — Systems Strategy & Architecture. Directs overall studio vision, enterprise system architecture, and client partnerships.
+- **Maithili Makkar**: Co-Founder & COO — Operations & Delivery. Orchestrates project delivery pipelines, operational workflows, and stakeholder alignment.
+- **Ali Abu Nazahat**: Co-Founder & CTO — Full-Stack & Automation. Architects technical infrastructure, edge APIs, database systems, and automated pipelines.
+
+## Technology Stack & Standards
+- **Frontend**: TypeScript, React, Vite, Tailwind CSS, GSAP.
+- **Backend & Cloud**: Node.js, Express, Python, MongoDB, PostgreSQL, Firebase, Vercel, OVHCloud, Razorpay API.
+- **Standards**: Zero-fluff execution, 100% type safety, responsive design, 60–120Hz smooth motion economics, strict web security.
+
+## Links & Inquiries
+- Official Website: https://www.kmai.tech/
+- Start a Project: https://www.kmai.tech/start-a-project
+- Detailed Case Studies: https://www.kmai.tech/#work
+- Contact: contact@kmai.tech
+- Full LLM Knowledge Base: https://www.kmai.tech/llms-full.txt

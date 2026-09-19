@@ -14,11 +14,17 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#F2F0EA" />
     
+    <meta name="keywords" content="KMAI, KMAI.tech, KMAI Tech, Creative Technology Studio, Custom Software Development, Bespoke Web Engineering, Operational Automation, Krishnaprasad Vyas, Maithili Makkar, Ali Abu Nazahat" />
+    <meta name="author" content="KMAI.tech" />
+    <meta name="publisher" content="KMAI.tech" />
+    <link rel="alternate" type="text/plain" href="https://www.kmai.tech/llms.txt" title="LLM Context Manifest" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.kmai.tech/" />
     <meta property="og:title" content="KMAI.tech — Creative Technology Studio" />
     <meta property="og:description" content="KMAI is an independent creative technology studio engineering custom software, bespoke web experiences, and operational automation." />
+    <meta property="og:site_name" content="KMAI" />
     <meta property="og:image" content="https://www.kmai.tech/og-image.png" />
 
     <!-- Twitter -->
@@ -28,28 +34,110 @@
     <meta property="twitter:description" content="KMAI is an independent creative technology studio engineering custom software, bespoke web experiences, and operational automation." />
     <meta property="twitter:image" content="https://www.kmai.tech/og-image.png" />
 
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD Structured Data: Knowledge Graph Entity & WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "KMAI.tech",
-      "url": "https://www.kmai.tech/",
-      "logo": "https://www.kmai.tech/favicon.svg",
-      "description": "Creative technology studio building software, websites, digital products, business automation systems and intelligent digital solutions.",
-      "founders": [
-        { "@type": "Person", "name": "Krishnaprasad Vyas" },
-        { "@type": "Person", "name": "Maithili Makkar" },
-        { "@type": "Person", "name": "Ali Abu Nazahat" }
+      "@graph": [
+        {
+          "@type": ["Organization", "ProfessionalService"],
+          "@id": "https://www.kmai.tech/#organization",
+          "name": "KMAI",
+          "alternateName": [
+            "KMAI.tech",
+            "KMAI Tech",
+            "KMAI Studio",
+            "KMAI Creative Technology"
+          ],
+          "url": "https://www.kmai.tech/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.kmai.tech/#logo",
+            "url": "https://www.kmai.tech/favicon.svg",
+            "caption": "KMAI"
+          },
+          "image": "https://www.kmai.tech/og-image.png",
+          "description": "KMAI is an independent creative technology studio engineering custom software, bespoke web experiences, and operational automation.",
+          "disambiguatingDescription": "KMAI (KMAI.tech) is an independent creative technology and software engineering studio founded by Krishnaprasad Vyas, Maithili Makkar, and Ali Abu Nazahat. It is distinct from Marianna Municipal Airport (ICAO identifier: KMAI), Kearns Mancini Architects, or third-party mobile apps on Google Play.",
+          "knowsAbout": [
+            "Creative Technology",
+            "Custom Software Development",
+            "Bespoke Web Engineering",
+            "Operational & Business Automation",
+            "Cloud Infrastructure Architecture",
+            "Payment Gateway & Tax-Exempt Receipt Systems"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "KMAI Studio Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Creative Web Engineering",
+                  "description": "Bespoke digital experiences combining editorial typography, 60-120fps motion choreography, accessibility, and sub-second load times."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Custom Enterprise Software",
+                  "description": "Scalable cloud architectures, edge APIs, resilient database design, and mission-critical business software built without technical debt."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Operational & Workflow Automation",
+                  "description": "Automated pipelines, compliance receipt generation, payment gateway integrations, and administrative systems eliminating operational overhead."
+                }
+              }
+            ]
+          },
+          "founders": [
+            {
+              "@type": "Person",
+              "name": "Krishnaprasad Vyas",
+              "jobTitle": "Founder & CEO",
+              "description": "Systems Strategy & Architecture"
+            },
+            {
+              "@type": "Person",
+              "name": "Maithili Makkar",
+              "jobTitle": "Co-Founder & COO",
+              "description": "Operations & Delivery"
+            },
+            {
+              "@type": "Person",
+              "name": "Ali Abu Nazahat",
+              "jobTitle": "Co-Founder & CTO",
+              "description": "Full-Stack & Automation"
+            }
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Client Inquiries",
+            "email": "contact@kmai.tech",
+            "url": "https://www.kmai.tech/start-a-project"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.kmai.tech/#website",
+          "url": "https://www.kmai.tech/",
+          "name": "KMAI.tech",
+          "alternateName": "KMAI",
+          "publisher": {
+            "@id": "https://www.kmai.tech/#organization"
+          },
+          "about": {
+            "@id": "https://www.kmai.tech/#organization"
+          }
+        }
       ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "KMAI.tech",
-      "url": "https://www.kmai.tech/"
     }
     </script>
 
@@ -65,7 +153,64 @@
     <link rel="preload" href="/cursor-outline-white.png" as="image" />
   </head>
   <body class="bg-[#F2F0EA] text-[#0A0C0F] font-body antialiased selection:bg-[#216BFF] selection:text-white overflow-x-hidden">
-    <div id="root"></div>
+    <div id="root">
+      <!-- Semantic Static Fallback for AI Crawlers & Search Engines (Replaced seamlessly by React on load) -->
+      <main style="max-width: 1200px; margin: 0 auto; padding: 48px 24px;">
+        <header>
+          <p style="text-transform: uppercase; font-size: 14px; letter-spacing: 0.1em; color: #595D65;">Creative Technology Studio</p>
+          <h1 style="font-size: 40px; margin: 8px 0 16px 0;">KMAI.tech — Engineering Digital Systems & Bespoke Software</h1>
+          <p style="font-size: 18px; line-height: 1.6; color: #2D3139;">
+            KMAI is an independent creative technology studio engineering custom software, bespoke web experiences, and operational automation. Co-founded by Krishnaprasad Vyas (CEO), Maithili Makkar (COO), and Ali Abu Nazahat (CTO).
+          </p>
+        </header>
+
+        <section style="margin-top: 40px;">
+          <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Studio Capabilities</h2>
+          <ul>
+            <li style="margin-bottom: 12px;"><strong>Creative Web Platforms</strong>: Next-generation bespoke frontends engineered with editorial typography, motion choreography, and sub-second load times.</li>
+            <li style="margin-bottom: 12px;"><strong>Custom Enterprise Software</strong>: Scalable, high-throughput cloud architectures, edge APIs, resilient databases, and mission-critical business platforms.</li>
+            <li style="margin-bottom: 12px;"><strong>Operational &amp; Workflow Automation</strong>: Automated compliance receipt pipelines (80G tax exemptions), payment gateway orchestration, and custom admin ecosystems.</li>
+          </ul>
+        </section>
+
+        <section style="margin-top: 40px;">
+          <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Featured Case Studies</h2>
+          <ul>
+            <li style="margin-bottom: 16px;">
+              <strong><a href="/work/shri-gurudev-ashram">Shri Gurudev Ashram</a></strong> — Web Platform &amp; Donation System.
+              <p>Unified spiritual digital platform, automated 80G tax receipt engine, donor management, and Razorpay payment integration on Vercel and OVHCloud.</p>
+            </li>
+            <li style="margin-bottom: 16px;">
+              <strong><a href="/work/shanti-ashram-trust">Shanti Ashram Trust</a></strong> — Heritage Institutional Portal.
+              <p>Elevating donor trust, archival preservation, and outreach for an established spiritual institution.</p>
+            </li>
+            <li style="margin-bottom: 16px;">
+              <strong><a href="/work/mavt">MAVT</a></strong> — Educational Empowerment Platform.
+              <p>Application intake workflows, student verification dashboard, and lightning-fast portal access.</p>
+            </li>
+            <li style="margin-bottom: 16px;">
+              <strong><a href="/work/priya-surana">Priya Surana</a></strong> — Luxury Couture Showcase.
+              <p>High-craft interactive digital portfolio balancing high-resolution imagery with instant load performance.</p>
+            </li>
+            <li style="margin-bottom: 16px;">
+              <strong><a href="/work/vishwaraj-polychem">Vishwaraj Polychem</a></strong> — Industrial B2B Chemical Portal.
+              <p>Structured product data sheets, international inquiry pipelines, and search optimization.</p>
+            </li>
+          </ul>
+        </section>
+
+        <section style="margin-top: 40px;">
+          <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Start a Project</h2>
+          <p>Collaborate directly with senior architects and engineers with zero intermediaries.</p>
+          <p><a href="/start-a-project" style="font-weight: bold; color: #216BFF;">Inquire about starting a project &rarr;</a> | Email: <a href="mailto:contact@kmai.tech">contact@kmai.tech</a></p>
+        </section>
+      </main>
+    </div>
+    <noscript>
+      <div style="padding: 24px; text-align: center; font-family: sans-serif; background: #0A0C0F; color: #F2F0EA;">
+        <p>JavaScript is required for the interactive experience. For studio inquiries, reach out at <a href="mailto:contact@kmai.tech" style="color: #216BFF;">contact@kmai.tech</a> or visit <a href="/start-a-project" style="color: #216BFF;">our inquiry page</a>.</p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
