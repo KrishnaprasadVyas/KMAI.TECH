@@ -21,29 +21,58 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
 
   useEffect(() => { setMounted(true); }, []);
 
-  // Dark section detection with 160px buffer before contact (catches CurvedHorizon arch)
+  // Dark section detection with viewport-based coordinate testing
   useEffect(() => {
     const handleScroll = () => {
+      // Non-home routes (/start-a-project, /work/:slug) have dark backgrounds (#05070B)
+      if (window.location.pathname !== '/') {
+        setIsOverDarkSection(true);
+        return;
+      }
+
+      // At top of homepage (Hero section), background is strictly warm paper (#F2F0EA)
+      if (window.scrollY < 120) {
+        setIsOverDarkSection(false);
+        return;
+      }
+
       const darkSelectors = ['#manifesto', '#contact', 'footer'];
-      const checkY = window.scrollY + 40;
+      const checkY = 40; // Navbar vertical position in viewport
       let overDark = false;
+
       for (const sel of darkSelectors) {
         const el = document.querySelector(sel);
         if (el) {
           const rect = el.getBoundingClientRect();
-          const top = rect.top + window.scrollY;
-          const bottom = top + rect.height;
-          const bufferTop = (sel === '#contact' || sel === 'footer') ? top - 160 : top;
-          if (checkY >= bufferTop && checkY <= bottom) { overDark = true; break; }
+          if (rect.height === 0) continue;
+
+          const bufferTop = (sel === '#contact' || sel === 'footer') ? rect.top - 140 : rect.top;
+          if (checkY >= bufferTop && checkY <= rect.bottom) {
+            overDark = true;
+            break;
+          }
         }
       }
       setIsOverDarkSection(overDark);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    // Re-check after layout transitions and lazy-loaded route mounts
+    const t1 = setTimeout(handleScroll, 100);
+    const t2 = setTimeout(handleScroll, 400);
+    const t3 = setTimeout(handleScroll, 1200);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, [isIntroActive]);
 
   // ── Calm Slime Magnetic Physics for CTA (subtle deformation, zero jiggly wobble) ────
   useEffect(() => {

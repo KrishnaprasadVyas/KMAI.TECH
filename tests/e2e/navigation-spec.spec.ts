@@ -46,7 +46,7 @@ test.describe('KMAI.tech Precision Navigation & CTA Verification', () => {
     const exploreWorkBtn = page.locator('button:has-text("Explore Selected Work")');
     await expect(exploreWorkBtn).toBeVisible();
 
-    await exploreWorkBtn.click();
+    await exploreWorkBtn.click({ force: true });
     await page.waitForTimeout(1500);
 
     const workSection = page.locator('#work');

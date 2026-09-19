@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { GeometricK } from '../common/GeometricK';
 import { usePrefersReducedMotion } from '../../hooks/useMediaQuery';
 
 interface DennisPreloaderProps {
@@ -43,20 +42,20 @@ export const DennisPreloader: React.FC<DennisPreloaderProps> = ({ onComplete }) 
 
     path.setAttribute('d', curvedPath);
 
-    // Phase 1: K scale-in entrance (0 → 0.6s)
+    // Phase 1: KMAI wordmark scale-in entrance (0 → 0.6s)
     gsap.fromTo(
       kEl,
-      { scale: 0.85, opacity: 0 },
+      { scale: 0.9, opacity: 0 },
       { scale: 1, opacity: 1, duration: 0.6, ease: 'power3.out' }
     );
 
     // Phase 2: After 1.2s hold, begin exit sequence
     const timer = window.setTimeout(() => {
-      // K fades + scales up (like iris reveal)
+      // KMAI wordmark fades and scales smoothly
       gsap.to(kEl, {
-        scale: 1.4,
+        scale: 1.1,
         opacity: 0,
-        duration: 0.55,
+        duration: 0.45,
         ease: 'power2.in',
       });
 
@@ -98,13 +97,15 @@ export const DennisPreloader: React.FC<DennisPreloaderProps> = ({ onComplete }) 
       className="fixed inset-0 z-[999999] bg-[#07090E] flex items-center justify-center will-change-transform"
       aria-hidden="true"
     >
-      {/* Geometric K centrepiece */}
+      {/* Editorial Studio Brandmark — matching top-left signature typography */}
       <div
         ref={kRef}
-        className="pointer-events-none will-change-transform"
+        className="flex items-center justify-center pointer-events-none will-change-transform select-none"
         style={{ opacity: 0 }}
       >
-        <GeometricK size={320} theme="dark" variant="monumental" />
+        <span className="font-poppins font-black text-6xl sm:text-8xl md:text-9xl tracking-[-0.04em] uppercase text-white leading-none">
+          KMAI
+        </span>
       </div>
 
       {/* Dennis Snellenberg curved bottom SVG — clips the exit */}
