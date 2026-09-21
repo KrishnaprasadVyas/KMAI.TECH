@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { usePrefersReducedMotion } from '../../hooks/useMediaQuery';
 import type { CursorVariant } from '../common/CustomCursor';
@@ -31,6 +32,7 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCursorChange }) => {
+  const navigate     = useNavigate();
   const drawerRef    = useRef<HTMLDivElement>(null);
   const pathRef      = useRef<SVGPathElement>(null);
   const backdropRef  = useRef<HTMLDivElement>(null);
@@ -115,9 +117,13 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCurso
     e.preventDefault();
     onClose();
     if (href.startsWith('#')) {
-      scrollToTarget(href);
+      if (window.location.pathname !== '/') {
+        navigate('/' + href);
+      } else {
+        scrollToTarget(href);
+      }
     } else {
-      window.location.href = href;
+      navigate(href);
     }
   };
 
@@ -127,7 +133,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCurso
       <div
         ref={backdropRef}
         onClick={onClose}
-        className="fixed inset-0 z-[9500] bg-black/50 backdrop-blur-sm hidden will-change-[opacity]"
+        className="fixed inset-0 z-[9500] bg-black/50 backdrop-blur-sm hidden will-change-[opacity] pointer-events-auto cursor-pointer"
         aria-hidden="true"
       />
 
@@ -135,7 +141,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCurso
       <div
         ref={drawerRef}
         data-theme="dark"
-        className="fixed top-0 right-0 h-screen w-full sm:w-[480px] md:w-[520px] bg-[#0E1015] text-[#F2F0EA] z-[9600] flex flex-col justify-between p-10 sm:p-14 md:p-16 hidden will-change-transform shadow-2xl"
+        className="fixed top-0 right-0 h-screen w-full sm:w-[480px] md:w-[520px] bg-[#0E1015] text-[#F2F0EA] z-[9600] flex flex-col justify-between p-10 sm:p-14 md:p-16 hidden will-change-transform shadow-2xl pointer-events-auto"
       >
         {/* ── Curved SVG left cap — only on desktop (lg+), hidden when shrunk ────────────────── */}
         <svg
@@ -174,7 +180,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCurso
                 onClick={(e) => handleLinkClick(e, item.href)}
                 onMouseEnter={() => { setActiveHoverIdx(idx); onCursorChange?.('button'); }}
                 onMouseLeave={() => { setActiveHoverIdx(null); onCursorChange?.('default'); }}
-                className="font-display font-bold text-3xl xs:text-4xl sm:text-5xl uppercase tracking-[-0.03em] text-[#F2F0EA] hover:text-[#216BFF] transition-colors leading-[1.1] select-none"
+                className="font-display font-bold text-3xl xs:text-4xl sm:text-5xl uppercase tracking-[-0.03em] text-[#F2F0EA] hover:text-[#216BFF] transition-colors leading-[1.1] select-none cursor-pointer pointer-events-auto"
               >
                 {item.title}
               </a>
@@ -190,7 +196,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCurso
           </div>
           <div className="flex items-center justify-between font-body text-xs text-white/80">
             <span>Direct Reach</span>
-            <a href="mailto:contact@kmai.tech" className="text-white hover:text-[#216BFF] transition-colors">
+            <a href="mailto:contact@kmai.tech" className="text-white hover:text-[#216BFF] transition-colors pointer-events-auto cursor-pointer">
               contact@kmai.tech
             </a>
           </div>
