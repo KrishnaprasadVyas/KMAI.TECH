@@ -24,7 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
   // Dark section detection with viewport-based coordinate testing
   useEffect(() => {
     const handleScroll = () => {
-      // Non-home routes (/start-a-project, /work/:slug) have dark backgrounds (#05070B)
+      // Non-home routes (/work/:slug) have dark backgrounds (#05070B)
       if (window.location.pathname !== '/') {
         setIsOverDarkSection(true);
         return;

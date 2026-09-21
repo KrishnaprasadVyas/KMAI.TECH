@@ -242,7 +242,7 @@ for (const project of projects) {
 
           <footer style="margin-top: 48px; border-top: 1px solid #ddd; padding-top: 24px;">
             <p>Built by <strong>KMAI.tech</strong> — Independent Creative Technology & Software Engineering Studio.</p>
-            <p><a href="/start-a-project" style="color: #216BFF; font-weight: bold;">Start a project with KMAI &rarr;</a> | Email: <a href="mailto:contact@kmai.tech">contact@kmai.tech</a></p>
+            <p><a href="/#contact" style="color: #216BFF; font-weight: bold;">Start a project with KMAI &rarr;</a> | Email: <a href="mailto:contact@kmai.tech">contact@kmai.tech</a></p>
           </footer>
         </article>
       </main>`;
@@ -261,57 +261,9 @@ for (const project of projects) {
   console.log(`[SEO] Generated static file for /work/${project.slug}`);
 }
 
-// 3. Generate Prerendered HTML for Start a Project
-const startProjectDir = path.resolve(distDir, 'start-a-project');
-fs.mkdirSync(startProjectDir, { recursive: true });
-
-const startProjectTitle = 'Start a Project — KMAI.tech';
-const startProjectDesc = 'Inquire about starting a digital project with KMAI.tech. Bespoke websites, software systems, and business automation.';
-const startProjectUrl = `${siteUrl}/start-a-project`;
-const startProjectImage = `${siteUrl}/og-image.png`;
-
-const startProjectBody = `      <!-- Semantic Static Fallback for Search & AI Crawlers (Replaced seamlessly by React on load) -->
-      <main style="max-width: 900px; margin: 0 auto; padding: 48px 24px;">
-        <nav style="margin-bottom: 24px;">
-          <a href="/" style="color: #216BFF; text-decoration: none;">&larr; Back to KMAI.tech</a>
-        </nav>
-        <header>
-          <p style="text-transform: uppercase; font-size: 14px; letter-spacing: 0.1em; color: #595D65;">Initiate Collaboration</p>
-          <h1 style="font-size: 40px; margin: 8px 0 16px 0;">Start a Project with KMAI</h1>
-          <p style="font-size: 18px; line-height: 1.6; color: #2D3139;">
-            Collaborate directly with senior system architects and engineering leaders. Zero account managers, zero offshore intermediaries.
-          </p>
-        </header>
-        <section style="margin-top: 32px;">
-          <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">What We Build</h2>
-          <ul>
-            <li style="margin-bottom: 12px;"><strong>Creative Web Platforms</strong>: Bespoke digital flagships with kinetic typography and fluid motion.</li>
-            <li style="margin-bottom: 12px;"><strong>Custom Enterprise Software</strong>: Scalable cloud architectures, edge APIs, and mission-critical applications.</li>
-            <li style="margin-bottom: 12px;"><strong>Operational &amp; Workflow Automation</strong>: Automated compliance receipt pipelines (80G tax exemptions), payment gateways, and administrative systems.</li>
-          </ul>
-        </section>
-        <section style="margin-top: 32px;">
-          <h2 style="font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Direct Contact</h2>
-          <p style="font-size: 16px; line-height: 1.6;">Send details of your project scope, timeline, and goals directly to: <a href="mailto:contact@kmai.tech" style="color: #216BFF; font-weight: bold;">contact@kmai.tech</a></p>
-        </section>
-      </main>`;
-
-const startProjectHtml = createPageHtml(templateHtml, {
-  title: startProjectTitle,
-  description: startProjectDesc,
-  url: startProjectUrl,
-  image: startProjectImage,
-  type: 'website',
-  bodyContent: startProjectBody
-});
-
-fs.writeFileSync(path.resolve(startProjectDir, 'index.html'), startProjectHtml);
-console.log(`[SEO] Generated static file for /start-a-project`);
-
-// 4. Generate Sitemap
+// 3. Generate Sitemap
 const urls = [
   { url: '/', priority: '1.0', changefreq: 'weekly' },
-  { url: '/start-a-project', priority: '0.8', changefreq: 'monthly' },
   ...projects.map(p => ({ url: `/work/${p.slug}`, priority: '0.9', changefreq: 'monthly' }))
 ];
 

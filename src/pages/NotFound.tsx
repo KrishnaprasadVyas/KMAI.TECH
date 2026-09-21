@@ -51,14 +51,14 @@ const NotFound: React.FC<NotFoundProps> = ({ onCursorChange }) => {
             <ArrowLeft size={16} />
             RETURN TO HOMEPAGE
           </Link>
-          <Link
-            to="/start-a-project"
+          <a
+            href="/#contact"
             onMouseEnter={() => onCursorChange('button')}
             onMouseLeave={() => onCursorChange('default')}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-transparent hover:bg-white/5 border border-white/20 text-white font-mono text-xs tracking-widest uppercase transition-all duration-300"
           >
-            START A PROJECT
-          </Link>
+            CONTACT US
+          </a>
         </div>
       </div>
     </div>

@@ -35,7 +35,7 @@ KMAI (KMAI.tech) is an independent software and digital technology studio. It is
 
 ## Links & Inquiries
 - Official Website: https://www.kmai.tech/
-- Start a Project: https://www.kmai.tech/start-a-project
+- Inquiries: https://www.kmai.tech/#contact
 - Detailed Case Studies: https://www.kmai.tech/#work
 - Contact: contact@kmai.tech
 - Full LLM Knowledge Base: https://www.kmai.tech/llms-full.txt

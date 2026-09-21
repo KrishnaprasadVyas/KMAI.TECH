@@ -99,6 +99,6 @@ Founded by Krishnaprasad Vyas, Maithili Makkar, and Ali Abu Nazahat, KMAI reject
 
 ## 5. Contact & Collaboration
 - Primary Domain: https://www.kmai.tech/
-- Inquiry Channel: https://www.kmai.tech/start-a-project
+- Inquiry Channel: https://www.kmai.tech/#contact
 - Inquiries: contact@kmai.tech
 - Headquarters: Global / Remote Operations

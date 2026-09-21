@@ -67,15 +67,6 @@ export const Footer: React.FC<FooterProps> = ({ onCursorChange }) => {
             Studio
           </a>
           <a
-            href="/start-a-project"
-            onClick={(e) => handleNavClick(e, '/start-a-project')}
-            className="font-body text-sm text-[#8E939E] hover:text-white transition-colors"
-            onMouseEnter={() => onCursorChange?.('button')}
-            onMouseLeave={() => onCursorChange?.('default')}
-          >
-            Start a Project
-          </a>
-          <a
             href="/#contact"
             onClick={(e) => handleNavClick(e, '#contact')}
             className="font-body text-sm text-[#8E939E] hover:text-white transition-colors"

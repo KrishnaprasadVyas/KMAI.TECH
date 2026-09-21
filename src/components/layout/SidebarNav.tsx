@@ -28,7 +28,6 @@ const NAV_ITEMS: NavItem[] = [
   { title: 'Process',      href: '#process'      },
   { title: 'Testimonials', href: '#testimonials' },
   { title: 'Contact',      href: '#contact'      },
-  { title: 'Start a Project', href: '/start-a-project' },
 ];
 
 export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCursorChange }) => {

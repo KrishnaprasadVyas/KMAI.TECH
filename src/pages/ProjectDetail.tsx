@@ -283,15 +283,15 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ onCursorChange }) => {
 
         {/* CTA */}
         <div className="pt-24 pb-12 flex justify-center border-t border-white/5">
-          <Link
-            to="/start-a-project"
+          <a
+            href="/#contact"
             onMouseEnter={() => onCursorChange('button')}
             onMouseLeave={() => onCursorChange('default')}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-mono text-sm tracking-widest uppercase transition-all duration-300"
           >
-            START A SIMILAR PROJECT
+            INQUIRE ABOUT A PROJECT
             <ArrowRight size={16} className="text-[#006EFF]" />
-          </Link>
+          </a>
         </div>
       </div>
     </div>

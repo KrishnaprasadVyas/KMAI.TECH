@@ -33,7 +33,7 @@ test.describe('Sidebar Navigation Interaction Verification', () => {
     expect(scrollY).toBeGreaterThan(300);
   });
 
-  test('Clicking Start a Project in sidebar navigates to /start-a-project', async ({ page }) => {
+  test('Sidebar does not contain Start a Project and clicking Contact scrolls to contact', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
@@ -47,13 +47,17 @@ test.describe('Sidebar Navigation Interaction Verification', () => {
     const drawer = page.locator('div[data-theme="dark"].fixed.top-0.right-0');
     await expect(drawer).toBeVisible();
 
-    // Click "Start a Project"
+    // Verify "Start a Project" is completely absent from navigation
     const startProjectLink = page.locator('nav a:has-text("Start a Project")');
-    await expect(startProjectLink).toBeVisible();
-    await startProjectLink.click();
+    await expect(startProjectLink).toHaveCount(0);
 
-    // Should navigate to /start-a-project
-    await expect(page).toHaveURL(/.*start-a-project/);
+    // Click "Contact"
+    const contactLink = page.locator('nav a:has-text("Contact")');
+    await expect(contactLink).toBeVisible();
+    await contactLink.click();
+
+    // Drawer should close
+    await expect(drawer).not.toBeVisible({ timeout: 4000 });
   });
 
   test('Clicking backdrop closes the sidebar', async ({ page, isMobile }) => {
