@@ -81,7 +81,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
     const content = ctaContentRef.current;
     if (!wrap || !bubble || !content) return;
 
+    if (sidebarOpen) {
+      // Smoothly reset transforms when sidebar opens
+      gsap.to(wrap, { x: 0, y: 0, duration: 0.4, overwrite: 'auto' });
+      gsap.to(bubble, { rotation: 0, scaleX: 1, scaleY: 1, duration: 0.4, overwrite: 'auto' });
+      gsap.to(content, { rotation: 0, duration: 0.4, overwrite: 'auto' });
+      return;
+    }
+
     let isHovering = false;
+    let currentAngle = 0;
 
     const onMouseMove = (e: MouseEvent) => {
       const rect = wrap.getBoundingClientRect();
@@ -99,7 +108,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
           onCursorChange?.('button');
         }
 
-        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+        // Continuous shortest-arc rotation tracking (eliminates abrupt ±180° flip at 9 o'clock)
+        const rawAngle = Math.atan2(dy, dx) * (180 / Math.PI);
+        let diff = (rawAngle - currentAngle) % 360;
+        if (diff > 180) diff -= 360;
+        if (diff < -180) diff += 360;
+        currentAngle += diff;
+
         // Gentle magnetic pull
         const moveX = dx * 0.20;
         const moveY = dy * 0.20;
@@ -118,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
 
         // Bubble deforms slightly along pull angle
         gsap.to(bubble, {
-          rotation: angle,
+          rotation: currentAngle,
           scaleX: stretch,
           scaleY: squash,
           duration: 0.25,
@@ -128,7 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
 
         // Counter-rotate inner content so 'BEGIN' text stays upright and readable
         gsap.to(content, {
-          rotation: -angle,
+          rotation: -currentAngle,
           duration: 0.25,
           ease: 'power2.out',
           overwrite: 'auto',
@@ -142,6 +157,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
       isHovering = false;
       onCursorChange?.('default');
 
+      // Return to nearest 360° resting orientation so rotation eases back without an unnecessary spin
+      const targetRotation = Math.round(currentAngle / 360) * 360;
+
       // Smooth, controlled deceleration without jiggly oscillations
       gsap.to(wrap, {
         x: 0,
@@ -152,16 +170,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
       });
 
       gsap.to(bubble, {
-        rotation: 0,
+        rotation: targetRotation,
         scaleX: 1,
         scaleY: 1,
         duration: 0.6,
         ease: 'power3.out',
         overwrite: 'auto',
+        onComplete: () => {
+          currentAngle = 0;
+          gsap.set(bubble, { rotation: 0 });
+          gsap.set(content, { rotation: 0 });
+        },
       });
 
       gsap.to(content, {
-        rotation: 0,
+        rotation: -targetRotation,
         duration: 0.6,
         ease: 'power3.out',
         overwrite: 'auto',
@@ -175,7 +198,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
       window.removeEventListener('mousemove', onMouseMove);
       wrap.removeEventListener('mouseleave', handleLeave);
     };
-  }, [onCursorChange]);
+  }, [onCursorChange, sidebarOpen]);
 
   const scrollToSection = (href: string) => {
     setSidebarOpen(false);
@@ -270,7 +293,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCursorChange, isIntroActive = 
         href="#contact"
         onClick={(e) => { e.preventDefault(); scrollToSection('#contact'); }}
         className={`fixed bottom-9 right-9 z-[8900] hidden md:flex items-center justify-center select-none cursor-pointer will-change-transform transition-opacity duration-500 ${
-          visible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          visible && !sidebarOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         style={{ width: 88, height: 88 }}
         aria-label="Begin project conversation"
