@@ -10,7 +10,10 @@ export interface EnquiryPayload {
 }
 
 export const submitEnquiry = async (payload: EnquiryPayload): Promise<{ success: boolean; message: string }> => {
-  const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
+  const rawEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
+  const endpoint = rawEndpoint && !rawEndpoint.includes('api.kmai.tech')
+    ? rawEndpoint
+    : '/api/contact';
 
   try {
     const response = await fetch(endpoint, {

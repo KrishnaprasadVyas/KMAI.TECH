@@ -26,7 +26,11 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
     setErrorMessage('');
 
     try {
-      const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
+      const rawEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
+      const endpoint = rawEndpoint && !rawEndpoint.includes('api.kmai.tech')
+        ? rawEndpoint
+        : '/api/contact';
+
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
