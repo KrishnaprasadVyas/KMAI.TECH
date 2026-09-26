@@ -195,8 +195,8 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ isOpen, onClose, onCurso
           </div>
           <div className="flex items-center justify-between font-body text-xs text-white/80">
             <span>Direct Reach</span>
-            <a href="mailto:contact@kmai.tech" className="text-white hover:text-[#216BFF] transition-colors pointer-events-auto cursor-pointer">
-              contact@kmai.tech
+            <a href="mailto:Kmai.tech.support@gmail.com" className="text-white hover:text-[#216BFF] transition-colors pointer-events-auto cursor-pointer">
+              Kmai.tech.support@gmail.com
             </a>
           </div>
         </div>

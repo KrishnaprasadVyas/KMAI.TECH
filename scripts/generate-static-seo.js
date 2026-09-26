@@ -242,7 +242,7 @@ for (const project of projects) {
 
           <footer style="margin-top: 48px; border-top: 1px solid #ddd; padding-top: 24px;">
             <p>Built by <strong>KMAI.tech</strong> — Independent Creative Technology & Software Engineering Studio.</p>
-            <p><a href="/#contact" style="color: #216BFF; font-weight: bold;">Start a project with KMAI &rarr;</a> | Email: <a href="mailto:contact@kmai.tech">contact@kmai.tech</a></p>
+            <p><a href="/#contact" style="color: #216BFF; font-weight: bold;">Start a project with KMAI &rarr;</a> | Email: <a href="mailto:Kmai.tech.support@gmail.com">Kmai.tech.support@gmail.com</a></p>
           </footer>
         </article>
       </main>`;

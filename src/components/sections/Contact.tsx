@@ -14,16 +14,45 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [isCopied, setIsCopied] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email) return;
-    setIsSubmitted(true);
+
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    try {
+      const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || 'Failed to submit inquiry.');
+      }
+
+      setIsSubmitted(true);
+    } catch (err: unknown) {
+      console.error('[Contact Form] Submission error:', err);
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : 'Unable to send message. Please email Kmai.tech.support@gmail.com directly.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('contact@kmai.tech');
+    navigator.clipboard.writeText('Kmai.tech.support@gmail.com');
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
@@ -69,7 +98,7 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
                     onMouseLeave={() => onCursorChange?.('default')}
                     className="group inline-flex items-center gap-3 font-display text-xl sm:text-2xl font-bold text-white hover:text-[#216BFF] transition-colors py-1"
                   >
-                    <span>contact@kmai.tech</span>
+                    <span>Kmai.tech.support@gmail.com</span>
                     {isCopied ? (
                       <Check size={16} className="text-emerald-400" />
                     ) : (
@@ -145,19 +174,32 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
                   />
                 </div>
 
+                {errorMessage && (
+                  <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-200 text-sm font-body">
+                    <p>{errorMessage}</p>
+                    <p className="mt-1 text-xs text-white/60">
+                      You can also email us directly at{' '}
+                      <a href="mailto:Kmai.tech.support@gmail.com" className="text-[#216BFF] underline">
+                        Kmai.tech.support@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                )}
+
                 <div className="pt-4">
                   <RoundedButton
                     type="submit"
                     backgroundColor="#216BFF"
                     hoverTextColor="white"
                     restTextColor="#F2F0EA"
+                    disabled={isSubmitting}
                     onMouseEnter={() => onCursorChange?.('button')}
                     onMouseLeave={() => onCursorChange?.('default')}
-                    className="border-white/30 px-8 py-4 text-base tracking-normal font-medium"
+                    className="border-white/30 px-8 py-4 text-base tracking-normal font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <span className="inline-flex items-center gap-3">
-                      <span>Send inquiry</span>
-                      <ArrowUpRight size={18} />
+                      <span>{isSubmitting ? 'Sending inquiry...' : 'Send inquiry'}</span>
+                      <ArrowUpRight size={18} className={isSubmitting ? 'animate-pulse' : ''} />
                     </span>
                   </RoundedButton>
                 </div>

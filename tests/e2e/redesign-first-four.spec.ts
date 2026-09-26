@@ -99,6 +99,6 @@ test.describe('KMAI.tech Art-Directed Editorial Studio Redesign', () => {
     await expect(contactSection).toBeVisible();
     await expect(contactSection).toContainText("LET'S BUILD");
     await expect(contactSection).toContainText('IMPOSSIBLE');
-    await expect(contactSection).toContainText('contact@kmai.tech');
+    await expect(contactSection).toContainText('Kmai.tech.support@gmail.com');
   });
 });

@@ -21,7 +21,7 @@ An end-to-end digital partner that unites high-touch visual art direction and ki
 ## Operating Context
 
 - **Engagement Model**: Fixed-scope, high-impact 4–8 week sprints for flagship web platforms, software architectures, and automated operational pipelines.
-- **Direct Engagement**: Direct partnership with founding architects and engineers (`contact@kmai.tech`); confidential NDA provided upon request; 24-hour response SLA.
+- **Direct Engagement**: Direct partnership with founding architects and engineers (`Kmai.tech.support@gmail.com`); confidential NDA provided upon request; 24-hour response SLA.
 - **Delivery Standards**: Lighthouse 100 performance, sub-second loads, hardware-accelerated 120Hz smooth scrolling, zero runtime warnings or errors.
 
 ## Capabilities and Constraints

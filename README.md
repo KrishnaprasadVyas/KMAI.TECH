@@ -112,7 +112,7 @@ npm run preview
 ## ✦ Contact & Inquiries
 
 - **Co-Founders**: Krishnaprasad Vyas, Maithili Makkar, Ali Abu Nazahat
-- **Email**: [krishnaprasadvyas@gmail.com](mailto:krishnaprasadvyas@gmail.com)
+- **Email**: [Kmai.tech.support@gmail.com](mailto:Kmai.tech.support@gmail.com)
 - **Phone**: [+91 9309920441](tel:+919309920441)
 - **Website**: [https://www.kmai.tech/](https://www.kmai.tech/)
 

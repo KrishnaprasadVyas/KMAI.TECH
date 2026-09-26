@@ -10,15 +10,7 @@ export interface EnquiryPayload {
 }
 
 export const submitEnquiry = async (payload: EnquiryPayload): Promise<{ success: boolean; message: string }> => {
-  const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
-
-  if (!endpoint) {
-    console.error('[API] VITE_CONTACT_ENDPOINT is not defined. Cannot submit enquiry.');
-    return { 
-      success: false, 
-      message: 'Server configuration error: Contact endpoint is not configured. Please use the direct email option below.' 
-    };
-  }
+  const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
 
   try {
     const response = await fetch(endpoint, {
