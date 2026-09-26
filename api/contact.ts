@@ -10,7 +10,20 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;');
 }
 
-export default async function handler(req: any, res: any) {
+interface VercelRequestLike {
+  method?: string;
+  body?: string | Record<string, unknown>;
+  json?: () => Promise<Record<string, unknown>>;
+}
+
+interface VercelResponseLike {
+  setHeader?: (key: string, value: string) => void;
+  status: (code: number) => VercelResponseLike;
+  json: (data: Record<string, unknown>) => void;
+  end: () => void;
+}
+
+export default async function handler(req: VercelRequestLike, res: VercelResponseLike) {
   // CORS support
   if (res.setHeader) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -42,7 +55,7 @@ export default async function handler(req: any, res: any) {
     }
   }
 
-  const { name, email, message } = body || {};
+  const { name, email, message } = (typeof body === 'object' && body !== null ? body : {}) as Record<string, unknown>;
 
   if (!name || typeof name !== 'string' || !name.trim()) {
     return res.status(400).json({ error: 'Name is required' });

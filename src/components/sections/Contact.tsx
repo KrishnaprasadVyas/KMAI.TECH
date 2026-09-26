@@ -4,6 +4,7 @@ import type { CursorVariant } from '../common/CustomCursor';
 import { CurvedHorizon } from '../common/CurvedHorizon';
 import { RoundedButton } from '../common/RoundedButton';
 import { Magnetic } from '../common/Magnetic';
+import { submitEnquiry } from '../../services/api';
 
 interface ContactProps {
   onCursorChange?: (variant: CursorVariant, text?: string) => void;
@@ -26,22 +27,7 @@ export const Contact: React.FC<ContactProps> = ({ onCursorChange }) => {
     setErrorMessage('');
 
     try {
-      const rawEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
-      const endpoint = rawEndpoint && !rawEndpoint.includes('api.kmai.tech')
-        ? rawEndpoint
-        : '/api/contact';
-
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
-      });
-
-      if (!response.ok) {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.error || 'Failed to submit inquiry.');
-      }
-
+      await submitEnquiry({ name, email, message });
       setIsSubmitted(true);
     } catch (err: unknown) {
       console.error('[Contact Form] Submission error:', err);

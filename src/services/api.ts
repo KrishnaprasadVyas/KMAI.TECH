@@ -1,43 +1,36 @@
 export interface EnquiryPayload {
   name: string;
   email: string;
+  message?: string;
+  description?: string;
   company?: string;
-  projectType: string;
-  budgetRange: string;
-  timeline: string;
-  description: string;
-  preferredContact: string;
+  projectType?: string;
+  budgetRange?: string;
+  timeline?: string;
+  preferredContact?: string;
 }
 
 export const submitEnquiry = async (payload: EnquiryPayload): Promise<{ success: boolean; message: string }> => {
-  const rawEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
-  const endpoint = rawEndpoint && !rawEndpoint.includes('api.kmai.tech')
-    ? rawEndpoint
-    : '/api/contact';
+  const response = await fetch('/api/contact', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: payload.name,
+      email: payload.email,
+      message: payload.message || payload.description || '',
+    }),
+  });
 
-  try {
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Server responded with status: ${response.status}`);
-    }
-
+  if (!response.ok) {
     const data = await response.json().catch(() => ({}));
-    return {
-      success: true,
-      message: data.message || 'Your project enquiry has been submitted successfully.',
-    };
-  } catch (error) {
-    console.error('[API] Error submitting enquiry:', error);
-    return {
-      success: false,
-      message: 'There was a network error submitting your enquiry. Please try again or use the direct contact options.',
-    };
+    throw new Error(data.error || `Server responded with status ${response.status}`);
   }
+
+  const data = await response.json().catch(() => ({}));
+  return {
+    success: true,
+    message: data.message || 'Your project inquiry has been submitted successfully.',
+  };
 };
